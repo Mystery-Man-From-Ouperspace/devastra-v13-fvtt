@@ -1,0 +1,31 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+
+    </header>
+	
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Frame --}}
+        <div class="devastra-result-window">
+
+            <table class="devastra-no-rich">
+                <tr class="devastra-no-rich">
+                    <th  style="text-align: center;">
+                        <p><span style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.DamageApplied" }}</span></p>
+                    </th>
+                </tr>
+            </table>
+
+            <div class="devastra-no-rich" style="text-align: center;">
+                {{#if consideropponentprotection}}
+                <span>{{sentence1}}</span>
+                {{else}}
+                <span>{{sentence2}}</span>
+                {{/if}}
+                <br><br>
+                <span style="font-size: 18px; width: 10%;"><b>{{localize "DEVASTRA.TotalDamageApplied" }}&nbsp;{{ pdcminusarmor }}</b></span>
+            </div>
+        </div>	
+    </section>
+</form>

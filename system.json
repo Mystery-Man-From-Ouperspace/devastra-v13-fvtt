@@ -1,0 +1,90 @@
+{
+  "id": "devastra",
+  "version": "1.1.0beta",
+  "title": "Devâstra (Unofficial)",
+  "url": "https://serveurdavid.fr/devastra.html",
+  "description": "Unofficial game system for Devâstra.",
+  "license": "LICENSE.txt",
+  "authors": [
+    {
+      "name": "David Bercovici",
+      "discord": "Mystery Man From Outerspace",
+      "url": "https://serveurdavid.fr/"
+    },
+    {
+      "name": "with help from Kristov from La Fonderie"
+    }
+  ],
+  "esmodules": ["module/devastra.js"],
+  "styles": ["css/devastra.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+	  {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "FR - Système",
+      "sorting": "a",
+      "color": "#ffa500",
+      "packs": [
+        "fr-resume-utilisation",
+        "landing-page"
+      ],
+      "folders": []
+    }
+  ],
+  "packs": [
+    {
+      "name": "fr-resume-utilisation",
+      "label": "FR - Résumé Utilisation",
+      "system": "devastra",
+      "path": "packs/fr-resume-utilisation",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "landing-page",
+      "label": "Landing Page",
+      "system": "devastra",
+      "path": "packs/landing-page",
+      "type": "Scene",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "initiative": 0,
+  "background": "/systems/devastra/images/background/fond_devastra.png",
+  "grid": {
+    "distance": 5,
+    "units": "m"
+  },
+  "socket": false,
+  "primaryTokenAttribute": "prana",
+  "secondaryTokenAttribute": "atman",
+  "manifest": "https://serveurdavid.fr/download/foundry/devastra/system-v13.json",
+  "download": "https://serveurdavid.fr/download/foundry/devastra/release-110.zip"
+}
