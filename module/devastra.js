@@ -34,6 +34,7 @@ globalThis.SYSTEM = DEVASTRA;
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 
+
 Hooks.on("renderSidebarTab", (app, html) => {
   let content = `
 <h2> Liens Utiles&nbsp;<i class="fa fa-up-right-from-square"></i></h2>
@@ -67,6 +68,7 @@ Cette utilisation ne peut être considérée comme une cession de droit, mais un
 `
   html.find("#settings-game").append(content);
 })
+
 
 /**
  * Init hook.

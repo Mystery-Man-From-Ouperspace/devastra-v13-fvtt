@@ -504,7 +504,7 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      if (myMalusStatutVal.charAt(0) != "0") {
+      if (myMalusStatutVal.charAt(0) == "-")  {
         myNombreDeMalusStatut++;
       }
     };

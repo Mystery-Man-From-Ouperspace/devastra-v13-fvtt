@@ -399,7 +399,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     }
 
     console.log("myMalusStatutVal", myMalusStatutVal);
-    console.log("myMalusStatutVal[0]", myMalusStatutVal[0]);
+    console.log("myMalusStatutVal.charAt(0)", myMalusStatutVal.charAt(0));
 
 
     let jetLibel = "other";
@@ -498,7 +498,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      if (myMalusStatutVal[0] = "-")  {
+      if (myMalusStatutVal.charAt(0) == "-")  {
         myNombreDeMalusStatut++;
       }
     };
