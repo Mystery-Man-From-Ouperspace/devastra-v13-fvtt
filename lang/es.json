@@ -371,7 +371,8 @@
   "DEVASTRA.Bonus de dés du domaine": "Bonus du Domaine :",
   "DEVASTRA.Bonus de dés de la spécialité": "Bonus de Spécialité :",
   "DEVASTRA.Malus de blessure": "Tenir compte des malus de Blessures :",
-  "DEVASTRA.Malus de statut": "Tenir compte des malus de Statuts concernant le Domaine :",
+  "DEVASTRA.Malus de statut": "Tenir compte du malus de Statuts concernant le Domaine :",
+  "DEVASTRA.Statut à appliquer": "Statut à appliquer pour ce jet", 
   "DEVASTRA.Bonus à appliquer": "Dés bonus supplémentaires à appliquer :",
   "DEVASTRA.DEBRIDE_Malus à appliquer": "Total des dés malus à appliquer :",
   "DEVASTRA.Malus à appliquer": "Dés malus supplémentaires à appliquer :",
@@ -611,7 +612,7 @@
 
   "DEVASTRA.Blessing": "Bénédiction",
   "DEVASTRA.Blessings": "Bénédictions",
-  "DEVASTRA.BlessingsNotDisplayed": "Les items de Bénédictions et de Malédictions sont appliqués directement àaux domaines de la feuille d′acteur mais ne sont pas stockés ici (seulement le dernier et de façon temporaire).",
+  "DEVASTRA.BlessingsNotDisplayed": "Les items de Bénédictions et de Malédictions sont appliqués directement aux domaines de la feuille d′acteur mais ne sont pas stockés ici (seulement le dernier et de façon temporaire).",
   "DEVASTRA.Curse": "Malédiction",
 
 

@@ -15,7 +15,7 @@ export class ModifiedDialog extends Dialog {
     html.find('input[value="ouijet"]').click(this._onThrowDefenceClick.bind(this));
     html.find('input[value="ouishaktidefense"]').click(this._onShaktiDefenceClick.bind(this));
 
-
+    html.find('select[name="statute"]').click(this._onChangeStatuteMenu.bind(this));
     // html.find('input[value="isinventoryopponent"]').click(this._onInventoryOpponentClick.bind(this));
     // html.find('input[value="isimprovisedopponent"]').click(this._onDamageOpponentClick.bind(this));
 
@@ -51,6 +51,45 @@ export class ModifiedDialog extends Dialog {
    * Handle changing the...
    * @param {Event} event   The input change event
    */
+
+  _onChangeStatuteMenu(event) {
+    const actorID =  this.element.find('div[class="actor"]').text();
+    const myDomain = this.element.find('div[class="domaine"]').text();
+    const menuValue = this.element.find('select[name="statute"]').val();
+    const bonusStatute = this.element.find('td[class="valeur2 malusstatute"]').text();
+
+    const myActor = game.actors.get(actorID);
+    let flagDomain = false;
+
+    let numDomain = 0;
+    switch (myDomain) {
+      case "dph": numDomain = 1;
+      break;
+      case "dma": numDomain = 2;
+      break;
+      case "din": numDomain = 3;
+      break;
+      case "dso": numDomain = 4;
+      break;
+      case "dmy": numDomain = 5;
+      break;
+    }
+
+    for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
+      if (item.id == menuValue) { // 1 = statut ; 0 = blessure
+        if (item.system.domain == numDomain) {flagDomain = true};
+        if (item.system.domain2 == numDomain) {flagDomain = true};
+        if (item.system.domain3 == numDomain) {flagDomain = true};
+      };
+    };
+
+    if (flagDomain) {
+      this.element.find('td[class="valeur2 malusstatute"]').text("-1"  + game.i18n.localize("DEVASTRA.D"));
+    } else {
+      this.element.find('td[class="valeur2 malusstatute"]').text("0"  + game.i18n.localize("DEVASTRA.D"));
+    };
+
+  }
 
 
   _onThrowDefenceClick(event) {

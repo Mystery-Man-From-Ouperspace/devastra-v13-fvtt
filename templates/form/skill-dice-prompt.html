@@ -4,6 +4,8 @@
     <section class="form-body">
 
         {{!-- Frame --}}
+        <div class="actor" style="position: absolute; top: -9999px; left: -9999px;">{{ actorID }}</div>
+        <div class="domaine" style="position: absolute; top: -9999px; left: -9999px;">{{ domaine }}</div>
         <div class="frame">
             <div class="domain">
                 {{#if initthrow}}
@@ -137,24 +139,25 @@
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.Nbre de dés du domaine" }}
                         </td>
                         <td>
+                            {{ localize "DEVASTRA.Nbre de dés du domaine" }}
                         </td>
                         <td class="valeur2">
                             {{nbrdedomaine}}{{ localize "DEVASTRA.D" }}
                         </td>
                     </tr>
                     <tr>
+                        <td class="check right"><input type="checkbox" name="bonusdomainecheck" {{checked bonusdomainecheck}} /></td>
                         <td>
                             {{ localize "DEVASTRA.Bonus de dés du domaine" }}
                         </td>
-                        <td class="check right"><input type="checkbox" name="bonusdomainecheck" {{checked bonusdomainecheck}} /></td>
                         <td class="valeur2">
                             {{nbrdebonusdomaine}}{{ localize "DEVASTRA.D" }}
                         </td>
                     </tr>
                     <tr>
+                        <td class="check right"><input type="checkbox" name="specialitecheck" {{checked specialitecheck}} /></td>
                         {{#if initthrow}}
                         <td>
                             {{ localize "DEVASTRA.InitSpecial" }}
@@ -164,27 +167,39 @@
                             {{ localize "DEVASTRA.Bonus de dés de la spécialité" }}
                         </td>
                         {{/if}}
-                        <td class="check right"><input type="checkbox" name="specialitecheck" {{checked specialitecheck}} /></td>
                         <td class="valeur2">
                             </span>{{nbrdebonusspecialite}}{{ localize "DEVASTRA.D" }}
                         </td>
                     </tr>
                     <tr>
+                        <td class="check right"><input type="checkbox" name="malusblessurecheck" {{checked malusblessurecheck}} /></td>
                         <td>
                             {{ localize "DEVASTRA.Malus de blessure" }}
                         </td>
-                        <td class="check right"><input type="checkbox" name="malusblessurecheck" {{checked malusblessurecheck}} /></td>
                         <td class="valeur2">
                             {{nbrdemalusblessure}}{{ localize "DEVASTRA.D" }}
                         </td>
                     </tr>
                     <tr>
+                        <td class="check right"><input type="checkbox" name="malusstatutcheck" {{checked malusstatutcheck}} /></td>
                         <td>
                             {{ localize "DEVASTRA.Malus de statut" }}
                         </td>
-                        <td class="check right"><input type="checkbox" name="malusstatutcheck" {{checked malusstatutcheck}} /></td>
-                        <td class="valeur2">
+                        <td class="valeur2 malusstatute">
                             {{nbrdemalusstatut}}{{ localize "DEVASTRA.D" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right">
+                            ⌞   
+                        </td>
+                        <td>
+                            {{ localize "DEVASTRA.Statut à appliquer" }}
+                        </td>
+                        <td class="choosestatute right">
+                            <select name="statute" data-type="String">
+                                {{selectOptions statutechoices selected=selectedstatute labelAttr="label" localize=true}}
+                            </select>
                         </td>
                     </tr>
                 </table>

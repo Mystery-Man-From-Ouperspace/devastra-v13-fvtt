@@ -479,7 +479,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusBlessure = 0;
     for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-      if (item.system.subtype == "0" && (myDomainLibel == "dph" || myDomainLibel == "dma" || myDomainLibel == "dmy")) { // si le type est blessure
+      if (item.system.subtype == "0" && (domainLibel == "dph" || domainLibel == "dma" || domainLibel == "dmy")) { // si le type est blessure
         myNombreDeMalusBlessure += 1;
       }
     };
@@ -490,24 +490,8 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      let j = 0;
-      for (let i=0; i<6; i++) {
-        if (tabDomainLibel[i] == "@domains." + domainLibel) {
-          j = i;
-        }
-      };
-      for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-        if (item.system.subtype == "1") { // si le type est statut
-          if (item.system.domain == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value);
-          }
-          if (item.system.domain2 == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value2);
-          }
-          if (item.system.domain3 == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value3);
-          }
-        }
+      if (myMalusStatutVal[0] != "0") {
+        myNombreDeMalusStatut++;
       }
     };
     total -= myNombreDeMalusStatut;
@@ -935,7 +919,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusBlessure = 0;
     for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-      if (item.system.subtype == "0" && (myDomainLibel == "dph" || myDomainLibel == "dma" || myDomainLibel == "dmy")) { // si le type est blessure
+      if (item.system.subtype == "0" && (domainLibel == "dph" || domainLibel == "dma" || domainLibel == "dmy")) { // si le type est blessure
         myNombreDeMalusBlessure += 1;
       }
     };
@@ -3131,6 +3115,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
       "@domains.dmy"
     ];
 
+
     /*
     Ici on fait remplir les paramètres de lancer de dés
     */
@@ -3208,6 +3193,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
       var myND = myResultDialog.nd;
       var myMalusBlessureCheck = myResultDialog.malusblessurecheck;
       var myMalusStatutCheck = myResultDialog.malusstatutcheck;
+      var myMalusStatutVal = myResultDialog.malusstatutval;
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -3463,7 +3449,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
     let myNombreDeMalusBlessure = 0;
     for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-      if (item.system.subtype == "0" && (myDomainLibel == "dph" || myDomainLibel == "dma" || myDomainLibel == "dmy")) { // si le type est blessure
+      if (item.system.subtype == "0" && (domainLibel == "dph" || domainLibel == "dma" || domainLibel == "dmy")) { // si le type est blessure
         myNombreDeMalusBlessure += 1;
       }
     };
@@ -4001,6 +3987,24 @@ async function _skillDiceRollDialog(
     "@domains.dmy"
   ];
 
+  
+  let myItemStatute = {};
+
+  function myObject(id, label)
+  {
+    this.id = id;
+    this.label = label;
+  };
+
+  myItemStatute["0"] = new myObject("0", game.i18n.localize("DEVASTRA.opt.none"));
+  // myItemWeapon["-1"] = new myObject("-1", game.i18n.localize("DEVASTRA.barehands"));
+  for (let item of myActorID.items.filter(item => item.type === 'blessureoustatut')) {
+    if (item.system.subtype == "1") { // 1 = statut ; 0 = blessure
+    myItemStatute[item.id.toString()] = new myObject(item.id.toString(), item.name.toString());
+    };
+  };
+
+
   switch (myDomainLibel) {
     case "dph": 
       myNbrDeDomaine = myActorID.system.domains.dph.value;
@@ -4063,6 +4067,7 @@ async function _skillDiceRollDialog(
 
   var dialogData = {
     initthrow: myInitThrow,
+    actorID: myActorID._id,
     domaine: myDomaine,
     systemData: myActorID.system,
     nbrdedomaine: myNbrDeDomaine,
@@ -4074,7 +4079,8 @@ async function _skillDiceRollDialog(
     malusblessurecheck: myMalusBlessureCheck,
     nbrdemalusblessure: myNombreDeMalusBlessure,
     malusstatutcheck: myMalusStatutCheck,
-    nbrdemalusstatut: myNombreDeMalusStatut,
+    statutechoices: myItemStatute,
+    nbrdemalusstatut: 0,
     shaktirestanteflag: myShaktiRestanteFlag,
     convictionrestanteflag: myconvictionRestanteFlag,
     plus1succesautoflag : myPlus1SuccesAutoFlag,
@@ -4086,7 +4092,7 @@ async function _skillDiceRollDialog(
   const html = await renderTemplate(template, dialogData);
   // Create the Dialog window
   let prompt = await new Promise((resolve) => {
-    new Dialog(
+    new ModifiedDialog(
       {
         title: title,
         content: html,
@@ -4118,13 +4124,14 @@ async function _skillDiceRollDialog(
 
   //////////////////////////////////////////////////////////////
   async function _computeResult(myActor, myDialogData, myHtml) {
-    const editedData = {
+        const editedData = {
       jetautreflag: myHtml.find("input[value='autre']").is(':checked'),
       jetattaqueflag: myHtml.find("input[value='jetattaque']").is(':checked'),
       jetdefenseflag: myHtml.find("input[value='jetdefense']").is(':checked'),
       nd: myHtml.find("select[name='nd']").val(),
       malusblessurecheck: myHtml.find("input[value='malusblessurecheck']").is(':checked'),
       malusstatutcheck: myHtml.find("input[value='malusstatutcheck']").is(':checked'),
+      malusstatutval: myHtml.find('td[class="valeur2 malusstatute"]').text(),
       nbrdedomaine: myDialogData.nbrdedomaine,
       nbrdebonusdomaine: myDialogData.nbrdebonusdomaine,
       bonusdomainecheck: myHtml.find("input[name='bonusdomainecheck']").is(':checked'),

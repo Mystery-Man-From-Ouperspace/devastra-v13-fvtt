@@ -369,6 +369,7 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
       var myND = 3;
       var myMalusBlessureCheck = myResultDialog.malusblessurecheck;
       var myMalusStatutCheck = myResultDialog.malusstatutcheck;
+      var myMalusStatutVal = myResultDialog.malusstatutval;
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -490,7 +491,7 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusBlessure = 0;
     for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-      if (item.system.subtype == "0" && (myDomainLibel == "dph" || myDomainLibel == "dma" || myDomainLibel == "dmy")) { // si le type est blessure
+      if (item.system.subtype == "0" && (domainLibel == "dph" || domainLibel == "dma" || domainLibel == "dmy")) { // si le type est blessure
         myNombreDeMalusBlessure += 1;
       }
     };
@@ -501,24 +502,8 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      let j = 0;
-      for (let i=0; i<6; i++) {
-        if (tabDomainLibel[i] == "@domains." + domainLibel) {
-          j = i;
-        }
-      };
-      for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-        if (item.system.subtype == "1") { // si le type est statut
-          if (item.system.domain == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value);
-          }
-          if (item.system.domain2 == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value2);
-          }
-          if (item.system.domain3 == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value3);
-          }
-        }
+      if (myMalusStatutVal[0] != "0") {
+        myNombreDeMalusStatut++;
       }
     };
     total -= myNombreDeMalusStatut;
@@ -1248,7 +1233,7 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusBlessure = 0;
     for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-      if (item.system.subtype == "0" && (myDomainLibel == "dph" || myDomainLibel == "dma" || myDomainLibel == "dmy")) { // si le type est blessure
+      if (item.system.subtype == "0" && (domainLibel == "dph" || domainLibel == "dma" || domainLibel == "dmy")) { // si le type est blessure
         myNombreDeMalusBlessure += 1;
       }
     };
@@ -1761,6 +1746,23 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
   ];
 
 
+  let myItemStatute = {};
+
+  function myObject(id, label)
+  {
+    this.id = id;
+    this.label = label;
+  };
+
+  myItemStatute["0"] = new myObject("0", game.i18n.localize("DEVASTRA.opt.none"));
+  // myItemWeapon["-1"] = new myObject("-1", game.i18n.localize("DEVASTRA.barehands"));
+  for (let item of myActorID.items.filter(item => item.type === 'blessureoustatut')) {
+    if (item.system.subtype == "1") { // 1 = statut ; 0 = blessure
+    myItemStatute[item.id.toString()] = new myObject(item.id.toString(), item.name.toString());
+    };
+  };
+
+
   switch (myDomainLibel) {
     case "dph": 
       myNbrDeDomaine = myActorID.system.domains.dph.value;
@@ -1825,6 +1827,7 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
 
   var dialogData = {
     initthrow: myInitThrow,
+    actorID: myActorID._id,
     domaine: myDomaine,
     systemData: myActorID.system,
     nbrdedomaine: myNbrDeDomaine,
@@ -1836,7 +1839,8 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
     malusblessurecheck: myMalusBlessureCheck,
     nbrdemalusblessure: myNombreDeMalusBlessure,
     malusstatutcheck: myMalusStatutCheck,
-    nbrdemalusstatut: myNombreDeMalusStatut,
+    nbrdemalusstatut: 0,
+    statutechoices: myItemStatute,
     shaktirestanteflag: myShaktiRestanteFlag,
     sixexplo: mySixExploFlag,
     cinqexplo: false,
@@ -1846,7 +1850,7 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
   const html = await renderTemplate(template, dialogData);
   // Create the Dialog window
   let prompt = await new Promise((resolve) => {
-    new Dialog(
+    new ModifiedDialog(
       {
         title: title,
         content: html,
@@ -1885,9 +1889,10 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
       nd: myHtml.find("select[name='nd']").val(),
       malusblessurecheck: myHtml.find("inout[value='malusblessurecheck']").is(':checked'),
       malusstatutcheck: myHtml.find("input[value='malusstatutcheck']").is(':checked'),
+      malusstatutval: myHtml.find('td[class="valeur2 malusstatute"]').text(),
+      bonusdomainecheck: myHtml.find("input[name='bonusdomainecheck']").is(':checked'),
       nbrdedomaine: myDialogData.nbrdedomaine,
       nbrdebonusdomaine: myDialogData.nbrdebonusdomaine,
-      bonusdomainecheck: myHtml.find("input[name='bonusdomainecheck']").is(':checked'),
       nbrdebonusspecialite: myDialogData.nbrdebonusspecialite,
       specialitecheck: myHtml.find("input[name='specialitecheck']").is(':checked'),
       bonusapplique: myHtml.find("select[name='bonusapplique']").val(),
