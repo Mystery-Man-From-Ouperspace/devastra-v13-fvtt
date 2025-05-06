@@ -340,6 +340,7 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
       var myND = 3;
       var myMalusBlessureCheck = false;
       var myMalusStatutCheck = false;
+      var myMalusStatutVal = "OD";
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       // var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -490,23 +491,25 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
     // Traitement du cas des malus de blessures
 
     let myNombreDeMalusBlessure = 0;
-    for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-      if (item.system.subtype == "0" && (domainLibel == "dph" || domainLibel == "dma" || domainLibel == "dmy")) { // si le type est blessure
-        myNombreDeMalusBlessure += 1;
-      }
-    };
+    if (myMalusBlessureCheck) {
+      for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
+        if (item.system.subtype == "0" && (domainLibel == "dph" || domainLibel == "dma" || domainLibel == "dmy")) { // si le type est blessure
+          myNombreDeMalusBlessure++;
+        }
+      };
+    }
     total -= myNombreDeMalusBlessure;
-
 
     // Traitement du cas des malus de statuts
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      if (myMalusStatutVal[0] != "0") {
+      if (myMalusStatutVal.charAt(0) != "0") {
         myNombreDeMalusStatut++;
       }
     };
     total -= myNombreDeMalusStatut;
+
 
     // console.log("total = ", total);
 
@@ -987,6 +990,7 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
       var myND = myResultDialog.nd;
       var myMalusBlessureCheck = false;
       var myMalusStatutCheck = false;
+      var myMalusStatutVal = "OD";
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -1011,6 +1015,7 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
       var myND = myResultDialog.nd;
       var myMalusBlessureCheck = myResultDialog.malusblessurecheck;
       var myMalusStatutCheck = myResultDialog.malusstatutcheck;
+      var myMalusStatutVal = myResultDialog.malusstatutval;
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -1232,41 +1237,25 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
     // Traitement du cas des malus de blessures
 
     let myNombreDeMalusBlessure = 0;
-    for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-      if (item.system.subtype == "0" && (domainLibel == "dph" || domainLibel == "dma" || domainLibel == "dmy")) { // si le type est blessure
-        myNombreDeMalusBlessure += 1;
-      }
-    };
+    if (myMalusBlessureCheck) {
+      for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
+        if (item.system.subtype == "0" && (domainLibel == "dph" || domainLibel == "dma" || domainLibel == "dmy")) { // si le type est blessure
+          myNombreDeMalusBlessure++;
+        }
+      };
+    }
     total -= myNombreDeMalusBlessure;
 
     // Traitement du cas des malus de statuts
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      let j = 0;
-      for (let i=0; i<6; i++) {
-        if (tabDomainLibel[i] == "@domains." + domainLibel) {
-          j = i;
-        }
-      };
-      for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-        if (item.system.subtype == "1") { // si le type est statut
-          if (item.system.domain == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value);
-          }
-          if (item.system.domain2 == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value2);
-          }
-          if (item.system.domain3 == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value3);
-          }
-        }
+      if (myMalusStatutVal.charAt(0) != "0") {
+        myNombreDeMalusStatut++;
       }
     };
     total -= myNombreDeMalusStatut;
     
-    
-
 
     // console.log("total = ", total);
 
@@ -1607,9 +1596,9 @@ async function _whichTypeOfDamage (myActor, template, myTitle, myDialogOptions, 
   async function _computeResult(myActor, myHtml) {
     // console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
-      isinventory: await myHtml.find("input[value='isinventory']").is(':checked'),
-      weapon: await myHtml.find("input[value='weapon']").is(':checked'),
-      devastra: await myHtml.find("input[value='devastra']").is(':checked'),
+      isinventory: await myHtml.find("input[name='isinventory']").is(':checked'),
+      weapon: await myHtml.find("input[name='weapon']").is(':checked'),
+      devastra: await myHtml.find("input[name='devastra']").is(':checked'),
       power: await myHtml.find("input[name='power']").is(':checked'),
       magic: await myHtml.find("input[name='magic']").is(':checked'),
 
@@ -1792,7 +1781,7 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
   let myNombreDeMalusBlessure = 0;
   for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
     if (item.system.subtype == "0" && (myDomainLibel == "dph" || myDomainLibel == "dma" || myDomainLibel == "dmy")) { // si le type est blessure
-      myNombreDeMalusBlessure += 1;
+      myNombreDeMalusBlessure++;
     }
   };
   myNombreDeMalusBlessure *= -1;
@@ -1802,6 +1791,7 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
   };
 
   let myNombreDeMalusStatut = 0;
+  /*
   let j = 0;
   for (let i=0; i<6; i++) {
     if (tabDomainLibel[i] == "@domains." + myDomaine) {
@@ -1822,6 +1812,7 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
     }
   }
   myNombreDeMalusStatut *= -1;
+  */
   let myMalusStatutCheck = true;
 
 
@@ -1839,7 +1830,7 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
     malusblessurecheck: myMalusBlessureCheck,
     nbrdemalusblessure: myNombreDeMalusBlessure,
     malusstatutcheck: myMalusStatutCheck,
-    nbrdemalusstatut: 0,
+    nbrdemalusstatut: myNombreDeMalusStatut,
     statutechoices: myItemStatute,
     shaktirestanteflag: myShaktiRestanteFlag,
     sixexplo: mySixExploFlag,
@@ -1883,12 +1874,12 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
   //////////////////////////////////////////////////////////////
   async function _computeResult(myActor, myDialogData, myHtml) {
     const editedData = {
-      jetautreflag: myHtml.find("input[value='autre']").is(':checked'),
-      jetattaqueflag: myHtml.find("input[value='jetattaque']").is(':checked'),
-      jetdefenseflag: myHtml.find("input[value='jetdefense']").is(':checked'),
+      jetautreflag: myHtml.find("input[name='autre']").is(':checked'),
+      jetattaqueflag: myHtml.find("input[name='jetattaque']").is(':checked'),
+      jetdefenseflag: myHtml.find("input[name='jetdefense']").is(':checked'),
       nd: myHtml.find("select[name='nd']").val(),
-      malusblessurecheck: myHtml.find("inout[value='malusblessurecheck']").is(':checked'),
-      malusstatutcheck: myHtml.find("input[value='malusstatutcheck']").is(':checked'),
+      malusblessurecheck: myHtml.find("input[name='malusblessurecheck']").is(':checked'),
+      malusstatutcheck: myHtml.find("input[name='malusstatutcheck']").is(':checked'),
       malusstatutval: myHtml.find('td[class="valeur2 malusstatute"]').text(),
       bonusdomainecheck: myHtml.find("input[name='bonusdomainecheck']").is(':checked'),
       nbrdedomaine: myDialogData.nbrdedomaine,
@@ -2002,9 +1993,9 @@ async function _skillDiceRollDialogDeblocked (
     //////////////////////////////////////////////////////////////
     async function _computeResult(myActor, myDialogData, myHtml) {
       const editedData = {
-        jetautreflag: myHtml.find("input[value='autre']").is(':checked'),
-        jetattaqueflag: myHtml.find("input[value='jetattaque']").is(':checked'),
-        jetdefenseflag: myHtml.find("input[value='jetdefense']").is(':checked'),
+        jetautreflag: myHtml.find("input[name='autre']").is(':checked'),
+        jetattaqueflag: myHtml.find("input[name='jetattaque']").is(':checked'),
+        jetdefenseflag: myHtml.find("input[name='jetdefense']").is(':checked'),
         nd: myHtml.find("select[name='nd']").val(),
         nbrdedomaine: myDialogData.nbrdedomaine,
         nbrdebonusdomaine: myDialogData.nbrdebonusdomaine,
