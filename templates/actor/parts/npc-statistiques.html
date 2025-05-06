@@ -27,6 +27,8 @@
           <td class="blessnpc">
             <input type="radio" name="system.domains.{{@key}}.bless" value="blessed" {{ checked (eq domain.bless 'blessed') }}/>{{ localize "DEVASTRA.béni" }}
             &nbsp;
+            <input type="radio" name="system.domains.{{@key}}.bless" value="neutral" {{ checked (eq domain.bless 'neutral') }}/>
+            &nbsp;
             <input type="radio" name="system.domains.{{@key}}.bless" value="cursed" {{ checked (eq domain.bless 'cursed') }}/>{{ localize "DEVASTRA.maudit" }}
           </td>
         </tr>
