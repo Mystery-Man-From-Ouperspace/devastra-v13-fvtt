@@ -1,50 +1,72 @@
-import { Macros } from "./macros.js";
-
 export function initControlButtons() {
 
-  CONFIG.Canvas.layers.devastra = { layerClass: ControlsLayer, group: "primary" };
+  // CONFIG.Canvas.layers.devastra = { layerClass: ControlsLayer, group: "primary" };
 
+  /*
   Hooks.on("getSceneControlButtons", (btns) => {
+    let menu = [];
 
-    console.log("canvas.tokens = ", canvas.tokens);
-    console.log("btns = ", btns);
-    console.log("btns.tokens = ", btns.tokens);
     if (game.user.isGM) {
-      btns.tokens = {
-        name: "devastra",
-        activeTool: "gm-manager",
-        order: 999,
-        title: "Devâstra",
-        icon: "fas fa-trillium",
-        visible: true,
-        onChange: (event, active) => { Macros.showPlayersGMManagerButtons(event, active); },
-        tools: {}
-      };
-      btns.tokens.tools.gm_manager = {
+      menu.push({
         name: "gm-manager",
-        order: 0,
         title: game.i18n.localize("DEVASTRA.GMManager.Title"),
         icon: "fa fa-crosshairs-simple",
         button: true,
-        visible: true,
-        toggle: true,
-        onChange: (event, active) => { Macros.clickGMManagerButton(event, active); }
-      };
-      btns.tokens.tools.players_manager = {
+        onClick: () => { game.devastra.macros.launchGMManager(); }
+      });
+
+      menu.push({
         name: "players-manager",
-        order: 0,
         title: game.i18n.localize("DEVASTRA.PlayersManager.Title"),
         icon: "fa-solid fa-users",
         button: true,
-        visible: true,
-        toggle: true,
-        onChange: (event, active) => { Macros.clickPlayersManagerButton(event, active); }
-      };
-      console.log("btns.tokens = ", btns.tokens);
-      console.log("game.canvas = ", game.canvas);
+        onClick: () => { game.devastra.macros.launchPlayersManager(); }
+      });
 
 
-      
+      btns.push({
+        name: "devastra",
+        title: "Devâstra",
+        icon: "fas fa-trillium",
+        layer: "devastra",
+        tools: menu
+      });
     }
-  })
-};
+  });
+  */
+
+  Hooks.on("getSceneControlButtons", (controls) => {
+
+    const menu = {
+      name: "devastra",
+      title: "Devâstra",
+      icon: "fas fa-trillium",
+      tools: {
+        gm_manager: {
+          name: "gm-manager",
+          title: game.i18n.localize("DEVASTRA.GMManager.Title"),
+          icon: "fa fa-crosshairs-simple",
+          visible: game.user.isGM,
+          onChange: (_event, active)  => {
+            console.log("Clic sur icône GM MANAGER");
+            game.devastra.gmManager.render(true);
+          },
+          button: true,
+        },
+        players_manager: {
+          name: "players-manager",
+          title: game.i18n.localize("DEVASTRA.PlayersManager.Title"),
+          icon: "fa-solid fa-users",
+          visible: game.user.isGM,
+          onChange: (_event, active) => { 
+            console.log("Clic sur icône PLAYERS MANAGER");
+            game.devastra.playersManager.render(true);
+          },
+          button: true,
+        },
+      },
+    }
+
+    controls.devastra = menu
+  });
+}
