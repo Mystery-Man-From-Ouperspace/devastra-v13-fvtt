@@ -47,7 +47,7 @@ export function initControlButtons() {
           title: game.i18n.localize("DEVASTRA.GMManager.Title"),
           icon: "fa fa-crosshairs-simple",
           visible: game.user.isGM,
-          onChange: (_event, onclick)  => {
+          onChange: (_event, active)  => {
             console.log("Clic sur icône GM MANAGER");
             game.devastra.gmManager.render(true);
             // controls.devastra_button.tools.gm_manager.button = true;
@@ -60,7 +60,7 @@ export function initControlButtons() {
           title: game.i18n.localize("DEVASTRA.PlayersManager.Title"),
           icon: "fa-solid fa-users",
           visible: game.user.isGM,
-          onChange: (_event, onclick) => { 
+          onChange: (_event, active) => { 
             console.log("Clic sur icône PLAYERS MANAGER");
             game.devastra.playersManager.render(true);
             // controls.devastra_button.tools.gm_manager.button = false;
