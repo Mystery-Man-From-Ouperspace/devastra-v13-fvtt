@@ -38,35 +38,42 @@ export function initControlButtons() {
   Hooks.on("getSceneControlButtons", (controls) => {
 
     const menu = {
-      name: "devastra",
+      name: "devastra_button",
       title: "Devâstra",
       icon: "fas fa-trillium",
       tools: {
         gm_manager: {
-          name: "gm-manager",
+          name: "gm_manager",
           title: game.i18n.localize("DEVASTRA.GMManager.Title"),
           icon: "fa fa-crosshairs-simple",
           visible: game.user.isGM,
-          onChange: (_event, active)  => {
+          active: true,
+          onChange: (_event, onclick)  => {
             console.log("Clic sur icône GM MANAGER");
             game.devastra.gmManager.render(true);
+            // controls.devastra_button.tools.gm_manager.button = true;
+            // controls.devastra_button.tools.players.button = false;
           },
           button: true,
         },
         players_manager: {
-          name: "players-manager",
+          name: "players_manager",
           title: game.i18n.localize("DEVASTRA.PlayersManager.Title"),
           icon: "fa-solid fa-users",
           visible: game.user.isGM,
-          onChange: (_event, active) => { 
+          active: true,
+          onChange: (_event, onclick) => { 
             console.log("Clic sur icône PLAYERS MANAGER");
             game.devastra.playersManager.render(true);
+            // controls.devastra_button.tools.gm_manager.button = false;
+            // controls.devastra_button.tools.players.button = true;
+
           },
           button: true,
         },
       },
     }
 
-    controls.devastra = menu
+    controls.devastra_button = menu
   });
 }
