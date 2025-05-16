@@ -12,24 +12,24 @@
 
     <td style="width: 20px;">
       {{#if (eq domain.bless 'blessed')}}
-      <img src="systems/devastra/images/ui/beni.png" alt="Béni" />
+      <img src="systems/devastra/images/ui/beni.png" alt="Béni" title="{{ localize 'DEVASTRA.GlisserDeposerBenedictions' }}" />
       {{else}}
       {{/if}}
       {{#if (eq domain.bless 'neutral')}}
-      <img src="systems/devastra/images/ui/neutre.png" alt="Neutre" />
+      <img src="systems/devastra/images/ui/neutre.png" alt="Neutre" title="{{ localize 'DEVASTRA.GlisserDeposerBenedictions' }}" />
       {{else}}
       {{/if}}
       {{#if (eq domain.bless 'cursed')}}
-      <img src="systems/devastra/images/ui/maudit.png" alt="Maudit" />
+      <img src="systems/devastra/images/ui/maudit.png" alt="Maudit" title="{{ localize 'DEVASTRA.GlisserDeposerBenedictions' }}" />
       {{else}}
       {{/if}}
     </td>
     <td class="blessavatar">
-      {{ localize "DEVASTRA.béni" }}
+      {{ localize "DEVASTRA.Beni" }}
       <br>
-      {{ localize "DEVASTRA.neutre" }}
+      {{ localize "DEVASTRA.Neutre" }}
       <br>
-      {{ localize "DEVASTRA.maudit" }}
+      {{ localize "DEVASTRA.Maudit" }}
     </td>
     <td class="valuedice imageb">
     <!--  <img src="systems/devastra/images/ui/cercle.png" />
@@ -39,7 +39,7 @@
     <td class="bonusdice image">
     <!--  <img src="systems/devastra/images/ui/cercle.png" />
       <div class="stick">&nbsp;</div> -->
-      <input class="input nbre" type="number" placeholder="0" min="0" step="1" name="system.domains.{{@key}}.bonusdice" value="{{domain.bonusdice}}" title="{{ localize 'DEVASTRA.Dé bonus' }}" />
+      <input class="input nbre" type="number" placeholder="0" min="0" step="1" name="system.domains.{{@key}}.bonusdice" value="{{domain.bonusdice}}" title="{{ localize 'DEVASTRA.DeBonus' }}" />
     </td>
     <td class="specialities">
       <input class="input" type="text" placeholder="{{ localize 'DEVASTRA.Specialities' }}…" name="system.domains.{{@key}}.specialities" value="{{domain.specialities}}" />
@@ -54,7 +54,7 @@
 <br>
 <div style="display: flex; width: 100%;">
   <div class="blessuresoustatuts" style="display: table; width: 50%;">
-    <h1>{{ localize "DEVASTRA.Blessures ou Statuts" }}</h1>
+    <h1>{{ localize "DEVASTRA.BlessuresOuStatuts" }}</h1>
     <ol class="item-list">
       {{#each blessuresoustatuts as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
@@ -75,6 +75,22 @@
       <a class="item-control" title="{{ localize 'DEVASTRA.BlessureCreate' }}" data-action="create" data-type="blessureoustatut"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.BlessureCreate" }}</a>
     </span> 
   </div>
+    <div class="benedictionoumalediction" style="float: left; width: 50%;">
+    <h1>{{ localize "DEVASTRA.Blessings" }}</h1>
+    <ol class="item-list">
+      {{ localize "DEVASTRA.BlessingsNotDisplayed" }}
+      {{#each benedictionsoumaledictions as |item id|}}
+      <li class="item flexrow" data-item-id="{{item._id}}">
+        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+        <span class="item-name">{{item.name}}</span>
+      </li>
+      <div>
+        {{{ item.system.technique }}}
+      </div>
+
+      {{/each}}
+    </ol> 
+  </div>
   <div class="enseignements" style="float: left; width: 50%;">
     <h1>{{ localize "DEVASTRA.Enseignements" }}</h1>
     <ol class="item-list">
@@ -90,32 +106,11 @@
       <div>
         {{{ item.system.technique }}}
       </div>
-
       {{/each}}
     </ol>
     <span>
       <a class="item-control" title="{{ localize 'DEVASTRA.EnseignementCreate' }}" data-action="create" data-type="enseignement"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.EnseignementCreate" }}</a>
     </span>
-    
   </div>
-
-  <div class="benedictionoumalediction" style="float: left; width: 50%;">
-    <h1>{{ localize "DEVASTRA.Blessings" }}</h1>
-    <ol class="item-list">
-      {{ localize "DEVASTRA.BlessingsNotDisplayed" }}
-      {{#each benedictionsoumaledictions as |item id|}}
-      <li class="item flexrow" data-item-id="{{item._id}}">
-        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
-        <span class="item-name">{{item.name}}</span>
-      </li>
-      <div>
-        {{{ item.system.technique }}}
-      </div>
-
-      {{/each}}
-    </ol>
-    
-  </div>
-
 
 </div>

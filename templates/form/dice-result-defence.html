@@ -76,7 +76,7 @@
                     </td>
                     <td>
                         <img class="plate" style="width: 13%; border: 0px; padding: 5px;" src="systems/devastra/images/ui/icons/Defense.png" />
-                        <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Jet" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Défense" }}</b>
+                        <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Jet" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Defensif" }}</b>
                     </td>
                 </tr>
             </table>
@@ -148,10 +148,132 @@
                     </td>
                 </tr>
             </table>
+            <table>
+                <tr>
+                    <td style="width: 38%;">
+
+                    </td>
+                    {{#if (eq d8 0)}}
+                    <td>
+
+                    </td>
+                    {{else}}
+                    {{/if}}
+                    {{#if (eq d8 1)}}
+                    <td classe="d8_1">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 10px; text-align: center;" src="systems/devastra/images/ui/d8_1.png" />
+                    </td>
+                    {{else}}
+                    {{/if}}
+                    {{#if (eq d8 2)}}
+                    <td classe="d8_2">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 10px; text-align: center;" src="systems/devastra/images/ui/d8_2.png" />
+                    </td>
+                    {{else}}
+                    {{/if}}
+                    {{#if (eq d8 3)}}
+                    <td classe="d8_3">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 10px; text-align: center;" src="systems/devastra/images/ui/d8_3.png" />
+                    </td>
+                    {{else}}
+                    {{/if}}
+                    {{#if (eq d8 4)}}
+                    <td classe="d8_4">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 10px; text-align: center;" src="systems/devastra/images/ui/d8_4.png" />
+                    </td>
+                    {{else}}
+                    {{/if}}
+                    {{#if (eq d8 5)}}
+                    <td classe="d8_5">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 10px; text-align: center;" src="systems/devastra/images/ui/d8_5.png" />
+                    </td>
+                    {{else}}
+                    {{/if}}
+                    {{#if (eq d8 6)}}
+                    <td classe="d8_6">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 10px; text-align: center;" src="systems/devastra/images/ui/d8_6.png" />
+                    </td>
+                    {{else}}
+                    {{/if}}
+                    {{#if (eq d8 7)}}
+                    <td classe="d8_7">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 10px; text-align: center;" src="systems/devastra/images/ui/d8_7.png" />
+                    </td>
+                    {{else}}
+                    {{/if}}
+                    {{#if (eq d8 8)}}
+                    <td classe="d8_8">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 10px; text-align: center;" src="systems/devastra/images/ui/d8_8.png" />
+                    </td>
+                    {{else}}
+                    {{/if}}
+                    <td style="width: 38%;">
+
+                    </td>
+                </tr>
+            </table>
+
+            {{#if (eq succes 0)}}
+            <div>
+                <p><span><b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.0Succes" }}</b></span></p>
+            </div>
+            {{else}}
+            {{/if}}
+                {{#if (eq succes 1)}}
+            <div>
+                <p><span><b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.1Succes" }}</b></span></p>
+            </div>
+            {{else}}
+            {{/if}}
+            {{#if (eq succes 2)}}
+            <div>
+                <p><span><b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.2Succes" }}</b></span></p>
+            </div>
+            {{else}}
+            {{/if}}
+            {{#if (eq succes 3)}}
+            <div>
+                <p><span><b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.3Succes" }}</b></span></p>
+            </div>
+            {{else}}
+            {{/if}}
+            {{#if (eq succes 4)}}
+            <div>
+                <p><span><b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.4Succes" }}</b></span></p>
+            </div>
+            {{else}}
+            {{/if}}
+            {{#if (eq succes 5)}}
+            <div>
+                <p><span><b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.5Succes" }}</b></span></p>
+            </div>
+            {{else}}
+            {{/if}}
+            {{#if (eq succes 6)}}
+            <div>
+                <p><span><b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.6+Succes" }}</b></span></p>
+            </div>
+            {{else}}
+            {{/if}}
+            {{#if (gt succes 6)}}
+            <div>
+                <p><span><b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.6+Succes" }}</b></span></p>
+            </div>
+            {{else}}
+            {{/if}}
+
+            {{#if (eq ci108 108)}}
+            <br>
+            <div>
+                <p><span><b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.CleInitiatique108" }}</b></span></p>
+            </div>
+            {{else}}
+            {{/if}}
+
             <table style="border: 0px; background-color: transparent;">
                 <tr style="background-color: transparent;">
                     <td class="blue-buttons">
-                        <p><span title="{{ localize 'DEVASTRA.OnlyCanYou' }}" class="smart-blue-button shakti-defence-calculate-click">{{ localize "DEVASTRA.Shakti de défense" }}</span></p>
+                        <p><span title="{{ localize 'DEVASTRA.OnlyCanYou' }}" class="smart-blue-button shakti-defence-calculate-click">{{ localize "DEVASTRA.ShaktiEnDefense" }}</span></p>
                     </td>
                 </tr>
                 {{#if (eq opposantficheId "0")}}

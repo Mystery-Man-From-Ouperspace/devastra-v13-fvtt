@@ -1,7 +1,7 @@
 <div style="width: 100%; display: flex;">
   <div class="domain-div" style="display: table; width: 19%;">
     <ol class="item-list">
-      <h1>{{ localize "DEVASTRA.Blessures ou Statuts" }}</h1>
+      <h1>{{ localize "DEVASTRA.BlessuresOuStatuts" }}</h1>
       {{#each blessuresoustatuts as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
         <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
@@ -20,6 +20,25 @@
     <span>
       <a class="item-control" title="{{ localize 'DEVASTRA.BlessureCreate' }}" data-action="create" data-type="blessureoustatut"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.BlessureCreate" }}</a>
     </span> 
+  </div>
+
+   <div style="float: left; width: 1.5%;">
+  </div>
+
+  <div class="domain-div" style="float: left; width: 19%;">
+    <ol class="item-list">
+      <h1>{{ localize "DEVASTRA.Blessings" }}</h1>
+      {{ localize "DEVASTRA.BlessingsNotDisplayed" }}
+      {{#each benedictionsoumaledictions as |item id|}}
+      <li class="item flexrow" data-item-id="{{item._id}}">
+        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+        <span class="item-name">{{item.name}}</span>
+      </li>
+      <div>
+        {{{ item.system.technique }}}
+      </div>
+      {{/each}}
+    </ol>
   </div>
 
   <div style="float: left; width: 1.5%;">
@@ -97,25 +116,5 @@
       <a class="item-control" title="{{ localize 'DEVASTRA.NoteCreate' }}" data-action="create" data-type="note"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.NoteCreate" }}</a>
     </span>
   </div>
-
-  <div style="float: left; width: 1.5%;">
-  </div>
-
-  <div class="domain-div" style="float: left; width: 19%;">
-    <ol class="item-list">
-      <h1>{{ localize "DEVASTRA.Blessings" }}</h1>
-      {{ localize "DEVASTRA.BlessingsNotDisplayed" }}
-      {{#each benedictionsoumaledictions as |item id|}}
-      <li class="item flexrow" data-item-id="{{item._id}}">
-        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
-        <span class="item-name">{{item.name}}</span>
-      </li>
-      <div>
-        {{{ item.system.technique }}}
-      </div>
-      {{/each}}
-    </ol>
-    
-  </div>
-
+ 
 </div>

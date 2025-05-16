@@ -37,34 +37,35 @@ globalThis.SYSTEM = DEVASTRA;
 
 Hooks.on("renderSidebarTab", (app, html) => {
   let content = `
-<h2> Liens Utiles&nbsp;<i class="fa fa-up-right-from-square"></i></h2>
+<h2>`+game.i18n.localize("DEVASTRA.LiensUtiles")+`&nbsp;<i class="fa fa-up-right-from-square"></i></h2>
 <a  target="_blank" href="https://antre-monde.com">
 <button>
-<img style="border:none ;height:1.3rem ;width:auto; top:0.5rem ; position:relative" src="https://antre-monde.com/wp-content/uploads/2023/02/332223005_752862759877702_5641801807816806966_n.png">
-&nbsp;Site web de l'éditeur
+<img style="border:none ;height:1.3rem ;width:auto; top:0.35rem ; position:relative" src="https://antre-monde.com/wp-content/uploads/2023/02/332223005_752862759877702_5641801807816806966_n.png">
+&nbsp;`+game.i18n.localize("DEVASTRA.SiteWebEditeur")+`
 </button>
 </a>
 <details>
-<summary>À savoir en cas d'utilisation publique</summary>
+<summary>`+game.i18n.localize("DEVASTRA.AntreMonde")+`</summary>
 <small style="text-align: center;">
 <p>
-Antre Monde Éditions autorise l'utilisation de ce système Devâstra pour Foundry VTT à destination de parties privées mais aussi lors d'actual play, en live ou redifféré gratuit, sur les plateformes de streaming et sites web d'hébergement vidéo à la condition que soient mentionnés Devâstra et Antre Monde Éditions.
-</p>
+`+game.i18n.localize("DEVASTRA.AntreMondeSpeech")+`</p>
 <p>
-Cette utilisation ne peut être considérée comme une cession de droit, mais une tolérance d'usage.
+`+game.i18n.localize("DEVASTRA.AntreMondeSpeechSuite")+`
 </p>
 </small>
 </details>
+<!--
 <a  target="_blank" href="https://antre-monde.com">
 <button>
-<i class="fa fa-basket-shopping"></i>&nbsp;Acheter compendiums pour Devâstra
+<i class="fa fa-basket-shopping"></i>&nbsp;`+game.i18n.localize("DEVASTRA.AcheterCompendium")+`
 </button>
 </a>
 <a  target="_blank" href="https://antre-monde.com">
 <button>
-<i class="fa fa-globe-pointer"></i>&nbsp;Site web de Devâstra
+<i class="fa fa-globe-pointer"></i>&nbsp;`+game.i18n.localize("DEVASTRA.SiteWebDevastra")+`
 </button>
 </a>
+-->
 `
   html.find("#settings-game").append(content);
 })
@@ -117,8 +118,8 @@ Hooks.once("init", async function () {
   function delayedReload() {window.setTimeout(() => location.reload(), 500)}
 /*
   game.settings.register("devastra", "autoWoundsNPC", {
-    name: game.i18n.localize("DEVASTRA.Tenir automatiquement le décompte des blessures"),
-    hint: game.i18n.localize("DEVASTRA.Cocher cette option auto"),
+    name: game.i18n.localize("DEVASTRA.TenirAutomatiquementDecompteBlessures"),
+    hint: game.i18n.localize("DEVASTRA.CocherOptionAutoWounds"),
     scope: "world",
     config: true,
     default: true,
@@ -195,8 +196,8 @@ Hooks.once("init", async function () {
   });
 
   game.settings.register("devastra", "sonorizedMandalaInterface", {
-    name: game.i18n.localize("DEVASTRA.Sonoriser l'interface du Mandala"),
-    hint: game.i18n.localize("DEVASTRA.Décocher cette option rendra l'interface silencieuse"),
+    name: game.i18n.localize("DEVASTRA.SonoriserInterfaceMandala"),
+    hint: game.i18n.localize("DEVASTRA.DecocherOptionRendraInterfaceSilencieuse"),
     scope: "client",
     config: true,
     default: true,
@@ -207,8 +208,8 @@ Hooks.once("init", async function () {
 
 /*
   game.settings.register("devastra", "playersEditItems", {
-    name: game.i18n.localize("DEVASTRA.Autoriser les joueuses à modifer les items"),
-    hint: game.i18n.localize("DEVASTRA.Cocher cette option autorisera les joueuses"),
+    name: game.i18n.localize("DEVASTRA.AutoriserJoueusesModifItems"),
+    hint: game.i18n.localize("DEVASTRA.CocherOptionAutoriseraJoueuses"),
     scope: "world",
     config: true,
     default: false,
@@ -220,7 +221,7 @@ Hooks.once("init", async function () {
 
   game.settings.register("devastra", "chakra", {
     name: game.i18n.localize("DEVASTRA.ChakraWheel"),
-    hint: game.i18n.localize("DEVASTRA.Checking this option enables Chakra wheel instead of Deva's face wheel"),
+    hint: game.i18n.localize("DEVASTRA.CheckingOptionEnablesChakraWheelInsteadOfDevasFaceWheel"),
     scope: "world",
     config: true,
     default: false,
@@ -425,31 +426,32 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       Ici on calcule les dommages infligés
       */
 
-      let myActorId = "";
-      let theActiveActor = null;
-      let tokenFlag = false;
+      var myActorId = "";
+      var theActiveActor = null;
+      var tokenFlag = false;
+      var myToken = null;
+      var thatToken = null;
+      var thisTokens = null;
     
       if (opposantficheId == "" || opposantficheId == "0") {
       myActorId = attaquantficheId;
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
-        var myToken;
-        let thatToken;
-        let thisTokens;
+        theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
           thatToken = thisTokens[theToken];
-          if (thatToken.document.id === opposanttokenId) {
+          if (thatToken.document.id == opposanttokenId) {
             myToken = thatToken;
             tokenFlag = true;
           };
         }; 
-        theActiveActor = myToken.actor;
+        if (tokenFlag) { theActiveActor = myToken.actor };
       }
       let theAttackantActor = game.actors.get(attaquantficheId);
       let theOpponentActor;
-      if (tokenFlag) theOpponentActor = myToken.actor;
+      if (tokenFlag) { theOpponentActor = myToken.actor };
     
 
       // On vérifie d'abord que c'est la bonne joueuse ou PNJ, sinon on ne fait rien
@@ -737,7 +739,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
         return;
       };
 
-      let myTitle = game.i18n.localize("DEVASTRA.Shakti de défense");
+      let myTitle = game.i18n.localize("DEVASTRA.ShaktiEnDefense");
       let myDialogOptions = {
         classes: ["devastra", "sheet"]
       };
@@ -798,31 +800,32 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       };
 
       
-      let myActorId = "";
-      let theActiveActor = null;
-      let tokenFlag = false;
+      var myActorId = "";
+      var theActiveActor = null;
+      var tokenFlag = false;
+      var myToken = null;
+      var thatToken = null;
+      var thisTokens = null;
     
       if (opposantficheId == "" || opposantficheId == "0") {
       myActorId = attaquantficheId;
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
-        var myToken;
-        let thatToken;
-        let thisTokens;
+        theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
           thatToken = thisTokens[theToken];
-          if (thatToken.document.id === opposanttokenId) {
+          if (thatToken.document.id == opposanttokenId) {
             myToken = thatToken;
             tokenFlag = true;
           };
         }; 
-        theActiveActor = myToken.actor;
+        if (tokenFlag) { theActiveActor = myToken.actor };
       }
       let theAttackantActor = game.actors.get(attaquantficheId);
       let theOpponentActor;
-      if (tokenFlag) theOpponentActor = myToken.actor;
+      if (tokenFlag) { theOpponentActor = myToken.actor };
     
 
       // On vérifie d'abord que c'est la bonne joueuse ou PNJ, sinon on ne fait rien
@@ -838,7 +841,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
         return;
       };
 
-      let myTitle = game.i18n.localize("DEVASTRA.Jet de défense titre").replace("^0", theActiveActor.name);
+      let myTitle = game.i18n.localize("DEVASTRA.TitreJetDeDefense").replace("^0", theActiveActor.name);
       let myDialogOptions = {
         classes: ["devastra", "sheet"]
       };
@@ -908,32 +911,32 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       */
 
 
-      let myActorId = "";
-      let theActiveActor = null;
-      let tokenFlag = false;
-
+      var myActorId = "";
+      var theActiveActor = null;
+      var tokenFlag = false;
+      var myToken = null;
+      var thatToken = null;
+      var thisTokens = null;
+    
       if (opposantficheId == "" || opposantficheId == "0") {
       myActorId = attaquantficheId;
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
-        var myToken;
-        let thatToken;
-        let thisTokens;
+        theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
           thatToken = thisTokens[theToken];
-          if (thatToken.document.id === opposanttokenId) {
+          if (thatToken.document.id == opposanttokenId) {
             myToken = thatToken;
             tokenFlag = true;
           };
         }; 
-        theActiveActor = myToken.actor;
+        if (tokenFlag) { theActiveActor = myToken.actor };
       }
       let theAttackantActor = game.actors.get(attaquantficheId);
       let theOpponentActor;
-      if (tokenFlag) theOpponentActor = myToken.actor;
-    
+      if (tokenFlag) { theOpponentActor = myToken.actor }; 
       
 
       // let myOpponent = myToken.actor;
@@ -1011,31 +1014,32 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       Ici on calcule les blessures reçues
       */
 
-      let myActorId = "";
-      let theActiveActor = null;
-      let tokenFlag = false;
+      var myActorId = "";
+      var theActiveActor = null;
+      var tokenFlag = false;
+      var myToken = null;
+      var thatToken = null;
+      var thisTokens = null;
     
       if (opposantficheId == "" || opposantficheId == "0") {
       myActorId = attaquantficheId;
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
-        var myToken;
-        let thatToken;
-        let thisTokens;
+        theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
           thatToken = thisTokens[theToken];
-          if (thatToken.document.id === opposanttokenId) {
+          if (thatToken.document.id == opposanttokenId) {
             myToken = thatToken;
             tokenFlag = true;
           };
         }; 
-        theActiveActor = myToken.actor;
+        if (tokenFlag) { theActiveActor = myToken.actor };
       }
       let theAttackantActor = game.actors.get(attaquantficheId);
       let theOpponentActor;
-      if (tokenFlag) theOpponentActor = myToken.actor;
+      if (tokenFlag) { theOpponentActor = myToken.actor };
     
       // On vérifie d'abord que c'est la bonne joueuse ou PNJ, sinon on ne fait rien
       let myUserId = game.user.id;
@@ -1101,31 +1105,32 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       */
 
 
-      let myActorId = "";
-      let theActiveActor = null;
-      let tokenFlag = false;
+      var myActorId = "";
+      var theActiveActor = null;
+      var tokenFlag = false;
+      var myToken = null;
+      var thatToken = null;
+      var thisTokens = null;
     
       if (opposantficheId == "" || opposantficheId == "0") {
       myActorId = attaquantficheId;
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
-        var myToken;
-        let thatToken;
-        let thisTokens;
+        theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
           thatToken = thisTokens[theToken];
-          if (thatToken.document.id === opposanttokenId) {
+          if (thatToken.document.id == opposanttokenId) {
             myToken = thatToken;
             tokenFlag = true;
           };
         }; 
-        theActiveActor = myToken.actor;
+        if (tokenFlag) { theActiveActor = myToken.actor };
       }
       let theAttackantActor = game.actors.get(attaquantficheId);
       let theOpponentActor;
-      if (tokenFlag) theOpponentActor = myToken.actor;
+      if (tokenFlag) { theOpponentActor = myToken.actor };
     
 
       // On vérifie d'abord que c'est la bonne joueuse ou PNJ, sinon on ne fait rien
@@ -1190,31 +1195,32 @@ async function _showCalculateDamageInChat (
   if (shakti != "") { myShakti = parseInt(shakti); };
   const youwin = ((myTotal - (myDefence + myShakti)) <= 0);
 
-  let myActorId = "";
-  let theActiveActor = null;
-  let tokenFlag = false;
+  var myActorId = "";
+  var theActiveActor = null;
+  var tokenFlag = false;
+  var myToken = null;
+  var thatToken = null;
+  var thisTokens = null;
 
   if (opposantficheId == "" || opposantficheId == "0") {
   myActorId = attaquantficheId;
   theActiveActor = game.actors.get(myActorId);
   } else {
     myActorId = opposantficheId;
-    var myToken;
-    let thatToken;
-    let thisTokens;
+    theActiveActor = game.actors.get(myActorId);
     thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
     for (let theToken in thisTokens) {
       thatToken = thisTokens[theToken];
-      if (thatToken.document.id === opposanttokenId) {
+      if (thatToken.document.id == opposanttokenId) {
         myToken = thatToken;
         tokenFlag = true;
       };
     }; 
-    theActiveActor = myToken.actor;
+    if (tokenFlag) { theActiveActor = myToken.actor };
   }
   let theAttackantActor = game.actors.get(attaquantficheId);
-      let theOpponentActor;
-  if (tokenFlag) theOpponentActor = myToken.actor;
+  let theOpponentActor;
+  if (tokenFlag) { theOpponentActor = myToken.actor };
 
   const optNone = game.i18n.localize("DEVASTRA.opt.none");
   const myDamage = parseInt(damage);
@@ -1580,31 +1586,32 @@ async function _showCalculateShaktiInChat (
   if (shakti != "") { myShakti = parseInt(shakti); };
   const youwin = ((myTotal - (myDefence + myShakti)) <= 0);
 
-  let myActorId = "";
-  let theActiveActor = null;
-  let tokenFlag = false;
+  var myActorId = "";
+  var theActiveActor = null;
+  var tokenFlag = false;
+  var myToken = null;
+  var thatToken = null;
+  var thisTokens = null;
 
   if (opposantficheId == "" || opposantficheId == "0") {
   myActorId = attaquantficheId;
   theActiveActor = game.actors.get(myActorId);
   } else {
     myActorId = opposantficheId;
-    var myToken;
-    let thatToken;
-    let thisTokens;
+    theActiveActor = game.actors.get(myActorId);
     thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
     for (let theToken in thisTokens) {
       thatToken = thisTokens[theToken];
-      if (thatToken.document.id === opposanttokenId) {
+      if (thatToken.document.id == opposanttokenId) {
         myToken = thatToken;
         tokenFlag = true;
       };
     }; 
-    theActiveActor = myToken.actor;
+    if (tokenFlag) { theActiveActor = myToken.actor };
   }
   let theAttackantActor = game.actors.get(attaquantficheId);
-      let theOpponentActor;
-  if (tokenFlag) theOpponentActor = myToken.actor;
+  let theOpponentActor;
+  if (tokenFlag) { theOpponentActor = myToken.actor };
 
 
   const optNone = game.i18n.localize("DEVASTRA.opt.none");
@@ -1987,31 +1994,32 @@ async function _showCalculateAttacksInChat (
   if (shakti != "") { myShakti = parseInt(shakti); };
   const youwin = ((myTotal - (myDefence + myShakti)) <= 0);
 
-  let myActorId = "";
-  let theActiveActor = null;
-  let tokenFlag = false;
+  var myActorId = "";
+  var theActiveActor = null;
+  var tokenFlag = false;
+  var myToken = null;
+  var thatToken = null;
+  var thisTokens = null;
 
   if (opposantficheId == "" || opposantficheId == "0") {
   myActorId = attaquantficheId;
   theActiveActor = game.actors.get(myActorId);
   } else {
     myActorId = opposantficheId;
-    var myToken;
-    let thatToken;
-    let thisTokens;
+    theActiveActor = game.actors.get(myActorId);
     thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
     for (let theToken in thisTokens) {
       thatToken = thisTokens[theToken];
-      if (thatToken.document.id === opposanttokenId) {
+      if (thatToken.document.id == opposanttokenId) {
         myToken = thatToken;
         tokenFlag = true;
       };
     }; 
-    theActiveActor = myToken.actor;
+    if (tokenFlag) { theActiveActor = myToken.actor };
   }
   let theAttackantActor = game.actors.get(attaquantficheId);
-      let theOpponentActor;
-  if (tokenFlag) theOpponentActor = myToken.actor;
+  let theOpponentActor;
+  if (tokenFlag) { theOpponentActor = myToken.actor };
 
   //// const myOpponent = game.actors.get(opposantficheId);
 
@@ -2732,7 +2740,7 @@ async function _treatSkillDiceRollDefenceDialog(
     var selectedinventorymagic = mySelectedinventorymagic;
     var damage = myDamage;
     var damagetype = myDamagetype;
-    var defence;
+    var defence = 0;
     var shakti = myShakti;
 
     var domains = myResultDialog.domains;
@@ -2742,8 +2750,10 @@ async function _treatSkillDiceRollDefenceDialog(
     var ouishaktidefense = myResultDialog.ouishaktidefense;
     var bonusdomaineflag = myResultDialog.bonusdomainecheck;
     var specialiteflag = myResultDialog.specialitecheck;
-    var malusblessureflag = myResultDialog.malusblessurecheck;
-    var malusstatutflag = myResultDialog.malusstatutcheck;
+    var malusblessureflag = false;
+    var malusstatutflag = false;
+    var malusstatutval = "0D";
+    var d8check = myResultDialog.d8check;
     var nbrdedomainedph = myResultDialog.nbrdedomainedph;
     var nbrdedomainedma = myResultDialog.nbrdedomainedma;
     var nbrdedomainedin = myResultDialog.nbrdedomainedin;
@@ -2754,26 +2764,30 @@ async function _treatSkillDiceRollDefenceDialog(
     var nbrdebonusdomainedin = myResultDialog.nbrdebonusdomainedin;
     var nbrdebonusdomainedso = myResultDialog.nbrdebonusdomainedso;
     var nbrdebonusdomainedmy = myResultDialog.nbrdebonusdomainedmy;
+
+    /*
     var nbrdemalusstatutdph = myResultDialog.nbrdemalusstatutdph;
     var nbrdemalusstatutdma = myResultDialog.nbrdemalusstatutdma;
     var nbrdemalusstatutdin = myResultDialog.nbrdemalusstatutdin;
     var nbrdemalusstatutdso = myResultDialog.nbrdemalusstatutdso;
     var nbrdemalusstatutdmy = myResultDialog.nbrdemalusstatutdmy;
+    */
+
     var nbrdebonusspecialite = myResultDialog.nbrdebonusspecialite;
 
-    var malusblessureflag = false;
-    var malusstatutflag = false;
     var bonusdomaineflag = myResultDialog.bonusdomainecheck;
     var bonusapplique = myResultDialog.bonusapplique;
     var plusdeuxdesdattaque = myResultDialog.plusdeuxdesdattaque; // en fait, uniquement nbre jetons Shakti à enlever
     var malususapplique = myResultDialog.malususapplique;
-    var ignoremalus = myResultDialog.ignoremalus;
-    var malusAignorer = 0;
+    var ignoremalus = 0;
+    var malusaignorer = 0;
     var succesauto = myResultDialog.succesauto;
     var plusunsuccesauto = myResultDialog.plusunsuccesauto; // en fait, uniquement nbre jetons Conviction à enlever
     var desnonexplo = 0;
     var sixexploflag = myResultDialog.sixexplo;
     var cinqexploflag = myResultDialog.cinqexplo;
+
+    var specialiteflag = myResultDialog.specialitecheck;
 
     // console.log("myPlusDeuxDesDAttaque", myPlusDeuxDesDAttaque);
     // console.log("myIgnoreMalus", myIgnoreMalus);
@@ -2791,6 +2805,8 @@ async function _treatSkillDiceRollDefenceDialog(
     var opposantficheId = myOpposantficheId;
     var opposanttokenId = myOpposanttokenId;
 
+    var ci108 = 0;
+
     var consideropponentprotection = myConsideropponentprotection;
     var isinventory = myIsinventory;
     var weapon = myWeapon;
@@ -2804,7 +2820,7 @@ async function _treatSkillDiceRollDefenceDialog(
     var selectedinventorymagic = mySelectedinventorymagic;
     var damage = myDamage;
     var damagetype = myDamagetype;
-    var defence;
+    var defence = 0;
     var shakti = myShakti;
 
     var domains = myResultDialog.domains;
@@ -2816,6 +2832,8 @@ async function _treatSkillDiceRollDefenceDialog(
     var specialiteflag = myResultDialog.specialitecheck;
     var malusblessureflag = myResultDialog.malusblessurecheck;
     var malusstatutflag = myResultDialog.malusstatutcheck;
+    var malusstatutval = myResultDialog.malusstatutval;
+    var d8check = myResultDialog.d8check;
     var nbrdedomainedph = myResultDialog.nbrdedomainedph;
     var nbrdedomainedma = myResultDialog.nbrdedomainedma;
     var nbrdedomainedin = myResultDialog.nbrdedomainedin;
@@ -2826,28 +2844,28 @@ async function _treatSkillDiceRollDefenceDialog(
     var nbrdebonusdomainedin = myResultDialog.nbrdebonusdomainedin;
     var nbrdebonusdomainedso = myResultDialog.nbrdebonusdomainedso;
     var nbrdebonusdomainedmy = myResultDialog.nbrdebonusdomainedmy;
+
+    /*
     var nbrdemalusstatutdph = myResultDialog.nbrdemalusstatutdph;
     var nbrdemalusstatutdma = myResultDialog.nbrdemalusstatutdma;
     var nbrdemalusstatutdin = myResultDialog.nbrdemalusstatutdin;
     var nbrdemalusstatutdso = myResultDialog.nbrdemalusstatutdso;
     var nbrdemalusstatutdmy = myResultDialog.nbrdemalusstatutdmy;
-    var nbrdebonusspecialite = myResultDialog.nbrdebonusspecialite;
+    */
 
-    var malusblessureflag = myResultDialog.malusblessurecheck;
-    var malusstatutflag = myResultDialog.malusstatutcheck;
-    var bonusdomaineflag = myResultDialog.bonusdomainecheck;
-    var specialiteflag = myResultDialog.specialitecheck;
     var nbrdebonusspecialite = myResultDialog.nbrdebonusspecialite;
     var bonusapplique = myResultDialog.bonusapplique;
     var plusdeuxdesdattaque = myResultDialog.plusdeuxdesdattaque;
     var malususapplique = myResultDialog.malususapplique;
     var ignoremalus = myResultDialog.ignoremalus;
-    var malususaignorer = myResultDialog.malususaignorer;
+    var malusaignorer = myResultDialog.malusaignorer;
     var succesauto = myResultDialog.succesauto;
     var plusunsuccesauto = myResultDialog.plusunsuccesauto;
     var desnonexplo = myResultDialog.desnonexplo;
     var sixexplo = myResultDialog.sixexplo;
     var cinqexplo = myResultDialog.cinqexplo;
+
+    var specialiteflag = myResultDialog.specialitecheck;
 
     // console.log("myPlusDeuxDesDAttaque", myPlusDeuxDesDAttaque);
     // console.log("myIgnoreMalus", myIgnoreMalus);
@@ -2889,27 +2907,30 @@ async function _treatSkillDiceRollDefenceDialog(
     break;
     default: // console.log("C'est bizarre !");
   }
-  if (!(parseInt(bonusdomaineflag))) {
+  if (!bonusdomaineflag) {
     myNbrDeBonusDomaine = 0;
   }
   let myNbrDeBonusSpecialite = 0;
-  if (parseInt(specialiteflag)) {
+  if (specialiteflag) {
     myNbrDeBonusSpecialite = parseInt(nbrdebonusspecialite);
   }
+
+  let mySpecialiteFlag = specialiteflag;
   let myBonusApplique = parseInt(bonusapplique);
   let myMalusApplique = parseInt(malususapplique);
-  let myMalusAIgnorer = parseInt(malususaignorer);
+  let myIgnoreMalus = parseInt(ignoremalus);
+  let myMalusAIgnorer = parseInt(malusaignorer);
   let mySuccesAuto = parseInt(succesauto);
   let myShaktiSuffisanteFlag = parseInt(shaktisuffisanteflag);
   let jetLibel = jet;
   let myPlusDeuxDesDAttaque = parseInt(plusdeuxdesdattaque);
   let myconvictionSuffisanteFlag = parseInt(convictionsuffisanteflag);
-  let myIgnoreMalus = parseInt(ignoremalus);
   let myPlusUnSuccesAuto = parseInt(plusunsuccesauto);
   let myCinqExploFlag = parseInt(cinqexplo);
   let mySixExploFlag = parseInt(sixexplo);
   let myMalusBlessureCheck = parseInt(malusblessureflag);
-  let myMalusStatutCheck = parseInt(malusstatutflag);
+  let myMalusStatutCheck = malusstatutflag;
+  let myMalusStatutVal = malusstatutval;
   let myDesNonExplo = parseInt(desnonexplo);
 
   var theDefence = defence;
@@ -2941,6 +2962,7 @@ async function _treatSkillDiceRollDefenceDialog(
     ************************************************************************************/
 
 
+    var d8_val = 0;
     let d6_1 = 0;
     let d6_2 = 0;
     let d6_3 = 0;
@@ -2952,16 +2974,19 @@ async function _treatSkillDiceRollDefenceDialog(
     let suite = "[";
 
     defence = parseInt(myNbrDeDomaine);
+    // console.log("2933: defence = ", defence);
 
     // console.log("myNbrDeBonusDomaine", myNbrDeBonusDomaine);
     if (bonusdomaineflag) {
       defence += parseInt(myNbrDeBonusDomaine);
+      // console.log("2968: defence = ", defence);
       // console.log("myNbrDeBonusDomaine", "compabilisé");
     };
 
     // console.log("myNbrDeBonusSpecialite", myNbrDeBonusSpecialite);
     if (specialiteflag) {
       defence += parseInt(myNbrDeBonusSpecialite);
+      // console.log("2975: defence = ", defence);
       // console.log("myNbrDeBonusSpecialite", "compabilisé");
     };
 
@@ -2972,6 +2997,7 @@ async function _treatSkillDiceRollDefenceDialog(
 
     let myBonusSupplem = parseInt(myBonusApplique);
     let myMalusSupplem = parseInt(myMalusApplique) - parseInt(myMalusAIgnorer);
+    // console.log("2981: myMalusSupplem = ", myMalusSupplem);
     if (myMalusSupplem < 0) {myMalusSupplem = 0;};
     var mySuccesAutoSupplem = parseInt(mySuccesAuto);
 
@@ -2994,7 +3020,9 @@ async function _treatSkillDiceRollDefenceDialog(
 
 
     defence += myBonusSupplem;
+    // console.log("3003: defence = ", defence);
     defence -= myMalusSupplem;
+    // console.log("3005: defence = ", defence);
 
     d6_A = mySuccesAutoSupplem;
 
@@ -3011,26 +3039,18 @@ async function _treatSkillDiceRollDefenceDialog(
       }
     };
     defence -= myNombreDeMalusBlessure;
+    // console.log("3026: defence = ", defence);
 
 
     // Traitement du cas des malus de statuts
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      let j = 0;
-      for (let i=0; i<6; i++) {
-        if (tabDomainLibel[i] == "@domains." + domainLibel) {
-          j = i;
-        }
-      };
-      for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-        if (item.system.subtype == "1") { // si le type est statut
-          if (item.system.domain == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value);
-          }
-        }
+      if (myMalusStatutVal.charAt(0) == "-")  {
+        myNombreDeMalusStatut++;
       }
     };
+
     defence -= myNombreDeMalusStatut;
     
 
@@ -3044,6 +3064,10 @@ async function _treatSkillDiceRollDefenceDialog(
       };
     //////////////////////////////////////////////////////////////////
 
+
+    if (d8check && mySpecialiteFlag) {
+      total--;
+    }
 
 
     // Soustraction des jetons si en nombre suffisant, sinon "return"
@@ -3094,7 +3118,32 @@ async function _treatSkillDiceRollDefenceDialog(
 
     };
 
+    // console.log("defence = ", defence)
+
+    // console.log("n.nbrRelance = ", n.nbrRelance)
+
+    // console.log("n.myND = ", n.myND)
+
     var msg;
+
+    const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
+    // console.log("myTypeOfThrow", myTypeOfThrow);
+
+    
+    if (d8check && mySpecialiteFlag) {
+      let myRoll8 = "1d8>="+n.myND;
+      var r8 = new Roll(myRoll8, myActor.getRollData());
+      await r8.evaluate();
+
+      msg = await r8.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: myTypeOfThrow
+      });
+
+      d8_val = r8._total;
+    }
+
 
     let myRoll = "";
 
@@ -3170,14 +3219,16 @@ async function _treatSkillDiceRollDefenceDialog(
 
     } while (n.nbrRelance);
 
+    if (d8check && mySpecialiteFlag) {
+      if (r8._total >= myND) { n.myReussite++ };
+    }
+
     const rModif = new Roll("0[Défense Réussites]", myActor.getRollData());
     await rModif.evaluate();
     rModif._total  = parseInt(n.myReussite) + parseInt(mySuccesAuto); // On ajoute les succès automatiques
 
     defence = parseInt(n.myReussite) + parseInt(mySuccesAuto);
 
-    const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
-    // console.log("myTypeOfThrow", myTypeOfThrow);
 
     msg = await rModif.toMessage({
       user: game.user.id,
@@ -3199,9 +3250,23 @@ async function _treatSkillDiceRollDefenceDialog(
     */
     let smartTemplate = 'systems/devastra/templates/form/dice-result-defence.html';
 
+    // console.log("d8_val = ", d8_val);
+
     const myDefence = defence; // calculé (lancer de dés)
 
+
+    if (d8check && mySpecialiteFlag) {
+      if (n.d6_1 > 0 && d8_val == 8) {
+        ci108 = 108;
+      }
+    }
+
+    // console.log("ci108 = ", ci108);
+        
     const smartData = {
+      d8: parseInt(d8_val),
+      ci108: ci108,
+
       nd: myND,
       total: total,
       attaquantficheId: attaquantficheId,
@@ -3253,7 +3318,7 @@ async function _treatSkillDiceRollDefenceDialog(
   } else {
 
     const shaktidefenceTemplate = 'systems/devastra/templates/form/shakti-prompt.html';
-    const shaktidefenceTitle = game.i18n.localize("DEVASTRA.Shakti de défense");
+    const shaktidefenceTitle = game.i18n.localize("DEVASTRA.ShaktiEnDefense");
     const shaktidefenceDialogOptions  = {
       classes: ["devastra", "sheet"]
     };
@@ -3433,6 +3498,7 @@ async function _skillDiceRollDefenceDialog(
   const myNbrDeBonusSpecialite = 1;
   const mySpecialiteCheck = false;
   const myBonusDomaineCheck = true;
+  const d8check = false;
   const mySixExploFlag = (myActorID.system.prana.value <= myActorID.system.prana.tenace); // si Tenace ou moins
   const myPlus1SuccesAutoFlag = (myActorID.system.prana.value > myActorID.system.prana.tenace); // si Vaillant
   if (myActorID.type == 'character') {
@@ -3457,6 +3523,7 @@ async function _skillDiceRollDefenceDialog(
   const myNbrDeDomaineDMy = myActorID.system.domains.dmy.value;
   const myNbrDeBonusDomaineDMy = myActorID.system.domains.dmy.bonusdice;
 
+
   let myNombreDeMalusBlessure = 0;
   for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
     if (item.system.subtype == "0") { // si le type est blessure
@@ -3466,6 +3533,25 @@ async function _skillDiceRollDefenceDialog(
   myNombreDeMalusBlessure *= -1;
   let myMalusBlessureCheck = false;
 
+  
+  let myItemStatute = {};
+
+  function myObject(id, label)
+  {
+    this.id = id;
+    this.label = label;
+  };
+
+  myItemStatute["0"] = new myObject("0", game.i18n.localize("DEVASTRA.opt.none"));
+  // myItemWeapon["-1"] = new myObject("-1", game.i18n.localize("DEVASTRA.barehands"));
+  for (let item of myActorID.items.filter(item => item.type === 'blessureoustatut')) {
+    if (item.system.subtype == "1") { // 1 = statut ; 0 = blessure
+    myItemStatute[item.id.toString()] = new myObject(item.id.toString(), item.name.toString());
+    };
+  };
+
+  let myNombreDeMalusStatut = 0;
+  /*
   let myNombreDeMalusStatutDPh = 0;
   let myNombreDeMalusStatutDMa = 0;
   let myNombreDeMalusStatutDIn = 0;
@@ -3495,6 +3581,7 @@ async function _skillDiceRollDefenceDialog(
   myNombreDeMalusStatutDIn *= -1;
   myNombreDeMalusStatutDSo *= -1;
   myNombreDeMalusStatutDMy *= -1;
+  */
 
   let myMalusStatutCheck = true;
 
@@ -3503,6 +3590,8 @@ async function _skillDiceRollDefenceDialog(
   
     domains: "dma",
     throw: "defnc",
+    actorID: myActorID._id,
+    domaine: "dma",
     systemData: myActorID.system,
     nbrdedomainedph: myNbrDeDomaineDPh,
     nbrdedomainedma: myNbrDeDomaineDMa,
@@ -3517,15 +3606,22 @@ async function _skillDiceRollDefenceDialog(
     bonusdomainecheck: myBonusDomaineCheck,
     nbrdebonusspecialite: myNbrDeBonusSpecialite,
     specialitecheck: mySpecialiteCheck,
+    d8check: d8check,
     defencend: nd,
     malusblessurecheck: myMalusBlessureCheck,
     nbrdemalusblessure: myNombreDeMalusBlessure,
     malusstatutcheck: myMalusStatutCheck,
+    statutechoices: myItemStatute,
+    nbrdemalusstatut: myNombreDeMalusStatut,
+
+    /*
     nbrdemalusstatutdph: myNombreDeMalusStatutDPh,
     nbrdemalusstatutdma: myNombreDeMalusStatutDMa,
     nbrdemalusstatutdin: myNombreDeMalusStatutDIn,
     nbrdemalusstatutdso: myNombreDeMalusStatutDSo,
     nbrdemalusstatutdmy: myNombreDeMalusStatutDMy,
+    */
+
     shaktirestanteflag: myShaktiRestanteFlag,
     convictionrestanteflag: myconvictionRestanteFlag,
     plus1succesautoflag : myPlus1SuccesAutoFlag,
@@ -3578,9 +3674,11 @@ async function _skillDiceRollDefenceDialog(
       defencend: await myHtml.find("select[name='defencend']").val(),
       ouishaktidefense: await myHtml.find("input[value='ouishaktidefense']").is(':checked'),
       bonusdomainecheck: await myHtml.find("input[name='bonusdomainecheck']").is(':checked'),
+      d8check: await myHtml.find("input[name='d8check']").is(':checked'),
       specialitecheck: await myHtml.find("input[name='specialitecheck']").is(':checked'),
-      malusblessurecheck: await myHtml.find("input[value='malusblessurecheck']").is(':checked'),
-      malusstatutcheck: await myHtml.find("input[value='malusstatutcheck']").is(':checked'),
+      malusblessurecheck: await myHtml.find("input[name='malusblessurecheck']").is(':checked'),
+      malusstatutcheck: await myHtml.find("input[name='malusstatutcheck']").is(':checked'),
+      malusstatutval: await myHtml.find("td[class='valeur2 malusstatute']").text(),
       nbrdedomainedph: myDialogData.nbrdedomainedph,
       nbrdedomainedma: myDialogData.nbrdedomainedma,
       nbrdedomainedin: myDialogData.nbrdedomainedin,
@@ -3591,17 +3689,21 @@ async function _skillDiceRollDefenceDialog(
       nbrdebonusdomainedin: myDialogData.nbrdebonusdomainedin,
       nbrdebonusdomainedso: myDialogData.nbrdebonusdomainedso,
       nbrdebonusdomainedmy: myDialogData.nbrdebonusdomainedmy,
+
+      /*
       nbrdemalusstatutdph: myDialogData.nbrdemalusstatutdph,
       nbrdemalusstatutdma: myDialogData.nbrdemalusstatutdma,
       nbrdemalusstatutdin: myDialogData.nbrdemalusstatutdin,
       nbrdemalusstatutdso: myDialogData.nbrdemalusstatutdso,
       nbrdemalusstatutdmy: myDialogData.nbrdemalusstatutdmy,
+      */
+
       nbrdebonusspecialite: myDialogData.nbrdebonusspecialite,
       bonusapplique: await myHtml.find("select[name='bonusapplique']").val(),
       plusdeuxdesdattaque: await myHtml.find("select[name='plusdeuxdesdattaque']").val(),
       malususapplique: await myHtml.find("select[name='malususapplique']").val(),
       ignoremalus: await myHtml.find("select[name='ignoremalus']").val(),
-      malususaignorer: await myHtml.find("select[name='malususaignorer']").val(),
+      malusaignorer: await myHtml.find("select[name='malusaignorer']").val(),
       succesauto: await myHtml.find("select[name='succesauto']").val(),
       plusunsuccesauto: await myHtml.find("select[name='plusunsuccesauto']").val(),
       sixexplo: await myHtml.find("input[name='sixexplo']").is(':checked'),
@@ -3685,6 +3787,32 @@ async function _skillDiceRollDefenceDialogDeblocked(
   myNombreDeMalusBlessure *= -1;
   let myMalusBlessureCheck = false;
 
+  let myNombreDeMalusStatut = 0;
+  /*
+  let j = 0;
+  for (let i=0; i<6; i++) {
+    if (tabDomainLibel[i] == "@domains." + myDomaine) {
+      j = i;
+    }
+  };
+  for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
+    if (item.system.subtype == "1") { // si le type est statut
+      if (item.system.domain == j) { // si le domaine correspond
+        myNombreDeMalusStatut += Math.abs(item.system.value);
+      }
+      if (item.system.domain2 == j) { // si le domaine correspond
+        myNombreDeMalusStatut += Math.abs(item.system.value2);
+      }
+      if (item.system.domain3 == j) { // si le domaine correspond
+        myNombreDeMalusStatut += Math.abs(item.system.value3);
+      }
+    }
+  }
+  myNombreDeMalusStatut *= -1;
+  */
+  let myMalusStatutCheck = false;
+
+  /*
   let myNombreDeMalusStatutDPh = 0;
   let myNombreDeMalusStatutDMa = 0;
   let myNombreDeMalusStatutDIn = 0;
@@ -3716,23 +3844,27 @@ async function _skillDiceRollDefenceDialogDeblocked(
   myNombreDeMalusStatutDMy *= -1;
 
   let myMalusStatutCheck = true;
+  */
+
 
   var dialogData = {
     nd: nd,
   
     domains: "dma",
     throw: "defnc",
+    actorID: myActorID._id,
+    domaine: "dma",
     systemData: myActorID.system,
     nbrdedomainedph: myNbrDeDomaineDPh,
     nbrdedomainedma: myNbrDeDomaineDMa,
     nbrdedomainedin: myNbrDeDomaineDIn,
     nbrdedomainedso: myNbrDeDomaineDSo,
     nbrdedomainedmy: myNbrDeDomaineDMy,
-    // nbrdebonusdomainedph: myNbrDeBonusDomaineDPh,
-    // nbrdebonusdomainedma: myNbrDeBonusDomaineDMa,
-    // nbrdebonusdomainedin: myNbrDeBonusDomaineDIn,
-    // nbrdebonusdomainedso: myNbrDeBonusDomaineDSo,
-    // nbrdebonusdomainedmy: myNbrDeBonusDomaineDMy,
+    nbrdebonusdomainedph: myNbrDeBonusDomaineDPh,
+    nbrdebonusdomainedma: myNbrDeBonusDomaineDMa,
+    nbrdebonusdomainedin: myNbrDeBonusDomaineDIn,
+    nbrdebonusdomainedso: myNbrDeBonusDomaineDSo,
+    nbrdebonusdomainedmy: myNbrDeBonusDomaineDMy,
     bonusdomainecheck: myBonusDomaineCheck,
     nbrdebonusspecialite: myNbrDeBonusSpecialite,
     specialitecheck: mySpecialiteCheck,
@@ -3740,11 +3872,16 @@ async function _skillDiceRollDefenceDialogDeblocked(
     malusblessurecheck: myMalusBlessureCheck,
     nbrdemalusblessure: myNombreDeMalusBlessure,
     malusstatutcheck: myMalusStatutCheck,
+    // nbrdemalusstatut: myNombreDeMalusStatut,
+
+    /*
     nbrdemalusstatutdph: myNombreDeMalusStatutDPh,
     nbrdemalusstatutdma: myNombreDeMalusStatutDMa,
     nbrdemalusstatutdin: myNombreDeMalusStatutDIn,
     nbrdemalusstatutdso: myNombreDeMalusStatutDSo,
     nbrdemalusstatutdmy: myNombreDeMalusStatutDMy,
+    */
+
     shaktirestanteflag: myShaktiRestanteFlag,
     convictionrestanteflag: myconvictionRestanteFlag,
     plus1succesautoflag : myPlus1SuccesAutoFlag,
@@ -3797,30 +3934,43 @@ async function _skillDiceRollDefenceDialogDeblocked(
       defencend: await myHtml.find("select[name='defencend']").val(),
       ouishaktidefense: await myHtml.find("input[value='ouishaktidefense']").is(':checked'),
       bonusdomainecheck: await myHtml.find("input[name='bonusdomainecheck']").is(':checked'),
+      d8check: await myHtml.find("input[name='d8check']").is(':checked'),
       specialitecheck: await myHtml.find("input[name='specialitecheck']").is(':checked'),
+      malusblessurecheck: false,
+      malusstatutcheck: false,
+      malusstatutval: "0D",
+
+      /*
       malusblessurecheck: await myHtml.find("input[value='malusblessurecheck']").is(':checked'),
       malusstatutcheck: await myHtml.find("input[value='malusstatutcheck']").is(':checked'),
+      */
+
       nbrdedomainedph: myDialogData.nbrdedomainedph,
       nbrdedomainedma: myDialogData.nbrdedomainedma,
       nbrdedomainedin: myDialogData.nbrdedomainedin,
       nbrdedomainedso: myDialogData.nbrdedomainedso,
       nbrdedomainedmy: myDialogData.nbrdedomainedmy,
+
       // nbrdebonusdomainedph: myDialogData.nbrdebonusdomainedph,
       // nbrdebonusdomainedma: myDialogData.nbrdebonusdomainedma,
       // nbrdebonusdomainedin: myDialogData.nbrdebonusdomainedin,
       // nbrdebonusdomainedso: myDialogData.nbrdebonusdomainedso,
       // nbrdebonusdomainedmy: myDialogData.nbrdebonusdomainedmy,
+
+      /*
       nbrdemalusstatutdph: myDialogData.nbrdemalusstatutdph,
       nbrdemalusstatutdma: myDialogData.nbrdemalusstatutdma,
       nbrdemalusstatutdin: myDialogData.nbrdemalusstatutdin,
       nbrdemalusstatutdso: myDialogData.nbrdemalusstatutdso,
       nbrdemalusstatutdmy: myDialogData.nbrdemalusstatutdmy,
+      */
+
       nbrdebonusspecialite: myDialogData.nbrdebonusspecialite,
       bonusapplique: await myHtml.find("select[name='bonusapplique']").val(),
       plusdeuxdesdattaque: await myHtml.find("select[name='plusdeuxdesdattaque']").val(),
       malususapplique: await myHtml.find("select[name='malususapplique']").val(),
       ignoremalus: await myHtml.find("select[name='ignoremalus']").val(),
-      malususaignorer: await myHtml.find("select[name='malususaignorer']").val(),
+      malusaignorer: await myHtml.find("select[name='malusaignorer']").val(),
       succesauto: await myHtml.find("select[name='succesauto']").val(),
       plusunsuccesauto: await myHtml.find("select[name='plusunsuccesauto']").val(),
       sixexplo: await myHtml.find("input[name='sixexplo']").is(':checked'),
@@ -3856,6 +4006,9 @@ async function _treatSkillDiceRollDefenceNPCDialog(
   };
   //////////////////////////////////////////////////////////////////
 
+
+
+  
   let myVersionDebloqueeFlag = (myResultDialog.versiondebloquee == 1);
   if (myVersionDebloqueeFlag) {
 
@@ -3876,7 +4029,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
 
 
     var nd = myND;
-    var oldTotal = myTotal;
+    var total = myTotal;
     var attaquantficheId = myAttaquantficheId;
     var opposantficheId = myOpposantficheId;
     var opposanttokenId = myOpposanttokenId;
@@ -3897,14 +4050,14 @@ async function _treatSkillDiceRollDefenceNPCDialog(
 
     var domains = myResultDialog.domains;
     var jet = "defnc";
-
     var ouijet = myResultDialog.ouijet;
     var defencend = myResultDialog.defencend;
     var ouishaktidefense = myResultDialog.ouishaktidefense;
     var bonusdomaineflag = myResultDialog.bonusdomainecheck;
     var specialiteflag = myResultDialog.specialitecheck;
-    var malusblessureflag = myResultDialog.malusblessurecheck;
-    var malusstatutflag = myResultDialog.malusstatutcheck;
+    var malusblessureflag = false;
+    var malusstatutflag = false;
+    var malusstatutval = "0D";
     var nbrdedomainedph = myResultDialog.nbrdedomainedph;
     var nbrdedomainedma = myResultDialog.nbrdedomainedma;
     var nbrdedomainedin = myResultDialog.nbrdedomainedin;
@@ -3915,22 +4068,21 @@ async function _treatSkillDiceRollDefenceNPCDialog(
     // var nbrdebonusdomainedin = myResultDialog.nbrdebonusdomainedin;
     // var nbrdebonusdomainedso = myResultDialog.nbrdebonusdomainedso;
     // var nbrdebonusdomainedmy = myResultDialog.nbrdebonusdomainedmy;
-    // var nbrdemalusstatutdph = myResultDialog.nbrdemalusstatutdph;
+    
+    /*
+    var nbrdemalusstatutdph = myResultDialog.nbrdemalusstatutdph;
     var nbrdemalusstatutdma = myResultDialog.nbrdemalusstatutdma;
     var nbrdemalusstatutdin = myResultDialog.nbrdemalusstatutdin;
     var nbrdemalusstatutdso = myResultDialog.nbrdemalusstatutdso;
     var nbrdemalusstatutdmy = myResultDialog.nbrdemalusstatutdmy;
-    var nbrdebonusspecialite = myResultDialog.nbrdebonusspecialite;
+    */
 
-    var defencend = myResultDialog.defencend;
-    var malusblessureflag = false;
-    var malusstatutflag = false;
-    var bonusdomaineflag = myResultDialog.bonusdomainecheck;
+    var nbrdebonusspecialite = myResultDialog.nbrdebonusspecialite;
     var bonusapplique = myResultDialog.bonusapplique;
     var plusdeuxdesdattaque = myResultDialog.plusdeuxdesdattaque; // en fait, uniquement nbre jetons Shakti à enlever
     var malususapplique = myResultDialog.malususapplique;
-    var ignoremalus = myResultDialog.ignoremalus;
-    var malusAignorer = 0;
+    var ignoremalus = 0;
+    var malusaignorer = 0;
     var succesauto = myResultDialog.succesauto;
     var plusunsuccesauto = myResultDialog.plusunsuccesauto; // en fait, uniquement nbre jetons Conviction à enlever
     var desnonexplo = 0;
@@ -3970,7 +4122,6 @@ async function _treatSkillDiceRollDefenceNPCDialog(
 
     var domains = myResultDialog.domains;
     var jet = "defnc";
-
     var ouijet = myResultDialog.ouijet;
     var defencend = myResultDialog.defencend;
     var ouishaktidefense = myResultDialog.ouishaktidefense;
@@ -3978,6 +4129,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
     var specialiteflag = myResultDialog.specialitecheck;
     var malusblessureflag = myResultDialog.malusblessurecheck;
     var malusstatutflag = myResultDialog.malusstatutcheck;
+    var malusstatutval = myResultDialog.malusstatutval;
     var nbrdedomainedph = myResultDialog.nbrdedomainedph;
     var nbrdedomainedma = myResultDialog.nbrdedomainedma;
     var nbrdedomainedin = myResultDialog.nbrdedomainedin;
@@ -3988,24 +4140,27 @@ async function _treatSkillDiceRollDefenceNPCDialog(
     // var nbrdebonusdomainedin = myResultDialog.nbrdebonusdomainedin;
     // var nbrdebonusdomainedso = myResultDialog.nbrdebonusdomainedso;
     // var nbrdebonusdomainedmy = myResultDialog.nbrdebonusdomainedmy;
+
+    /*
     var nbrdemalusstatutdph = myResultDialog.nbrdemalusstatutdph;
     var nbrdemalusstatutdma = myResultDialog.nbrdemalusstatutdma;
     var nbrdemalusstatutdin = myResultDialog.nbrdemalusstatutdin;
     var nbrdemalusstatutdso = myResultDialog.nbrdemalusstatutdso;
     var nbrdemalusstatutdmy = myResultDialog.nbrdemalusstatutdmy;
-    var nbrdebonusspecialite = myResultDialog.nbrdebonusspecialite;
+    */
 
-    var defencend = myResultDialog.defencend;
-    var malusblessureflag = myResultDialog.malusblessurecheck;
-    var malusstatutflag = myResultDialog.malusstatutcheck;
-    var bonusdomaineflag = myResultDialog.bonusdomainecheck;
-    var specialiteflag = myResultDialog.specialitecheck;
     var nbrdebonusspecialite = myResultDialog.nbrdebonusspecialite;
     var bonusapplique = myResultDialog.bonusapplique;
     var plusdeuxdesdattaque = myResultDialog.plusdeuxdesdattaque;
     var malususapplique = myResultDialog.malususapplique;
+    var ignoremalus = 0;
+    var malusaignorer = 0;
+
+    /*
     var ignoremalus = myResultDialog.ignoremalus;
-    var ignoremalus = myResultDialog.malususaignorer;
+    var malusaignorer = myResultDialog.malusaignorer;
+    */
+
     var succesauto = myResultDialog.succesauto;
     var plusunsuccesauto = myResultDialog.plusunsuccesauto;
     var desnonexplo = myResultDialog.desnonexplo;
@@ -4053,29 +4208,28 @@ async function _treatSkillDiceRollDefenceNPCDialog(
     break;
     default: // console.log("C'est bizarre !");
   }
-  if (!(parseInt(bonusdomaineflag))) {
+  if (!bonusdomaineflag) {
     myNbrDeBonusDomaine = 0;
   }
   let myNbrDeBonusSpecialite = 0;
-  if (parseInt(specialiteflag)) {
+  if (specialiteflag) {
     myNbrDeBonusSpecialite = parseInt(nbrdebonusspecialite);
   }
   let myBonusApplique = parseInt(bonusapplique);
   let myMalusApplique = parseInt(malususapplique);
-  // let myMalusAIgnorer = parseInt(malususaignorer);
-  let myMalusAIgnorer = 0;
+  let myIgnoreMalus = parseInt(ignoremalus);
+  let myMalusAIgnorer = parseInt(malusaignorer);
   let mySuccesAuto = parseInt(succesauto);
   let myShaktiSuffisanteFlag = parseInt(shaktisuffisanteflag);
   let jetLibel = jet;
   let myPlusDeuxDesDAttaque = parseInt(plusdeuxdesdattaque);
-  // let myconvictionSuffisanteFlag = parseInt(convictionsuffisanteflag);
   let myconvictionSuffisanteFlag = false;
-  let myIgnoreMalus = parseInt(ignoremalus);
   let myPlusUnSuccesAuto = parseInt(plusunsuccesauto);
   let myCinqExploFlag = parseInt(cinqexplo);
   let mySixExploFlag = parseInt(sixexplo);
   let myMalusBlessureCheck = parseInt(malusblessureflag);
-  let myMalusStatutCheck = parseInt(malusstatutflag);
+  let myMalusStatutCheck = malusstatutflag;
+  let myMalusStatutVal = malusstatutval;
   let myDesNonExplo = parseInt(desnonexplo);
 
   var theDefence = myDefence;
@@ -4184,20 +4338,16 @@ async function _treatSkillDiceRollDefenceNPCDialog(
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      let j = 0;
-      for (let i=0; i<6; i++) {
-        if (tabDomainLibel[i] == "@domains." + domainLibel) {
-          j = i;
-        }
-      };
-      for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-        if (item.system.subtype == "1") { // si le type est statut
-          if (item.system.domain == j) { // si le domaine correspond
-            myNombreDeMalusStatut += Math.abs(item.system.value);
-          }
-        }
+      if (myMalusStatutVal.charAt(0) == "-")  {
+        myNombreDeMalusStatut++;
       }
     };
+    // console.log("myMalusStatutCheck = ", myMalusStatutCheck);
+
+    // console.log("myMalusStatutVal = ", myMalusStatutVal);
+
+    // console.log("myNombreDeMalusStatut = ", myNombreDeMalusStatut);
+
     defence -= myNombreDeMalusStatut;
     
 
@@ -4426,7 +4576,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
   } else {
 
     const shaktidefenceTemplate = 'systems/devastra/templates/form/shakti-prompt.html';
-    const shaktidefenceTitle = game.i18n.localize("DEVASTRA.Shakti de défense");
+    const shaktidefenceTitle = game.i18n.localize("DEVASTRA.ShaktiEnDefense");
     const shaktidefenceDialogOptions  = {
       classes: ["devastra", "sheet"]
     };
@@ -4477,6 +4627,8 @@ async function _skillDiceRollDefenceNPCDialog(
   const attaquantficheId = myAttaquantficheId;
   const opposantficheId = myOpposantficheId;
   const opposanttokenId = myOpposanttokenId;
+
+
   const consideropponentprotection = myConsideropponentprotection;
   const isinventory = myIsinventory;
   const weapon = myWeapon;
@@ -4501,15 +4653,23 @@ async function _skillDiceRollDefenceNPCDialog(
   } else {
     var myShaktiRestanteFlag = (myActorID.system.shakti_initiale.value);
   };
+  const myconvictionRestanteFlag = (myActorID.system.conviction.piledejetons); // s'il reste des jetons de Conviction
+
   const myNbrDeDomaineDPh = myActorID.system.domains.dph.value;
+  const myNbrDeBonusDomaineDPh = myActorID.system.domains.dph.bonusdice;
 
   const myNbrDeDomaineDMa = myActorID.system.domains.dma.value;
+  const myNbrDeBonusDomaineDMa = myActorID.system.domains.dma.bonusdice;
 
   const myNbrDeDomaineDIn = myActorID.system.domains.din.value;
+  const myNbrDeBonusDomaineDIn = myActorID.system.domains.din.bonusdice;
 
   const myNbrDeDomaineDSo = myActorID.system.domains.dso.value;
+  const myNbrDeBonusDomaineDSo = myActorID.system.domains.dso.bonusdice;
 
   const myNbrDeDomaineDMy = myActorID.system.domains.dmy.value;
+  const myNbrDeBonusDomaineDMy = myActorID.system.domains.dmy.bonusdice;
+
 
   let myNombreDeMalusBlessure = 0;
   for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
@@ -4520,6 +4680,25 @@ async function _skillDiceRollDefenceNPCDialog(
   myNombreDeMalusBlessure *= -1;
   let myMalusBlessureCheck = false;
 
+  
+  let myItemStatute = {};
+
+  function myObject(id, label)
+  {
+    this.id = id;
+    this.label = label;
+  };
+
+  myItemStatute["0"] = new myObject("0", game.i18n.localize("DEVASTRA.opt.none"));
+  // myItemWeapon["-1"] = new myObject("-1", game.i18n.localize("DEVASTRA.barehands"));
+  for (let item of myActorID.items.filter(item => item.type === 'blessureoustatut')) {
+    if (item.system.subtype == "1") { // 1 = statut ; 0 = blessure
+    myItemStatute[item.id.toString()] = new myObject(item.id.toString(), item.name.toString());
+    };
+  };
+
+  let myNombreDeMalusStatut = 0;
+  /*
   let myNombreDeMalusStatutDPh = 0;
   let myNombreDeMalusStatutDMa = 0;
   let myNombreDeMalusStatutDIn = 0;
@@ -4549,46 +4728,54 @@ async function _skillDiceRollDefenceNPCDialog(
   myNombreDeMalusStatutDIn *= -1;
   myNombreDeMalusStatutDSo *= -1;
   myNombreDeMalusStatutDMy *= -1;
+  */
 
   let myMalusStatutCheck = true;
 
-  var dialogData = {
+    var dialogData = {
     nd: nd,
   
     domains: "dma",
     throw: "defnc",
+    actorID: myActorID._id,
+    domaine: "dma",
     systemData: myActorID.system,
     nbrdedomainedph: myNbrDeDomaineDPh,
     nbrdedomainedma: myNbrDeDomaineDMa,
     nbrdedomainedin: myNbrDeDomaineDIn,
     nbrdedomainedso: myNbrDeDomaineDSo,
     nbrdedomainedmy: myNbrDeDomaineDMy,
-    // nbrdebonusdomainedph: myNbrDeBonusDomaineDPh,
-    // nbrdebonusdomainedma: myNbrDeBonusDomaineDMa,
-    // nbrdebonusdomainedin: myNbrDeBonusDomaineDIn,
-    // nbrdebonusdomainedso: myNbrDeBonusDomaineDSo,
-    // nbrdebonusdomainedmy: myNbrDeBonusDomaineDMy,
-    bonusdomaineflag: myBonusDomaineCheck,
+    nbrdebonusdomainedph: myNbrDeBonusDomaineDPh,
+    nbrdebonusdomainedma: myNbrDeBonusDomaineDMa,
+    nbrdebonusdomainedin: myNbrDeBonusDomaineDIn,
+    nbrdebonusdomainedso: myNbrDeBonusDomaineDSo,
+    nbrdebonusdomainedmy: myNbrDeBonusDomaineDMy,
+    bonusdomainecheck: myBonusDomaineCheck,
     nbrdebonusspecialite: myNbrDeBonusSpecialite,
-    specialiteflag: mySpecialiteCheck,
+    specialitecheck: mySpecialiteCheck,
     defencend: nd,
-    malusblessureflag: myMalusBlessureCheck,
+    malusblessurecheck: myMalusBlessureCheck,
     nbrdemalusblessure: myNombreDeMalusBlessure,
-    malusstatutflag: myMalusStatutCheck,
+    malusstatutcheck: myMalusStatutCheck,
+    statutechoices: myItemStatute,
+    nbrdemalusstatut: myNombreDeMalusStatut,
+
+    /*
     nbrdemalusstatutdph: myNombreDeMalusStatutDPh,
     nbrdemalusstatutdma: myNombreDeMalusStatutDMa,
     nbrdemalusstatutdin: myNombreDeMalusStatutDIn,
     nbrdemalusstatutdso: myNombreDeMalusStatutDSo,
     nbrdemalusstatutdmy: myNombreDeMalusStatutDMy,
+    */
+
     shaktirestanteflag: myShaktiRestanteFlag,
-    // convictionrestanteflag: myconvictionRestanteFlag,
+    convictionrestanteflag: myconvictionRestanteFlag,
     plus1succesautoflag : myPlus1SuccesAutoFlag,
     sixexplo: mySixExploFlag,
     cinqexplo: false,
     desnonexplo: 0,
     versiondebloquee: false
   };
-
   const html = await renderTemplate(template, dialogData);
   // Create the Dialog window
   let prompt = await new Promise((resolve) => {
@@ -4634,29 +4821,34 @@ async function _skillDiceRollDefenceNPCDialog(
       ouishaktidefense: await myHtml.find("input[value='ouishaktidefense']").is(':checked'),
       bonusdomainecheck: await myHtml.find("input[name='bonusdomainecheck']").is(':checked'),
       specialitecheck: await myHtml.find("input[name='specialitecheck']").is(':checked'),
-      malusblessurecheck: await myHtml.find("input[value='malusblessurecheck']").is(':checked'),
-      malusstatutcheck: await myHtml.find("input[value='malusstatutcheck']").is(':checked'),
+      malusblessurecheck: await myHtml.find("input[name='malusblessurecheck']").is(':checked'),
+      malusstatutcheck: await myHtml.find("input[name='malusstatutcheck']").is(':checked'),
+      malusstatutval: await myHtml.find("td[class='valeur2 malusstatute']").text(),
       nbrdedomainedph: myDialogData.nbrdedomainedph,
       nbrdedomainedma: myDialogData.nbrdedomainedma,
       nbrdedomainedin: myDialogData.nbrdedomainedin,
       nbrdedomainedso: myDialogData.nbrdedomainedso,
       nbrdedomainedmy: myDialogData.nbrdedomainedmy,
-      // nbrdebonusdomainedph: myDialogData.nbrdebonusdomainedph,
-      // nbrdebonusdomainedma: myDialogData.nbrdebonusdomainedma,
-      // nbrdebonusdomainedin: myDialogData.nbrdebonusdomainedin,
-      // nbrdebonusdomainedso: myDialogData.nbrdebonusdomainedso,
-      // nbrdebonusdomainedmy: myDialogData.nbrdebonusdomainedmy,
+      nbrdebonusdomainedph: myDialogData.nbrdebonusdomainedph,
+      nbrdebonusdomainedma: myDialogData.nbrdebonusdomainedma,
+      nbrdebonusdomainedin: myDialogData.nbrdebonusdomainedin,
+      nbrdebonusdomainedso: myDialogData.nbrdebonusdomainedso,
+      nbrdebonusdomainedmy: myDialogData.nbrdebonusdomainedmy,
+
+      /*
       nbrdemalusstatutdph: myDialogData.nbrdemalusstatutdph,
       nbrdemalusstatutdma: myDialogData.nbrdemalusstatutdma,
       nbrdemalusstatutdin: myDialogData.nbrdemalusstatutdin,
       nbrdemalusstatutdso: myDialogData.nbrdemalusstatutdso,
       nbrdemalusstatutdmy: myDialogData.nbrdemalusstatutdmy,
+      */
+
       nbrdebonusspecialite: myDialogData.nbrdebonusspecialite,
       bonusapplique: await myHtml.find("select[name='bonusapplique']").val(),
       plusdeuxdesdattaque: await myHtml.find("select[name='plusdeuxdesdattaque']").val(),
       malususapplique: await myHtml.find("select[name='malususapplique']").val(),
       ignoremalus: await myHtml.find("select[name='ignoremalus']").val(),
-      malususaignorer: await myHtml.find("select[name='malususaignorer']").val(),
+      malusaignorer: await myHtml.find("select[name='malusaignorer']").val(),
       succesauto: await myHtml.find("select[name='succesauto']").val(),
       plusunsuccesauto: await myHtml.find("select[name='plusunsuccesauto']").val(),
       sixexplo: await myHtml.find("input[name='sixexplo']").is(':checked'),
@@ -4666,8 +4858,6 @@ async function _skillDiceRollDefenceNPCDialog(
     };
     return editedData;
   }
-  //////////////////////////////////////////////////////////////
-
 }
 
 
@@ -4731,8 +4921,11 @@ async function _skillDiceRollDefenceNPCDialogDeblocked(
     }
   };
   myNombreDeMalusBlessure *= -1;
+
   let myMalusBlessureCheck = false;
 
+  let myNombreDeMalusStatut = 0;
+  /*
   let myNombreDeMalusStatutDPh = 0;
   let myNombreDeMalusStatutDMa = 0;
   let myNombreDeMalusStatutDIn = 0;
@@ -4762,14 +4955,17 @@ async function _skillDiceRollDefenceNPCDialogDeblocked(
   myNombreDeMalusStatutDIn *= -1;
   myNombreDeMalusStatutDSo *= -1;
   myNombreDeMalusStatutDMy *= -1;
+  */
 
-  let myMalusStatutCheck = true;
+  let myMalusStatutCheck = false;
 
   var dialogData = {
     nd: nd,
   
     domains: "dma",
     throw: "defnc",
+    actorID: myActorID._id,
+    domaine: "dma",
     systemData: myActorID.system,
     nbrdedomainedph: myNbrDeDomaineDPh,
     nbrdedomainedma: myNbrDeDomaineDMa,
@@ -4788,11 +4984,16 @@ async function _skillDiceRollDefenceNPCDialogDeblocked(
     malusblessureflag: myMalusBlessureCheck,
     nbrdemalusblessure: myNombreDeMalusBlessure,
     malusstatutflag: myMalusStatutCheck,
+    // nbrdemalusstatut: myNombreDeMalusStatut,
+
+    /*
     nbrdemalusstatutdph: myNombreDeMalusStatutDPh,
     nbrdemalusstatutdma: myNombreDeMalusStatutDMa,
     nbrdemalusstatutdin: myNombreDeMalusStatutDIn,
     nbrdemalusstatutdso: myNombreDeMalusStatutDSo,
     nbrdemalusstatutdmy: myNombreDeMalusStatutDMy,
+    */
+
     shaktirestanteflag: myShaktiRestanteFlag,
     // convictionrestanteflag: myconvictionRestanteFlag,
     plus1succesautoflag : myPlus1SuccesAutoFlag,
@@ -4847,8 +5048,15 @@ async function _skillDiceRollDefenceNPCDialogDeblocked(
       ouishaktidefense: await myHtml.find("input[value='ouishaktidefense']").is(':checked'),
       bonusdomainecheck: await myHtml.find("input[name='bonusdomainecheck']").is(':checked'),
       specialitecheck: await myHtml.find("input[name='specialitecheck']").is(':checked'),
+
+      malusblessurecheck: false,
+      malusstatutcheck: false,
+      malusstatutval: "0D",
+      /*
       malusblessurecheck: await myHtml.find("input[value='malusblessurecheck']").is(':checked'),
       malusstatutcheck: await myHtml.find("input[value='malusstatutcheck']").is(':checked'),
+      */
+
       nbrdedomainedph: myDialogData.nbrdedomainedph,
       nbrdedomainedma: myDialogData.nbrdedomainedma,
       nbrdedomainedin: myDialogData.nbrdedomainedin,
@@ -4859,17 +5067,21 @@ async function _skillDiceRollDefenceNPCDialogDeblocked(
       // nbrdebonusdomainedin: myDialogData.nbrdebonusdomainedin,
       // nbrdebonusdomainedso: myDialogData.nbrdebonusdomainedso,
       // nbrdebonusdomainedmy: myDialogData.nbrdebonusdomainedmy,
+
+      /*
       nbrdemalusstatutdph: myDialogData.nbrdemalusstatutdph,
       nbrdemalusstatutdma: myDialogData.nbrdemalusstatutdma,
       nbrdemalusstatutdin: myDialogData.nbrdemalusstatutdin,
       nbrdemalusstatutdso: myDialogData.nbrdemalusstatutdso,
       nbrdemalusstatutdmy: myDialogData.nbrdemalusstatutdmy,
+      */
+     
       nbrdebonusspecialite: myDialogData.nbrdebonusspecialite,
       bonusapplique: await myHtml.find("select[name='bonusapplique']").val(),
       plusdeuxdesdattaque: await myHtml.find("select[name='plusdeuxdesdattaque']").val(),
       malususapplique: await myHtml.find("select[name='malususapplique']").val(),
       ignoremalus: await myHtml.find("select[name='ignoremalus']").val(),
-      malususaignorer: await myHtml.find("select[name='malususaignorer']").val(),
+      malusaignorer: await myHtml.find("select[name='malusaignorer']").val(),
       succesauto: await myHtml.find("select[name='succesauto']").val(),
       plusunsuccesauto: await myHtml.find("select[name='plusunsuccesauto']").val(),
       sixexplo: await myHtml.find("input[name='sixexplo']").is(':checked'),
@@ -4898,31 +5110,32 @@ async function _showAppliedDamageInChat(
   if (shakti != "") { myShakti = parseInt(shakti); };
   const youwin = ((myTotal - (myDefence + myShakti)) <= 0);
 
-  let myActorId = "";
-  let theActiveActor = null;
-  let tokenFlag = false;
+  var myActorId = "";
+  var theActiveActor = null;
+  var tokenFlag = false;
+  var myToken = null;
+  var thatToken = null;
+  var thisTokens = null;
 
   if (opposantficheId == "" || opposantficheId == "0") {
   myActorId = attaquantficheId;
   theActiveActor = game.actors.get(myActorId);
   } else {
     myActorId = opposantficheId;
-    var myToken;
-    let thatToken;
-    let thisTokens;
+    theActiveActor = game.actors.get(myActorId);
     thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
     for (let theToken in thisTokens) {
       thatToken = thisTokens[theToken];
-      if (thatToken.document.id === opposanttokenId) {
+      if (thatToken.document.id == opposanttokenId) {
         myToken = thatToken;
         tokenFlag = true;
       };
     }; 
-    theActiveActor = myToken.actor;
+    if (tokenFlag) { theActiveActor = myToken.actor };
   }
   let theAttackantActor = game.actors.get(attaquantficheId);
-      let theOpponentActor;
-  if (tokenFlag) theOpponentActor = myToken.actor;
+  let theOpponentActor;
+  if (tokenFlag) { theOpponentActor = myToken.actor };
 
   //// const myOpponent = game.actors.get(opposantficheId);
 

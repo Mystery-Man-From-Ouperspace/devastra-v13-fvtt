@@ -90,7 +90,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     // with the arguments from the emission.
     /*
     game.socket.on('system.devastra', (arg0) => {
-      // console.log(arg0);
+      console.log(arg0);
       if (arg0 === 'viseurupdate') {
         context.viseur1 = game.settings.get("devastra", "viseur1");
         context.viseur2 = game.settings.get("devastra", "viseur2");
@@ -281,7 +281,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
   
     let myActor = this.actor;
     let myTitle = game.i18n.localize("DEVASTRA.Alerte");
-    let myMessage = game.i18n.localize("DEVASTRA.On tire la concentration-npc");
+    let myMessage = game.i18n.localize("DEVASTRA.OnTireLaConcentrationNPC");
     let myDialogOptions = {
     classes: ["devastra", "sheet"]
     };
@@ -298,7 +298,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     };
     //////////////////////////////////////////////////////////////////
 
-    myTitle = game.i18n.localize("DEVASTRA.Tirage de jetons pour la Shakti");
+    myTitle = game.i18n.localize("DEVASTRA.TirageDeJetonsPourLaShakti");
 
     let domainLibel = "din";
     let pureDomOrSpeLibel;
@@ -321,7 +321,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     if (myVersionDebloqueeFlag) {
 
 
-      let myTitle = game.i18n.localize("DEVASTRA.Jet de dés");
+      let myTitle = game.i18n.localize("DEVASTRA.JetDeDes(Parametrez)");
       myResultDialog = await _skillDiceRollDialogDeblocked (
         myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myInitThrow
       );
@@ -355,10 +355,10 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
       var mySixExploFlag = myResultDialog.sixexplo;
       var myCinqExploFlag = myResultDialog.cinqexplo;
 
-      // console.log("myPlusDeuxDesDAttaque", myPlusDeuxDesDAttaque);
-      // console.log("myIgnoreMalus", myIgnoreMalus);
-      // console.log("myPlusUnSuccesAuto", myPlusUnSuccesAuto);
-      // console.log("myActor.system.conviction.piledejetons", myActor.system.conviction.piledejetons);
+      console.log("myPlusDeuxDesDAttaque", myPlusDeuxDesDAttaque);
+      console.log("myIgnoreMalus", myIgnoreMalus);
+      console.log("myPlusUnSuccesAuto", myPlusUnSuccesAuto);
+      console.log("myActor.system.conviction.piledejetons", myActor.system.conviction.piledejetons);
 
       // var myShaktiSuffisanteFlag = (myPlusDeuxDesDAttaque <= myActor.system.shakti_initiale.value); // s'il reste assez de jetons de Shakti
       // var myconvictionSuffisanteFlag = ((myIgnoreMalus + myPlusUnSuccesAuto) <= myActor.system.conviction.piledejetons); // s'il reste assez de jetons de Conviction
@@ -385,10 +385,10 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
       var mySixExploFlag = myResultDialog.sixexplo;
       var myCinqExploFlag = myResultDialog.cinqexplo;
 
-      // console.log("myPlusDeuxDesDAttaque", myPlusDeuxDesDAttaque);
-      // console.log("myIgnoreMalus", myIgnoreMalus);
-      // console.log("myPlusUnSuccesAuto", myPlusUnSuccesAuto);
-      // console.log("myActor.system.conviction.piledejetons", myActor.system.conviction.piledejetons);
+      console.log("myPlusDeuxDesDAttaque", myPlusDeuxDesDAttaque);
+      console.log("myIgnoreMalus", myIgnoreMalus);
+      console.log("myPlusUnSuccesAuto", myPlusUnSuccesAuto);
+      console.log("myActor.system.conviction.piledejetons", myActor.system.conviction.piledejetons);
 
 
       // var myShaktiSuffisanteFlag = (myPlusDeuxDesDAttaque <= myActor.system.shakti_initiale.value); // s'il reste assez de jetons de Shakti
@@ -435,19 +435,19 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     console.log ("total, ligne 275", total);
 
 
-    // console.log("myNbrDeBonusDomaine", myNbrDeBonusDomaine);
+    console.log("myNbrDeBonusDomaine", myNbrDeBonusDomaine);
     /*
     if (myBonusDomaineFlag) {
       total += parseInt(myNbrDeBonusDomaine);
-      // console.log("myNbrDeBonusDomaine", "compabilisé");
+      console.log("myNbrDeBonusDomaine", "compabilisé");
     };
     */
 
-    // console.log("myNbrDeBonusSpecialite", myNbrDeBonusSpecialite);
+    console.log("myNbrDeBonusSpecialite", myNbrDeBonusSpecialite);
     if (mySpecialiteFlag) {
       total += parseInt(myNbrDeBonusSpecialite);
       console.log ("total, ligne 289", total);
-      // console.log("myNbrDeBonusSpecialite", "compabilisé");
+      console.log("myNbrDeBonusSpecialite", "compabilisé");
     };
 
 
@@ -508,14 +508,14 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      if (myMalusStatutVal.charAt(0) != "0") {
+      if (myMalusStatutVal.charAt(0) == "-") {
         myNombreDeMalusStatut++;
       }
     };
     total -= myNombreDeMalusStatut;
 
 
-    // console.log("total = ", total);
+    console.log("total = ", total);
 
     //////////////////////////////////////////////////////////////////
     if (total <= 0) {
@@ -588,7 +588,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     let myRoll = "";
 
     const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
-    // console.log("myTypeOfThrow", myTypeOfThrow);
+    console.log("myTypeOfThrow", myTypeOfThrow);
 
     do {
       let myRoll = "";
@@ -602,15 +602,15 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
 
       const r = new Roll(myRoll, this.actor.getRollData());
       await r.evaluate();
-      // console.log(r);
+      console.log(r);
       let myRDice = r.dice;
-      // console.log(myRDice);
-      // console.log(myRDice[0]);
+      console.log(myRDice);
+      console.log(myRDice[0]);
       for (let key in myRDice) {
-        // console.log(myRDice[key]);
+        console.log(myRDice[key]);
         for (let i=0; i<myRDice[key].number; i++) {
           let myD = myRDice[key].results[i].result;
-          // console.log(myD);
+          console.log(myD);
           switch ( myD ) {
             case 1: d6_1++;
             break;
@@ -624,7 +624,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
             break;
             case 6: d6_6++;
             break;
-            default: // console.log("C'est bizarre !");
+            default: console.log("C'est bizarre !");
           };
           n.nbrRelance = 0;
           if (n.mySixExplo) {
@@ -683,6 +683,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
       domaine: domainLibel,
       jet: jetLibel,
       succes: d_successes,
+      d8: 0,
       d1: n.d6_1,
       d2: n.d6_2,
       d3: n.d6_3,
@@ -691,7 +692,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
       d6: n.d6_6,
       dA: mySuccesAutoSupplem
     }
-    // console.log("smartData avant retour func = ", smartData);
+    console.log("smartData avant retour func = ", smartData);
     const smartHtml = await renderTemplate(smartTemplate, smartData);
     
     ChatMessage.create({
@@ -726,7 +727,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     }
 
     
-    let myMessage2Chat = game.i18n.localize("DEVASTRA.Untel a tiré la concentration-npc").replace("^0", gain.toString());
+    let myMessage2Chat = game.i18n.localize("DEVASTRA.UntelATireConcentrationNPC").replace("^0", gain.toString());
     ChatMessage.create({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -745,7 +746,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
   async _onClickArmor (event) {
    
     let myActor = this.actor;
-    let myTitle = game.i18n.localize("DEVASTRA.Calcul Protection");
+    let myTitle = game.i18n.localize("DEVASTRA.CalculProtection");
     let myDialogOptions = {
     classes: ["devastra", "sheet"]
     };
@@ -857,11 +858,11 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
    */
   async _onClickMandalaCheck(event) {
 
-    // console.log("J'entre dans _onClickMandalaCheck()");
+    console.log("J'entre dans _onClickMandalaCheck()");
 
     const element = event.currentTarget;                        // On récupère le clic
     const whatIsIt = element.dataset.libelId;                   // Va récupérer 'mandala-1' par exemple
-    // console.log("whatIsIt = ", whatIsIt);
+    console.log("whatIsIt = ", whatIsIt);
     const whatIsItTab = whatIsIt.split('-');
     const mandalaType = whatIsItTab[0];                           // Va récupérer 'mandala'
     const mandalaNumber = whatIsItTab[1];                         // Va récupérer '1'
@@ -918,7 +919,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
         }
         break;
       default:
-        // console.log("C'est bizarre !");
+        console.log("C'est bizarre !");
     };
   }
 
@@ -930,7 +931,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
 
     const element = event.currentTarget;                        // On récupère le clic
     const whatIsIt = element.dataset.libelId;                   // Va récupérer 'dph-puredomain' ou 'dma-special' par exemple
-    // console.log("whatIsIt = ", whatIsIt)
+    console.log("whatIsIt = ", whatIsIt)
     const whatIsItTab = whatIsIt.split('-');
     const domainLibel = whatIsItTab[0];                         // Va récupérer 'dph' ou 'dma'…
     const pureDomOrSpeLibel = whatIsItTab[1];                   // Va récupérer 'puredomain' ou bien 'special'
@@ -951,7 +952,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     /*
     Ici on fait remplir les paramètres de lancer de dés
     */
-    let myTitle = game.i18n.localize("DEVASTRA.Jet de dés");
+    let myTitle = game.i18n.localize("DEVASTRA.JetDeDes(Parametrez)");
     let myDialogOptions = {
       classes: ["devastra", "sheet"]
     };
@@ -973,7 +974,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     if (myVersionDebloqueeFlag) {
 
 
-      let myTitle = game.i18n.localize("DEVASTRA.Jet de dés");
+      let myTitle = game.i18n.localize("DEVASTRA.JetDeDes(Parametrez)");
       myResultDialog = await _skillDiceRollDialogDeblocked (
         myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myInitThrow
       );
@@ -1074,7 +1075,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
           if (targetedtoken.id == myTarget.selectedtarget) {
             opponentActor = targetedtoken.actor;
             myTargetedToken = targetedtoken;
-            // console.log("targetedtoken =", targetedtoken);
+            console.log("targetedtoken =", targetedtoken);
           };
         };
       };
@@ -1082,7 +1083,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     };
 
 
-    // console.log("opponentActor = ", opponentActor);
+    console.log("opponentActor = ", opponentActor);
     
 
 
@@ -1131,8 +1132,8 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
       myDamage = myDamageData.damage;
       myDamageType = myDamageData.damagetype;
 
-      // console.log("myDamageData = ", myDamageData);
-      // console.log("isInventory = ", isInventory);
+      console.log("myDamageData = ", myDamageData);
+      console.log("isInventory = ", isInventory);
 
 
       let myItem;
@@ -1162,7 +1163,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
         }
       }
 
-      // console.log("myWeaponDiceBonus = ", myWeaponDiceBonus);
+      console.log("myWeaponDiceBonus = ", myWeaponDiceBonus);
     }
 
 
@@ -1207,16 +1208,16 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     */
     total += parseInt(myWeaponDiceBonus);
 
-    // console.log("myNbrDeBonusDomaine", myNbrDeBonusDomaine);
+    console.log("myNbrDeBonusDomaine", myNbrDeBonusDomaine);
     if (myBonusDomaineFlag) {
       total += parseInt(myNbrDeBonusDomaine);
-      // console.log("myNbrDeBonusDomaine", "compabilisé");
+      console.log("myNbrDeBonusDomaine", "compabilisé");
     };
 
-    // console.log("myNbrDeBonusSpecialite", myNbrDeBonusSpecialite);
+    console.log("myNbrDeBonusSpecialite", myNbrDeBonusSpecialite);
     if (mySpecialiteFlag) {
       total += parseInt(myNbrDeBonusSpecialite);
-      // console.log("myNbrDeBonusSpecialite", "compabilisé");
+      console.log("myNbrDeBonusSpecialite", "compabilisé");
     };
 
 
@@ -1258,14 +1259,14 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      if (myMalusStatutVal.charAt(0) = "-")  {
+      if (myMalusStatutVal.charAt(0) == "-")  {
         myNombreDeMalusStatut++;
       }
     };
     total -= myNombreDeMalusStatut;
 
 
-    // console.log("total = ", total);
+    console.log("total = ", total);
 
     //////////////////////////////////////////////////////////////////
     if (total <= 0) {
@@ -1340,15 +1341,15 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
 
       const r = new Roll(myRoll, this.actor.getRollData());
       await r.evaluate();
-      // console.log(r);
+      console.log(r);
       let myRDice = r.dice;
-      // console.log(myRDice);
-      // console.log(myRDice[0]);
+      console.log(myRDice);
+      console.log(myRDice[0]);
       for (let key in myRDice) {
-        // console.log(myRDice[key]);
+        console.log(myRDice[key]);
         for (let i=0; i<myRDice[key].number; i++) {
           let myD = myRDice[key].results[i].result;
-          // console.log(myD);
+          console.log(myD);
           switch ( myD ) {
             case 1: d6_1++;
             break;
@@ -1362,7 +1363,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
             break;
             case 6: d6_6++;
             break;
-            default: // console.log("C'est bizarre !");
+            default: console.log("C'est bizarre !");
           };
           n.nbrRelance = 0;
           if (n.mySixExplo) {
@@ -1388,7 +1389,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
       // r._total = "0";
 
       const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
-      // console.log("myTypeOfThrow", myTypeOfThrow);
+      console.log("myTypeOfThrow", myTypeOfThrow);
 
       msg = await r.toMessage({
         user: game.user.id,
@@ -1405,7 +1406,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     rModif._total  = parseInt(n.myReussite) + parseInt(mySuccesAuto); // On ajoute les succès automatiques
 
     const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
-    // console.log("myTypeOfThrow", myTypeOfThrow);
+    console.log("myTypeOfThrow", myTypeOfThrow);
 
     msg = await rModif.toMessage({
       user: game.user.id,
@@ -1422,7 +1423,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     const optNone = game.i18n.localize("DEVASTRA.opt.none");
     let opposant = optNone;
     if (opponentActor) {
-      // console.log("opponentActor = ", opponentActor);
+      console.log("opponentActor = ", opponentActor);
       opponentActorId = opponentActor._id;
       opponentTokenId = myTargetedToken.document._id;
 
@@ -1469,6 +1470,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
       domaine: domainLibel,
       jet: jetLibel,
       succes: d_successes,
+      d8: 0,
       d1: n.d6_1,
       d2: n.d6_2,
       d3: n.d6_3,
@@ -1477,7 +1479,7 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
       d6: n.d6_6,
       dA: d6_A
     }
-    // console.log("smartData avant retour func = ", smartData);
+    console.log("smartData avant retour func = ", smartData);
     const smartHtml = await renderTemplate(smartTemplate, smartData);
     
     ChatMessage.create({
@@ -1567,7 +1569,7 @@ async function _whichTypeOfDamage (myActor, template, myTitle, myDialogOptions, 
   };
   // dialogData = null;
 
-  // console.log(dialogData);
+  console.log(dialogData);
   const html = await renderTemplate(template, dialogData);
 
   // Create the Dialog window
@@ -1605,7 +1607,7 @@ async function _whichTypeOfDamage (myActor, template, myTitle, myDialogOptions, 
   
   
   async function _computeResult(myActor, myHtml) {
-    // console.log("I'm in _computeResult(myActor, myHtml)");
+    console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
       isinventory: await myHtml.find("input[name='isinventory']").is(':checked'),
       weapon: await myHtml.find("input[name='weapon']").is(':checked'),
@@ -1621,7 +1623,7 @@ async function _whichTypeOfDamage (myActor, template, myTitle, myDialogOptions, 
       damagetype: await myHtml.find("select[name='damagetype']").val(),
     };
     // myActor.update({ "system.prefs.lastweaponusedid": editedData.selectedinventory, "system.prefs.improviseddamage": editedData.damage.toString() });
-    // console.log("myinventory = ", myinventory);
+    console.log("myinventory = ", myinventory);
     return editedData;
   }
 }
@@ -1646,8 +1648,8 @@ async function _whichTarget (myActor, template, myTitle, myDialogOptions, domain
     this.label = label;
   };
   myItemTarget["0"] = new myObject("0", game.i18n.localize("DEVASTRA.opt.none"));
-  // console.log('game.user.targets = ', game.user.targets);
-  // console.log('game.user.targets.size = ', game.user.targets.size);
+  console.log('game.user.targets = ', game.user.targets);
+  console.log('game.user.targets.size = ', game.user.targets.size);
   if (game.user.targets.size != 0) {
     for (let targetedtoken of game.user.targets) {
       myItemTarget[targetedtoken.id.toString()] = new myObject(targetedtoken.id.toString(), targetedtoken.name.toString());
@@ -1700,7 +1702,7 @@ async function _whichTarget (myActor, template, myTitle, myDialogOptions, domain
 
   ////////////////////////////////////////////////
   async function _computeResult(myActor, myHtml) {
-    // console.log("I'm in _computeResult(myActor, myHtml)");
+    console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
       you: "",
       youimg: "",
@@ -1784,7 +1786,7 @@ myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myI
       myNbrDeDomaine = myActorID.system.domains.dmy.value;
       myNbrDeBonusDomaine = myActorID.system.domains.dmy.bonusdice;
     break;
-    default : // console.log("Outch !");
+    default : console.log("Outch !");
   };
 
 
@@ -1956,7 +1958,7 @@ async function _skillDiceRollDialogDeblocked (
         myNbrDeDomaine = myActorID.system.domains.dmy.value;
         myNbrDeBonusDomaine = myActorID.system.domains.dmy.bonusdice;
       break;
-      default : // console.log("Outch !");
+      default : console.log("Outch !");
     };
     var dialogData = {
       initthrow: myInitThrow,
@@ -2007,9 +2009,9 @@ async function _skillDiceRollDialogDeblocked (
     //////////////////////////////////////////////////////////////
     async function _computeResult(myActor, myDialogData, myHtml) {
       const editedData = {
-        jetautreflag: myHtml.find("input[name='autre']").is(':checked'),
-        jetattaqueflag: myHtml.find("input[name='jetattaque']").is(':checked'),
-        jetdefenseflag: myHtml.find("input[name='jetdefense']").is(':checked'),
+        jetautreflag: myHtml.find("input[value='autre']").is(':checked'),
+        jetattaqueflag: myHtml.find("input[value='jetattaque']").is(':checked'),
+        jetdefenseflag: myHtml.find("input[value='jetdefense']").is(':checked'),
         nd: myHtml.find("select[name='nd']").val(),
         nbrdedomaine: myDialogData.nbrdedomaine,
         nbrdebonusdomaine: myDialogData.nbrdebonusdomaine,
@@ -2074,7 +2076,7 @@ async function _whichTypeOfDefence (myActor, template, myTitle, myDialogOptions,
 
   };
 
-  // console.log(dialogData);
+  console.log(dialogData);
   const html = await renderTemplate(template, dialogData);
 
   // Create the Dialog window
@@ -2111,7 +2113,7 @@ async function _whichTypeOfDefence (myActor, template, myTitle, myDialogOptions,
   }
 
   async function _computeResult(myActor, myHtml) {
-    // console.log("I'm in _computeResult(myActor, myHtml)");
+    console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
       armorchoices: myHtml.find("select[class='armorchoices']").val(),
       armorshieldchoices: myHtml.find("select[class='armorshieldchoices']").val(),

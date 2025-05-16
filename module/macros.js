@@ -4,9 +4,7 @@ export class Macros {
 
         if (!foundry.applications.instances.has("gm-manager")) {
             game.devastra.gmManager.render(true)
-        } else {
-            game.devastra.gmManager.close()
-        }
+        } else game.devastra.gmManager.close()
     }
 
     static launchPlayersManager = function() {
@@ -14,8 +12,6 @@ export class Macros {
 
         if (!foundry.applications.instances.has("players-manager")) {
             game.devastra.playersManager.render(true)
-        } else {
-            game.devastra.playersManager.close()
-        }
+        } else game.devastra.playersManager.close()
     }
 }

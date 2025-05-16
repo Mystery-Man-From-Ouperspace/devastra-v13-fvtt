@@ -1856,6 +1856,8 @@ body.deva-face #pause > img {
 /* concerne les items sheets */
 
 .devastra.sheet.itemsheet,
+.devastra.sheet.benedictionoumaledictionsheet,
+.devastra.sheet.blessureoustatutsheet,
 .devastra.sheet.enseignementsheet,
 .devastra.sheet.devastrasheet,
 .devastra.sheet.pouvoirsheet,
@@ -1869,6 +1871,8 @@ body.deva-face #pause > img {
 }
 
 .devastra.sheet.itemsheet .sheet-body,
+.devastra.sheet.benedictionoumaledictionsheet .sheet-body,
+.devastra.sheet.blessureoustatutsheet .sheet-body,
 .devastra.sheet.enseignementsheet .sheet-body,
 .devastra.sheet.devastrasheet .sheet-body,
 .devastra.sheet.pouvoirsheet .sheet-body,
@@ -1881,6 +1885,8 @@ body.deva-face #pause > img {
 }
 
 .devastra.sheet.itemsheet .profile-img,
+.devastra.sheet.benedictionoumaledictionsheet .profile-img,
+.devastra.sheet.blessureoustatutsheet .profile-img,
 .devastra.sheet.enseignementsheet .profile-img,
 .devastra.sheet.devastrasheet .profile-img,
 .devastra.sheet.pouvoirsheet .profile-img,

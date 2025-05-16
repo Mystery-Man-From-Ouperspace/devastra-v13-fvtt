@@ -5,6 +5,8 @@
 
         {{!-- Frame --}}
         <div class="frame">
+            <div class="actor" style="position: absolute; top: -9999px; left: -9999px;">{{ actorID }}</div>
+            <div class="domaine" style="position: absolute; top: -9999px; left: -9999px;">{{ domaine }}</div>
             <div class="domain">
                 {{#if initthrow}}
                 <table class="domain-table">
@@ -91,7 +93,7 @@
                         <i class="fas fa-dice-d6"></i><i class="fas fa-dice-d6"></i><br><i class="fas fa-dice-d6"></i><i class="fas fa-dice-d6"></i><i class="fas fa-dice-d6"></i>
                     </td>
                     <td style="text-align: center;">
-                        {{ localize "DEVASTRA.vs ND" }}
+                        {{ localize "DEVASTRA.vsND" }}
                     </td>
                     <td>
                     </td>
@@ -106,16 +108,16 @@
                             <i class="fas fa-dice-d6"></i><i class="fas fa-dice-d6"></i><br><i class="fas fa-dice-d6"></i><i class="fas fa-dice-d6"></i><i class="fas fa-dice-d6"></i>
                         </td>
                         <td>
-                            <input type="radio" name="jet" value="autre" checked />{{ localize "DEVASTRA.Jet standard" }}
+                            <input type="radio" name="jet" value="autre" checked />{{ localize "DEVASTRA.JetStandard" }}
                         </td>
                         <td>
-                            <input type="radio" name="jet" value="jetattaque" />{{ localize "DEVASTRA.Jet d′attaque" }}
+                            <input type="radio" name="jet" value="jetattaque" />{{ localize "DEVASTRA.JetOffensif" }}
                         </td>
                         <td>
-                            <input type="radio" name="jet" value="jetdefense" />{{ localize "DEVASTRA.Jet de défense" }}
+                            <input type="radio" name="jet" value="jetdefense" />{{ localize "DEVASTRA.JetDefensif" }}
                         </td>
                         <td class="right tierspc">
-                            {{ localize "DEVASTRA.vs ND" }}&nbsp;
+                            {{ localize "DEVASTRA.vsND" }}&nbsp;
                             <select name="nd">
                                 {{#select nd }}
                                     <option value="2">2&nbsp;{{ localize "DEVASTRA.(Enfantin)" }}</option>
@@ -137,7 +139,7 @@
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.Nbre de dés du domaine" }}
+                            {{ localize "DEVASTRA.NbreDeDesDuDomaine" }}
                         </td>
                         <td>
                         </td>
@@ -147,7 +149,7 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.Bonus de dés du domaine" }}
+                            {{ localize "DEVASTRA.BonusDeDesDuDomaine" }}
                         </td>
                         <td class="check right"><input type="checkbox" name="bonusdomainecheck" {{checked bonusdomainecheck}} /></td>
                         <td class="valeur2">
@@ -156,18 +158,24 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.Bonus de dés de la spécialité" }}
+                            {{ localize "DEVASTRA.BonusDeDesDeLaSpecialite" }}
                         </td>
                         <td class="check right"><input type="checkbox" name="specialitecheck" {{checked specialitecheck}} /></td>
-                        <td class="valeur2">
-                            {{nbrdebonusspecialite}}{{ localize "DEVASTRA.D" }}
+                        <td class="valeur2">{{nbrdebonusspecialite}}{{ localize "DEVASTRA.D" }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ localize "DEVASTRA.Variante2D8" }}
+                        </td>
+                        <td class="check right"><input type="checkbox" name="d8check" {{checked d8check}} /></td>
+                        <td>
                         </td>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.Bonus à appliquer" }}
+                            {{ localize "DEVASTRA.BonusAAppliquer" }}
                         </td>
                         <td>
                                    
@@ -197,7 +205,7 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.DEBRIDE_Malus à appliquer" }}
+                            {{ localize "DEVASTRA.DEBRIDE_MalusAAppliquer" }}
                         </td>
                         <td>
                             
@@ -231,7 +239,7 @@
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.DEBRIDE_Succès automatiques" }}
+                            {{ localize "DEVASTRA.DEBRIDE_SuccesAutomatiques" }}
                         </td>
                         <td>
                             
@@ -263,7 +271,7 @@
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.DEBRIDE_+2 dé d'attaque" }}
+                            {{ localize "DEVASTRA.DEBRIDE_+2DeDAattaque" }}
                         </td>
                         <td>
                             
@@ -293,7 +301,7 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.DEBRIDE_+1 succès automatique" }}
+                            {{ localize "DEVASTRA.DEBRIDE_+1SuccesAutomatique" }}
                         </td>
                         <td>
                             
@@ -325,7 +333,7 @@
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.6 Explosifs" }}
+                            {{ localize "DEVASTRA.6Explosifs" }}
                         </td>
                         <td>
                         </td>
@@ -334,7 +342,7 @@
                     <tr>
                         <td>
                             <span class="margeg15">
-                                {{ localize "DEVASTRA.DEBRIDE_5 Explosifs" }}
+                                {{ localize "DEVASTRA.DEBRIDE_5Explosifs" }}
                             </span>
                         </td>
                         <td>
@@ -343,7 +351,7 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.DEBRIDE_Dés non-explosifs" }}
+                            {{ localize "DEVASTRA.DEBRIDE_DesNonExplosifs" }}
                         </td>
                         <td> 
                         </td>
@@ -352,7 +360,7 @@
                     </tr>
                 </table>
                 <div class="center">
-                    <i class="fas fa-triangle-exclamation"></i>&nbsp;{{ localize "DEVASTRA.Attention Version débridée" }}&nbsp;<i class="fas fa-triangle-exclamation"></i>
+                    <i class="fas fa-triangle-exclamation"></i>&nbsp;{{ localize "DEVASTRA.AttentionVersionDebridee" }}&nbsp;<i class="fas fa-triangle-exclamation"></i>
                 </div>
             </div>
             </div>

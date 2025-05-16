@@ -5,6 +5,8 @@
 
         {{!-- Frame --}}
         <div class="frame">
+            <div class="actor" style="position: absolute; top: -9999px; left: -9999px;">{{ actorID }}</div>
+            <div class="domaine" style="position: absolute; top: -9999px; left: -9999px;">{{ domaine }}</div>
             <div class="domain">
                 <table class="domain-table">
                     <tr class="dph" style="display: none;">
@@ -76,10 +78,10 @@
                             <i class="fas fa-dice-d6"></i><i class="fas fa-dice-d6"></i><br><i class="fas fa-dice-d6"></i><i class="fas fa-dice-d6"></i><i class="fas fa-dice-d6"></i>
                         </td>
                         <td>
-                            {{ localize "DEVASTRA.Jet de défense" }}
+                            {{ localize "DEVASTRA.JetDefensif" }}
                         </td>
                         <td class="right tierspc">
-                            {{ localize "DEVASTRA.vs ND" }}&nbsp;
+                            {{ localize "DEVASTRA.vsND" }}&nbsp;
                             <select name="nd">
                                 {{#select nd}}
                                     <option value="2">2&nbsp;{{ localize "DEVASTRA.(Enfantin)" }}</option>
@@ -100,7 +102,7 @@
                             <i class="fas fa-compact-disc"></i><i class="fas fa-compact-disc"></i><br><i class="fas fa-compact-disc"></i>
                         </td>
                         <td>
-                            {{ localize "DEVASTRA.Shakti de défense" }}
+                            {{ localize "DEVASTRA.ShaktiEnDefense" }}
                         </td>
                         <td class="right tierspc">
                         </td>
@@ -113,9 +115,9 @@
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.Nbre de dés du domaine" }}
                         </td>
                         <td>
+                            {{ localize "DEVASTRA.NbreDeDesDuDomaine" }}
                         </td>
                         <td class="valeur2">
                             <div class="nbrdomainedph" style="display: none;">
@@ -136,51 +138,48 @@
                         </tr>
                     </tr>
                     <tr>
-                        <td>
-                            {{ localize "DEVASTRA.Bonus de dés de la spécialité" }}
-                        </td>
                         <td class="check right"><input type="checkbox" name="specialitecheck" {{checked specialitecheck}} /></td>
+                        <td>
+                            {{ localize "DEVASTRA.BonusDeDesDeLaSpecialite" }}
+                        </td>
                         <td class="valeur2">
                             {{nbrdebonusspecialite}}{{ localize "DEVASTRA.D" }}
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            {{ localize "DEVASTRA.Malus de blessure" }}
-                        </td>
                         <td class="check right"><input type="checkbox" name="malusblessurecheck" {{checked malusblessurecheck}} /></td>
+                        <td>
+                            {{ localize "DEVASTRA.MalusDeBlessure" }}
+                        </td>
                         <td class="valeur2">
                             {{nbrdemalusblessure}}{{ localize "DEVASTRA.D" }}
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            {{ localize "DEVASTRA.Malus de statut" }}
-                        </td>
                         <td class="check right"><input type="checkbox" name="malusstatutcheck" {{checked malusstatutcheck}} /></td>
-                        <td class="valeur2">
-                            <div class="malusstatutdph" style="display: none;">
-                                {{nbrdemalusstatutdph}}{{ localize "DEVASTRA.D" }}
-                            </div>
-                            <div class="malusstatutdma" >
-                                {{nbrdemalusstatutdma}}{{ localize "DEVASTRA.D" }}
-                            </div>
-                            <div class="malusstatutdin" style="display: none;">
-                                {{nbrdemalusstatutdin}}{{ localize "DEVASTRA.D" }}
-                            </div>
-                            <div class="malusstatutdso" style="display: none;">
-                                {{nbrdemalusstatutdso}}{{ localize "DEVASTRA.D" }}
-                            </div>
-                            <div class="malusstatutdmy" style="display: none;">
-                                {{nbrdemalusstatutdmy}}{{ localize "DEVASTRA.D" }}
-                            </div>
+                        <td>
+                            {{ localize "DEVASTRA.MalusDeStatut" }}
+                        </td>
+                        <td class="valeur2 malusstatute">{{nbrdemalusstatut}}{{ localize "DEVASTRA.D" }}</td>
+                    </tr>
+                    <tr>
+                        <td class="right">
+                            ⌞   
+                        </td>
+                        <td>
+                            {{ localize "DEVASTRA.StatutAAppliquer" }}
+                        </td>
+                        <td class="choosestatute right">
+                            <select name="statute" data-type="String">
+                                {{selectOptions statutechoices selected=selectedstatute labelAttr="label" localize=true}}
+                            </select>
                         </td>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.Bonus à appliquer" }}
+                            {{ localize "DEVASTRA.BonusAAppliquer" }}
                         </td>
                         <td>
                                    
@@ -210,7 +209,7 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.Malus à appliquer" }}
+                            {{ localize "DEVASTRA.MalusAAppliquer" }}
                         </td>
                         <td>
                             
@@ -244,7 +243,7 @@
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.Succès automatiques" }}
+                            {{ localize "DEVASTRA.SuccesAutomatiques" }}
                         </td>
                         <td>
                             
@@ -276,7 +275,7 @@
                 <table>
                     <tr>
                         <td>
-                            {{ localize "DEVASTRA.6 Explosifs" }}
+                            {{ localize "DEVASTRA.6Explosifs" }}
                         </td>
                         <td>
                         </td>
@@ -285,7 +284,7 @@
                     <tr>
                         <td>
                             <span class="margeg15">
-                                {{ localize "DEVASTRA.5 Explosifs" }}
+                                {{ localize "DEVASTRA.5Explosifs" }}
                             </span>
                         </td>
                         <td>
@@ -298,7 +297,7 @@
                     </tr>
                     <td>
                         <div>
-                            {{ localize "DEVASTRA.Dés non-explosifs" }}
+                            {{ localize "DEVASTRA.DesnonExplosifs" }}
                         </div>
                     </td>
                     <td> 
@@ -315,7 +314,7 @@
                 </tr>
 
                 </table>
-                <td class="check right"><input type="checkbox" name="versiondebloquee" {{checked versiondebloquee}} />{{ localize "DEVASTRA.Version débloquée" }}</td>
+                <td class="check right"><input type="checkbox" name="versiondebloquee" {{checked versiondebloquee}} />{{ localize "DEVASTRA.VersionDebridee" }}</td>
             </div>
             </div>
         </div>

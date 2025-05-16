@@ -224,11 +224,13 @@ export class ModifiedDialog extends Dialog {
     let bonusdomainedso = this.element.find('div[class="bonusdomainedso"]');
     let bonusdomainedmy = this.element.find('div[class="bonusdomainedmy"]');
 
+    /*
     let malusstatutdph = this.element.find('div[class="malusstatutdph"]');
     let malusstatutdma = this.element.find('div[class="malusstatutdma"]');
     let malusstatutdin = this.element.find('div[class="malusstatutdin"]');
     let malusstatutdso = this.element.find('div[class="malusstatutdso"]');
     let malusstatutdmy = this.element.find('div[class="malusstatutdmy"]');
+    */
 
     dph.hide();
     dma.hide();
@@ -248,25 +250,66 @@ export class ModifiedDialog extends Dialog {
     bonusdomainedso.hide();
     bonusdomainedmy.hide();
 
+    /*
     malusstatutdph.hide();
     malusstatutdma.hide();
     malusstatutdin.hide();
     malusstatutdso.hide();
     malusstatutdmy.hide();
-
+    */
 
     switch (domains) {
-      case 'dph': { dph.show(); nbrdomainedph.show(); bonusdomainedph.show(); malusstatutdph.show(); };
+      case 'dph': { dph.show(); nbrdomainedph.show(); bonusdomainedph.show(); };
       break;
-      case 'dma': { dma.show(); nbrdomainedma.show(); bonusdomainedma.show(); malusstatutdma.show(); };
+      case 'dma': { dma.show(); nbrdomainedma.show(); bonusdomainedma.show(); };
       break;
-      case 'din': { din.show(); nbrdomainedin.show(); bonusdomainedin.show(); malusstatutdin.show(); };
+      case 'din': { din.show(); nbrdomainedin.show(); bonusdomainedin.show(); };
       break;
-      case 'dso': { dso.show(); nbrdomainedso.show(); bonusdomainedso.show(); malusstatutdso.show(); };
+      case 'dso': { dso.show(); nbrdomainedso.show(); bonusdomainedso.show(); };
       break;
-      case 'dmy': { dmy.show(); nbrdomainedmy.show(); bonusdomainedmy.show(); malusstatutdmy.show(); };
+      case 'dmy': { dmy.show(); nbrdomainedmy.show(); bonusdomainedmy.show(); };
       break;
     }
+
+    this.element.find('div[class="domaine"]').text(domains);
+
+    // Cas de la màj faite par le menu du Statut
+    const actorID =  this.element.find('div[class="actor"]').text();
+    const myDomain = this.element.find('div[class="domaine"]').text();
+    const menuValue = this.element.find('select[name="statute"]').val();
+    const bonusStatute = this.element.find('td[class="valeur2 malusstatute"]').text();
+
+    const myActor = game.actors.get(actorID);
+    let flagDomain = false;
+
+    let numDomain = 0;
+    switch (myDomain) {
+      case "dph": numDomain = 1;
+      break;
+      case "dma": numDomain = 2;
+      break;
+      case "din": numDomain = 3;
+      break;
+      case "dso": numDomain = 4;
+      break;
+      case "dmy": numDomain = 5;
+      break;
+    }
+
+    for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
+      if (item.id == menuValue) { // 1 = statut ; 0 = blessure
+        if (item.system.domain == numDomain) {flagDomain = true};
+        if (item.system.domain2 == numDomain) {flagDomain = true};
+        if (item.system.domain3 == numDomain) {flagDomain = true};
+      };
+    };
+
+    if (flagDomain) {
+      this.element.find('td[class="valeur2 malusstatute"]').text("-1"  + game.i18n.localize("DEVASTRA.D"));
+    } else {
+      this.element.find('td[class="valeur2 malusstatute"]').text("0"  + game.i18n.localize("DEVASTRA.D"));
+    };
+
   }
 
 

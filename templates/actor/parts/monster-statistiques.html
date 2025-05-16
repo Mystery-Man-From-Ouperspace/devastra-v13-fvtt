@@ -25,11 +25,11 @@
         </tr>
         <tr>
           <td class="blessmonster">
-            <input type="radio" name="system.domains.{{@key}}.bless" value="blessed" {{ checked (eq domain.bless 'blessed') }}/>{{ localize "DEVASTRA.béni" }}
+            <input type="radio" name="system.domains.{{@key}}.bless" value="blessed" {{ checked (eq domain.bless 'blessed') }}/>{{ localize "DEVASTRA.Beni" }}
             &nbsp;
             <input type="radio" name="system.domains.{{@key}}.bless" value="neutral" {{ checked (eq domain.bless 'neutral') }}/>
             &nbsp;
-            <input type="radio" name="system.domains.{{@key}}.bless" value="cursed" {{ checked (eq domain.bless 'cursed') }}/>{{ localize "DEVASTRA.maudit" }}
+            <input type="radio" name="system.domains.{{@key}}.bless" value="cursed" {{ checked (eq domain.bless 'cursed') }}/>{{ localize "DEVASTRA.Maudit" }}
           </td>
         </tr>
       </table>
@@ -215,7 +215,7 @@
                   <img class="logobonusexplosif" src="systems/devastra/images/ui/icons/De01.png" alt="Die" />
                 </td>
                 <td class="logopranaetats2" style="visibility: hidden;">
-                  <img class="logobonusrecoitblessure" title="{{ localize 'DEVASTRA.Reçoit blessure' }}" src="systems/devastra/images/ui/icons/Coeur02.png" alt="Recoit Blessure" />
+                  <img class="logobonusrecoitblessure" title="{{ localize 'DEVASTRA.RecoitBlessure' }}" src="systems/devastra/images/ui/icons/Coeur02.png" alt="Recoit Blessure" />
                 </td>
               </tr>
 
@@ -286,10 +286,10 @@
           <div style="width: 30%; float: left;">
             <div class="concentrationDiv" style="width: 100%; display: flex;">
               <div  style="width: 35%; display: table;" class="click clickondieconcentration concentrationDie" data-libel-id="concentration-die">
-                <img class="d1click concentrationCol" src="systems/devastra/images/ui/d6_fond_transp.png" title="{{ localize 'DEVASTRA.Jet de concentration-npc' }}" alt="Die" />
+                <img class="d1click concentrationCol" src="systems/devastra/images/ui/d6_fond_transp.png" title="{{ localize 'DEVASTRA.DeterminerJetConcentrationNPC' }}" alt="Die" />
               </div>
               <div style="width: 65%; float: left;" class="center">
-                <span title="{{ localize 'DEVASTRA.Concentration actuelle' }}">{{systemData.initiative.concentration}}</span>
+                <span title="{{ localize 'DEVASTRA.ConcentrationActuelle' }}">{{systemData.initiative.concentration}}</span>
               </div>
             </div>
           </div>
@@ -311,7 +311,7 @@
 
   <div class="domain-div" style="float: left; width: 25%;">
     <ol class="item-list">
-      <p class="right"><b>{{ localize "DEVASTRA.Devastra ou Asurastra" }}</b></p>
+      <p class="right"><b>{{ localize "DEVASTRA.DevastraOuAsurastra" }}</b></p>
       <span class="right"><img style="width: 45px;" class="logoprana padding3px" src="systems/devastra/images/ui/icons/Contact.png" alt="Arme" /></span>
       {{#each devastras as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
@@ -358,7 +358,7 @@
 
   <div class="domain-div" style="float: left; width: 25%;">
     <ol class="item-list">
-      <p class="right"><b>{{ localize "DEVASTRA.Armes ou Protections" }}</b></p>
+      <p class="right"><b>{{ localize "DEVASTRA.ArmesOuProtections" }}</b></p>
       <span class="right"><img style="width: 45px;" class="logoprana padding3px" src="systems/devastra/images/ui/icons/Contact.png" alt="Arme" />
         <img style="width: 45px;" class="logoprana padding3px" src="systems/devastra/images/ui/icons/Defense.png" alt="Défense" /></span>
       {{#each equipments as |item id|}}

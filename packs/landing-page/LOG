@@ -1,5 +1,3 @@
-2025/03/24-00:54:17.575 1520 Delete type=3 #1
-2025/03/24-00:55:07.657 24fc Level-0 table #5: started
-2025/03/24-00:55:07.663 24fc Level-0 table #5: 1318 bytes OK
-2025/03/24-00:55:07.667 24fc Delete type=0 #3
-2025/03/24-00:55:07.697 24fc Manual compaction at level-0 from '!scenes!wqXdoMq9ty984gxu' @ 72057594037927935 : 1 .. '!scenes!wqXdoMq9ty984gxu' @ 0 : 0; will stop at (end)
+2025/05/16-20:28:09.094 2e18 Recovering log #12
+2025/05/16-20:28:09.108 2e18 Delete type=0 #12
+2025/05/16-20:28:09.109 2e18 Delete type=3 #11

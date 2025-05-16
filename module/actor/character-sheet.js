@@ -27,7 +27,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       classes: ["devastra", "sheet", "actor", "character"],
       template: "systems/devastra/templates/actor/character-sheet.html",
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
-      scrollY: [".description", ".statistiques", ".mandalas", ".chakras", ".devastras", ".pouvoirs", ".magies", ".dharmas", ".karmas", "items"],
+      scrollY: [".description", ".statistiques", ".mandalas", ".chakras", ".devastras", ".pouvoirs", ".magies", ".dharmas", ".karmas", ".items"],
       dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
     });
   }
@@ -47,7 +47,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     context.karmas = context.items.filter(item => item.type === "karma");
     context.notes = context.items.filter(item => item.type === "note");
     context.blessuresoustatuts = context.items.filter(item => item.type === "blessureoustatut");
-    context.benedictionsoumaledictions= context.items.filter(item => item.type === "benedictionoumalediction");
+    context.benedictionsoumaledictions = context.items.filter(item => item.type === "benedictionoumalediction");
 
     context.playersEditItems = true;
     // context.playersEditItems = await game.settings.get("devastra", "playersEditItems");
@@ -149,18 +149,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     html.find(".clickondieconcentration").click(this._onClickDieConcentration.bind(this));
     html.find(".clickondieshakti").click(this._onClickDieShakti.bind(this));
 
-    /*
     Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
-
-    Hooks.on('dropActorSheetData', async (actor, actorsheet, data) => this._onDropItem(actor, actorsheet, data));
-    */
-
-    /*
-    Hooks.on("createItem", async (item, options, id) => Misc.documentIfResponsible(item.parent)?.onCreateItem(item, options, id));
-    */
-    /*
-    Hooks.on("createItem", async (item, options, id) => this.onCreateItem(item, options, id));
-    */
 
     const dragDropItem = new DragDrop({
       dragSelector: ".sheet-display",
@@ -283,7 +272,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
   
     let myActor = this.actor;
     let myTitle = game.i18n.localize("DEVASTRA.Alerte");
-    let myMessage = game.i18n.localize("DEVASTRA.On tire la concentration");
+    let myMessage = game.i18n.localize("DEVASTRA.OnTireLaConcentration");
     let myDialogOptions = {
     classes: ["devastra", "sheet"]
     };
@@ -300,7 +289,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     };
     //////////////////////////////////////////////////////////////////
 
-    myTitle = game.i18n.localize("DEVASTRA.Tirage de jetons pour la Shakti");
+    myTitle = game.i18n.localize("DEVASTRA.TirageDeJetonsPourLaShakti");
 
     let domainLibel = "din";
     let pureDomOrSpeLibel;
@@ -323,7 +312,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     if (myVersionDebloqueeFlag) {
 
 
-      let myTitle = game.i18n.localize("DEVASTRA.Jet de dés");
+      let myTitle = game.i18n.localize("DEVASTRA.JetDeDes(Parametrez)");
       myResultDialog = await _skillDiceRollDialogDeblocked (
         myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myInitThrow
       );
@@ -340,7 +329,9 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       var myND = 3;
       var myMalusBlessureCheck = false;
       var myMalusStatutCheck = false;
-      var myMalusStatutVal = "OD";
+      var myMalusStatutVal = "0D";
+      var d8check = myResultDialog.d8check;
+      var ci108 = 0;
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -371,6 +362,8 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       var myMalusBlessureCheck = myResultDialog.malusblessurecheck;
       var myMalusStatutCheck = myResultDialog.malusstatutcheck;
       var myMalusStatutVal = myResultDialog.malusstatutval;
+      var d8check = myResultDialog.d8check;
+      var ci108 = 0;
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -380,7 +373,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       var myPlusDeuxDesDAttaque = myResultDialog.plusdeuxdesdattaque;
       var myMalusApplique = myResultDialog.malususapplique;
       var myIgnoreMalus = myResultDialog.ignoremalus;
-      var myMalusAIgnorer = myResultDialog.malususaignorer;
+      var myMalusAIgnorer = myResultDialog.malusaignorer;
       var mySuccesAuto = myResultDialog.succesauto;
       var myPlusUnSuccesAuto = myResultDialog.plusunsuccesauto;
       var myDesNonExplo = myResultDialog.desnonexplo;
@@ -398,8 +391,8 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     
     }
 
-    console.log("myMalusStatutVal", myMalusStatutVal);
-    console.log("myMalusStatutVal.charAt(0)", myMalusStatutVal.charAt(0));
+    // console.log("myMalusStatutVal", myMalusStatutVal);
+    // console.log("myMalusStatutVal.charAt(0)", myMalusStatutVal.charAt(0));
 
 
     let jetLibel = "other";
@@ -427,6 +420,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     ************************************************************************************/
 
 
+    var d8_val = 0;
     let d6_1 = 0;
     let d6_2 = 0;
     let d6_3 = 0;
@@ -514,6 +508,9 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       };
     //////////////////////////////////////////////////////////////////
 
+    if (d8check && mySpecialiteFlag) {
+      total--;
+    }
 
     // Soustraction des jetons si en nombre suffisant, sinon "return"
     let myErrorTokenNbr = 0;
@@ -566,10 +563,25 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
     var msg;
 
-    let myRoll = "";
-
+    
     const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
     // console.log("myTypeOfThrow", myTypeOfThrow);
+
+
+    if (d8check && mySpecialiteFlag) {
+      let myRoll8 = "1d8>="+n.myND;
+      var r8 = new Roll(myRoll8, this.actor.getRollData());
+      await r8.evaluate();
+
+      msg = await r8.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        rollMode: myTypeOfThrow
+      });
+
+      d8_val = r8._total;
+    }
+
 
     do {
       let myRoll = "";
@@ -627,7 +639,6 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
 
       n.myReussite = parseInt(n.myReussite) + parseInt(r._total);
-
       // r._total = "0";
 
 
@@ -640,6 +651,10 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       await new Promise(w => setTimeout(w, 2750));
 
     } while (n.nbrRelance);
+
+    if (d8check && mySpecialiteFlag) {
+      if (r8._total >= myND) { n.myReussite++ };
+    }
 
     const rModif = new Roll("0[Total Réussites]", this.actor.getRollData());
     await rModif.evaluate();
@@ -657,13 +672,25 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     // Smart Message
     let smartTemplate = 'systems/devastra/templates/form/dice-result-dice.html';
 
+    // console.log("d8_val = ", d8_val);
+
+    
+    if (n.d6_1 > 0 && d8_val == 8) {
+      ci108 = 108;
+    }
+
+    // console.log("ci108 = ", ci108);
+
+
     const smartData = {
       nd: myND,
       total: rModif._total,
+      succes: d_successes,
 
       domaine: domainLibel,
       jet: jetLibel,
-      succes: d_successes,
+      d8: parseInt(d8_val),
+      ci108: ci108,
       d1: n.d6_1,
       d2: n.d6_2,
       d3: n.d6_3,
@@ -706,7 +733,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     }
 
     
-    let myMessage2Chat = game.i18n.localize("DEVASTRA.Untel a tiré la concentration").replace("^0", gain.toString());
+    let myMessage2Chat = game.i18n.localize("DEVASTRA.UntelATireConcentration").replace("^0", gain.toString());
     ChatMessage.create({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -725,7 +752,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     
     let myActor = this.actor;
     let myTitle = game.i18n.localize("DEVASTRA.Alerte");
-    let myMessage = game.i18n.localize("DEVASTRA.On tire la shakti");
+    let myMessage = game.i18n.localize("DEVASTRA.OnTireLaShakti");
     let myDialogOptions = {
     classes: ["devastra", "sheet"]
     };
@@ -742,7 +769,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     };
     //////////////////////////////////////////////////////////////////
 
-    myTitle = game.i18n.localize("DEVASTRA.Tirage de jetons pour la Shakti");
+    myTitle = game.i18n.localize("DEVASTRA.TirageDeJetonsPourLaShakti");
 
     let domainLibel = "din";
     let pureDomOrSpeLibel;
@@ -765,7 +792,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     if (myVersionDebloqueeFlag) {
 
 
-      let myTitle = game.i18n.localize("DEVASTRA.Jet de dés");
+      let myTitle = game.i18n.localize("DEVASTRA.JetDeDes(Parametrez)");
       myResultDialog = await _skillDiceRollDialogDeblocked (
         myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myInitThrow
       );
@@ -782,7 +809,9 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       var myND = 3;
       var myMalusBlessureCheck = false;
       var myMalusStatutCheck = false;
-      var myMalusStatutVal = "OD";
+      var myMalusStatutVal = "0D";
+      var d8check = myResultDialog.d8check;
+      var ci108 = 0;
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -813,6 +842,8 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       var myMalusBlessureCheck = myResultDialog.malusblessurecheck;
       var myMalusStatutCheck = myResultDialog.malusstatutcheck;
       var myMalusStatutVal = myResultDialog.malusstatutval;
+      var d8check = myResultDialog.d8check;
+      var ci108 = 0;
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -822,7 +853,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       var myPlusDeuxDesDAttaque = myResultDialog.plusdeuxdesdattaque;
       var myMalusApplique = myResultDialog.malususapplique;
       var myIgnoreMalus = myResultDialog.ignoremalus;
-      var myMalusAIgnorer = myResultDialog.malususaignorer;
+      var myMalusAIgnorer = myResultDialog.malusaignorer;
       var mySuccesAuto = myResultDialog.succesauto;
       var myPlusUnSuccesAuto = myResultDialog.plusunsuccesauto;
       var myDesNonExplo = myResultDialog.desnonexplo;
@@ -840,8 +871,8 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     
     }
 
-    console.log("myMalusStatutVal", myMalusStatutVal);
-    console.log("myMalusStatutVal.charAt(0)", myMalusStatutVal.charAt(0));
+    // console.log("myMalusStatutVal", myMalusStatutVal);
+    // console.log("myMalusStatutVal.charAt(0)", myMalusStatutVal.charAt(0));
 
 
     let jetLibel = "other";
@@ -869,6 +900,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     ************************************************************************************/
 
 
+    var d8_val = 0;
     let d6_1 = 0;
     let d6_2 = 0;
     let d6_3 = 0;
@@ -947,7 +979,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      if (myMalusStatutVal.charAt(0) != "0") {
+      if (myMalusStatutVal.charAt(0) == "-") {
         myNombreDeMalusStatut++;
       }
     };
@@ -963,6 +995,9 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       };
     //////////////////////////////////////////////////////////////////
 
+    if (d8check && mySpecialiteFlag) {
+      total--;
+    }
 
     // Soustraction des jetons si en nombre suffisant, sinon "return"
     let myErrorTokenNbr = 0;
@@ -1023,10 +1058,25 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
     var msg;
 
-    let myRoll = "";
 
     const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
     // console.log("myTypeOfThrow", myTypeOfThrow);
+
+
+    if (d8check && mySpecialiteFlag) {
+      let myRoll8 = "1d8>="+n.myND;
+      var r8 = new Roll(myRoll8, this.actor.getRollData());
+      await r8.evaluate();
+
+      msg = await r8.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        rollMode: myTypeOfThrow
+      });
+
+      d8_val = r8._total;
+    }
+
 
     do {
       let myRoll = "";
@@ -1084,7 +1134,6 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
 
       n.myReussite = parseInt(n.myReussite) + parseInt(r._total);
-
       // r._total = "0";
 
       msg = await r.toMessage({
@@ -1096,6 +1145,10 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       await new Promise(w => setTimeout(w, 2750));
 
     } while (n.nbrRelance);
+
+    if (d8check && mySpecialiteFlag) {
+      if (r8._total >= myND) { n.myReussite++ };
+    }
 
     const rModif = new Roll("0[Total Réussites]", this.actor.getRollData());
     await rModif.evaluate();
@@ -1113,13 +1166,26 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     // Smart Message
     let smartTemplate = 'systems/devastra/templates/form/dice-result-dice.html';
 
+    // console.log("d8_val = ", d8_val);
+
+
+    if (n.d6_1 > 0 && d8_val == 8) {
+      ci108 = 108;
+    }
+
+    // console.log("ci108 = ", ci108);
+
+
+
     const smartData = {
       nd: myND,
       total: rModif._total,
+      succes: d_successes,
 
       domaine: domainLibel,
       jet: jetLibel,
-      succes: d_successes,
+      d8: parseInt(d8_val),
+      ci108: ci108,
       d1: n.d6_1,
       d2: n.d6_2,
       d3: n.d6_3,
@@ -1167,7 +1233,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     }
 
 
-    let myMessage2Chat = game.i18n.localize("DEVASTRA.Untel a tiré la shakti").replace("^0", remplace.toString());
+    let myMessage2Chat = game.i18n.localize("DEVASTRA.UntelATireShakti").replace("^0", remplace.toString());
     ChatMessage.create({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -1187,7 +1253,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
   
     let myActor = this.actor;
     let myTitle = game.i18n.localize("DEVASTRA.Alerte");
-    let myMessage = game.i18n.localize("DEVASTRA.On met à la poubelle");
+    let myMessage = game.i18n.localize("DEVASTRA.OnMetALaPoubelle");
     let myDialogOptions = {
     classes: ["devastra", "sheet"]
     };
@@ -1230,7 +1296,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
   async _onClickArmor (event) {
    
     let myActor = this.actor;
-    let myTitle = game.i18n.localize("DEVASTRA.Calcul Protection");
+    let myTitle = game.i18n.localize("DEVASTRA.CalculProtection");
     let myDialogOptions = {
     classes: ["devastra", "sheet"]
     };
@@ -1318,7 +1384,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
 
   /*
   async onCreateItem(myItem, options, id) {
-    console.log("Je passe bien ici ! _onCreateItem()");
+    // console.log("Je passe bien ici ! _onCreateItem()");
     const thisItem = await myItem;
     const myActor = await this.actor;
     /*
@@ -1344,9 +1410,9 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     if (thisItem && thisItem.type === 'benedictionoumalediction') {
 
       /*
-      console.log("Je rentre dans la boucle");
+      // console.log("Je rentre dans la boucle");
       await new Promise(w => setTimeout(w, 1000));
-      console.log("Je suis sorti de la boucle");
+      // console.log("Je suis sorti de la boucle");
       */
      /*
       let myActorBless = ""; // libellé : blessed, neutral ou cursed
@@ -1375,7 +1441,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
         case "5":
         myActorBless = await myActor.system.domains.dmy.bless; // dmy
           break;
-        default: console.log("C'est bizarre !");
+        default: // console.log("C'est bizarre !");
       };
 
       switch (myActorBless) {
@@ -1385,7 +1451,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
           break;
         case "cursed": myBlessNum = -1;
           break;
-        default: console.log("C'est bizarre !");
+        default: // console.log("C'est bizarre !");
       }
 
       switch (myItemSubType) {
@@ -1393,7 +1459,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
           break;
         case "-1": myNewToBlessNum = -1 // malédiction
           break;
-        default: myNewToBlessNum = 0; console.log("C'est bizarre !");
+        default: myNewToBlessNum = 0; // console.log("C'est bizarre !");
       }
 
       myNewBlessNum = myBlessNum + myNewToBlessNum;
@@ -1407,7 +1473,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
           break;
         case -1: myNewActorBless = "cursed";
           break;
-        default: console.log("C'est bizarre !");
+        default: // console.log("C'est bizarre !");
       }
 
       switch (myItemDomain) {
@@ -1428,7 +1494,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
         case "5": // dmy
         await myActor.update({ "system.domains.dmy.bless": myNewActorBless });
           break;
-        default: console.log("C'est bizarre !");
+        default: // console.log("C'est bizarre !");
       }
       if (thisItem) {
         await thisItem.delete();
@@ -1449,12 +1515,12 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
    */
 
   async _canDragStartItem(selector) {
-    console.log("Je passe bien ici ! _canDragStartItem()");
+    // console.log("Je passe bien ici ! _canDragStartItem()");
     return true
   }
 
   async _canDragDropItem(selector) {
-    console.log("Je passe bien ici ! _canDragDropItem()");
+    // console.log("Je passe bien ici ! _canDragDropItem()");
     return true
   }
 
@@ -1475,20 +1541,20 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
    */
   async _onDragStartItem(event) {
     // On ne fait rien
-    console.log("Je passe bien ici ! _onDragStartItem()");
+    // console.log("Je passe bien ici ! _onDragStartItem()");
 
   }
 
   /*
   async _onDropItem(actor, actorsheet, data) {
-    console.log("Je passe bien ici ! _onDragDropItem()");
+    // console.log("Je passe bien ici ! _onDragDropItem()");
     if (data.type === 'item') {
       let myActor = actor;
       let myItem;
 
-      console.log("Je rentre dans la boucle");
+      // console.log("Je rentre dans la boucle");
       await new Promise(w => setTimeout(w, 1000));
-      console.log("Je suis sorti de la boucle");
+      // console.log("Je suis sorti de la boucle");
 
       let myActorBless = ""; // libellé : blessed, neutral ou cursed
       let myBlessNum = 0; // valeur : 1, 0 ou -1
@@ -1517,7 +1583,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
           case "5":
           myActorBless = await myActor.system.domains.dmy.bless; // dmy
             break;
-          default: console.log("C'est bizarre !");
+          default: // console.log("C'est bizarre !");
         };
 
         switch (myActorBless) {
@@ -1527,7 +1593,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
             break;
           case "cursed": myBlessNum = -1;
             break;
-          default: console.log("C'est bizarre !");
+          default: // console.log("C'est bizarre !");
         }
 
         switch (myItemSubType) {
@@ -1535,7 +1601,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
             break;
           case "-1": myNewToBlessNum = -1 // malédiction
             break;
-          default: myNewToBlessNum = 0; console.log("C'est bizarre !");
+          default: myNewToBlessNum = 0; // console.log("C'est bizarre !");
         }
 
         myNewBlessNum = myBlessNum + myNewToBlessNum;
@@ -1549,7 +1615,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
             break;
           case -1: myNewActorBless = "cursed";
             break;
-          default: console.log("C'est bizarre !");
+          default: // console.log("C'est bizarre !");
         }
 
         switch (myItemDomain) {
@@ -1570,7 +1636,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
           case "5": // dmy
           await myActor.update({ "system.domains.dmy.bless": myNewActorBless });
             break;
-          default: console.log("C'est bizarre !");
+          default: // console.log("C'est bizarre !");
         }
 
       };
@@ -1586,13 +1652,13 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
   */
 
   async _onDragDropItem(event) {
-    console.log("Je passe bien ici ! _onDragDropItem()");
+    // console.log("Je passe bien ici ! _onDragDropItem()");
     let myActor = await this.actor;
     let myItem = "";
 
-    console.log("Je rentre dans la boucle");
+    // console.log("Je rentre dans la boucle");
     await new Promise(w => setTimeout(w, 1000));
-    console.log("Je suis sorti de la boucle");
+    // console.log("Je suis sorti de la boucle");
 
     for (let item of await myActor.items.filter(item => item.type === 'benedictionoumalediction')) {
       myItem = item;
@@ -1630,7 +1696,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       case "5":
       myActorBless = await myActor.system.domains.dmy.bless; // dmy
         break;
-      default: console.log("C'est bizarre !");
+      default: // console.log("C'est bizarre !");
     };
 
     switch (myActorBless) {
@@ -1640,7 +1706,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
         break;
       case "cursed": myBlessNum = -1;
         break;
-      default: console.log("C'est bizarre !");
+      default: // console.log("C'est bizarre !");
     }
 
     switch (myItemSubType) {
@@ -1648,7 +1714,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
         break;
       case "-1": myNewToBlessNum = -1 // malédiction
         break;
-      default: myNewToBlessNum = 0; console.log("C'est bizarre !");
+      default: myNewToBlessNum = 0; // console.log("C'est bizarre !");
     }
 
     myNewBlessNum = myBlessNum + myNewToBlessNum;
@@ -1662,7 +1728,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
         break;
       case -1: myNewActorBless = "cursed";
         break;
-      default: console.log("C'est bizarre !");
+      default: // console.log("C'est bizarre !");
     }
 
     switch (myItemDomain) {
@@ -1683,13 +1749,13 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       case "5": // dmy
       await myActor.update({ "system.domains.dmy.bless": myNewActorBless });
         break;
-      default: console.log("C'est bizarre !");
+      default: // console.log("C'est bizarre !");
     }
 
     /*
-    console.log("Je rentre dans la boucle");
+    // console.log("Je rentre dans la boucle");
     await new Promise(w => setTimeout(w, 19000));
-    console.log("Je suis sorti de la boucle");
+    // console.log("Je suis sorti de la boucle");
 
     for (let item of await myActor.items.filter(item => item.type === 'benedictionoumalediction')) {
       myItem = item;
@@ -2724,8 +2790,8 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
     if (!(myActor.system.action.piledejetons)) {
 
-      let myTitle = game.i18n.localize("DEVASTRA.Tirage de jetons pour Action");
-      let myMessage = game.i18n.localize("DEVASTRA.On tire un jeton Action");
+      let myTitle = game.i18n.localize("DEVASTRA.TirageDeJetonsPourAction");
+      let myMessage = game.i18n.localize("DEVASTRA.OnTireUnJetonAction");
       let myDialogOptions = {
       classes: ["devastra", "sheet"]
       };
@@ -2750,7 +2816,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
       }
       await myActor.update({ "system.action.piledejetons": 1 });
       
-      let myMessage2Chat = game.i18n.localize("DEVASTRA.Untel a tiré action");
+      let myMessage2Chat = game.i18n.localize("DEVASTRA.UntelATireAction");
       const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
       ChatMessage.create({
         user: game.user.id,
@@ -2893,7 +2959,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
    * @param {MouseEvent} event    The originating left click event
    */
   async _onClickPlutotJeton(event) {
-    ui.notifications.warn(game.i18n.localize("DEVASTRA.PlutôtJeton"));
+    ui.notifications.warn(game.i18n.localize("DEVASTRA.PlutotJeton"));
   }
 
   /**
@@ -2901,7 +2967,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
   * @param {MouseEvent} event    The originating left click event
   */
   async _onClickPlutotPrompt(event) {
-    ui.notifications.warn(game.i18n.localize("DEVASTRA.PlutôtPrompt"));
+    ui.notifications.warn(game.i18n.localize("DEVASTRA.PlutotPrompt"));
   }
 
     /**
@@ -2910,7 +2976,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
   */
 
   async _onClickPlutotAttaque(event) {
-    ui.notifications.warn(game.i18n.localize("DEVASTRA.PlutôtAttaque"));
+    ui.notifications.warn(game.i18n.localize("DEVASTRA.PlutotAttaque"));
   }
 
 
@@ -2926,8 +2992,8 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
     if (myActor.system.conviction.piledejetons) {
 
-      let myTitle = game.i18n.localize("DEVASTRA.Obtenir DMa jetons de Shakti pour un Jeton Conviction");
-      let myMessage = game.i18n.localize("DEVASTRA.On obtient DMa jetons Shakti via Conviction");
+      let myTitle = game.i18n.localize("DEVASTRA.ObtenirDMaJetonsShaktiPour1JetonConviction");
+      let myMessage = game.i18n.localize("DEVASTRA.OnObtientDMaJetonsShaktiViaConviction");
       let myDialogOptions = {
       classes: ["devastra", "sheet"]
       };
@@ -2954,7 +3020,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
       await myActor.update({ "system.shakti.piledejetons": myActor.system.shakti.piledejetons + myActor.system.domains.dma.value });
 
-      let myMessage2Chat = game.i18n.localize("DEVASTRA.Untel a obtenu DMa jetons de Shakti").replace("^0", myActor.system.domains.dma.value.toString());
+      let myMessage2Chat = game.i18n.localize("DEVASTRA.UntelAObtenuDMaJetonsShakti").replace("^0", myActor.system.domains.dma.value.toString());
       const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
       ChatMessage.create({
         user: game.user.id,
@@ -2975,8 +3041,8 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
     if (myActor.system.conviction.piledejetons) {
 
-      let myTitle = game.i18n.localize("DEVASTRA.Récupérer (DMy + Chakra) points d'Âtman pour un Jeton Conviction");
-      let myMessage = game.i18n.localize("DEVASTRA.On récupère (DMy + Chakra) points d'Âtman via Conviction");
+      let myTitle = game.i18n.localize("DEVASTRA.Recuperer(DMy+Chakra)AtmanPour1JetonConviction");
+      let myMessage = game.i18n.localize("DEVASTRA.OnRecupere(DMy+Chakra)AtmanViaConviction");
       let myDialogOptions = {
       classes: ["devastra", "sheet"]
       };
@@ -3003,7 +3069,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
       await myActor.update({ "system.atman.value": myActor.system.atman.value + myActor.system.domains.dmy.value + myActor.system.chakra.value });
 
-      let myMessage2Chat = game.i18n.localize("DEVASTRA.Untel a récupéré (DMy + Chakra) points d'Âtman").replace("^0", myActor.system.domains.dmy.value.toString()).replace("^1", myActor.system.chakra.value.toString());
+      let myMessage2Chat = game.i18n.localize("DEVASTRA.UntelARecupere(DMy+Chakra)Atman").replace("^0", myActor.system.domains.dmy.value.toString()).replace("^1", myActor.system.chakra.value.toString());
       const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
       ChatMessage.create({
         user: game.user.id,
@@ -3025,8 +3091,8 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
     if (myActor.system.conviction.piledejetons && myActor.system.prana.value <= myActor.system.prana.vulnerable) {
 
-      let myTitle = game.i18n.localize("DEVASTRA.Récupérer (DPh + Chakra) points de Prana pour un Jeton Conviction");
-      let myMessage = game.i18n.localize("DEVASTRA.On récupère (DPh + Chakra) points de prana via Conviction");
+      let myTitle = game.i18n.localize("DEVASTRA.Recuperer(DPh+Chakra)PranaPour1JetonConviction");
+      let myMessage = game.i18n.localize("DEVASTRA.OnRecupere(DPh+Chakra)PranaViaConviction");
       let myDialogOptions = {
       classes: ["devastra", "sheet"]
       };
@@ -3053,7 +3119,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
       await myActor.update({ "system.prana.value": myActor.system.prana.value + myActor.system.domains.dph.value + myActor.system.chakra.value });
 
-      let myMessage2Chat = game.i18n.localize("DEVASTRA.Untel a récupéré (DPh + Chakra) points de Prana").replace("^0", myActor.system.domains.dph.value.toString()).replace("^1", myActor.system.chakra.value.toString());
+      let myMessage2Chat = game.i18n.localize("DEVASTRA.UntelARecupere(DPh+Chakra)Prana").replace("^0", myActor.system.domains.dph.value.toString()).replace("^1", myActor.system.chakra.value.toString());
       const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
       ChatMessage.create({
         user: game.user.id,
@@ -3121,7 +3187,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
     /*
     Ici on fait remplir les paramètres de lancer de dés
     */
-    let myTitle = game.i18n.localize("DEVASTRA.Jet de dés");
+    let myTitle = game.i18n.localize("DEVASTRA.JetDeDes(Parametrez)");
     let myDialogOptions = {
       classes: ["devastra", "sheet"]
     };
@@ -3143,7 +3209,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
     if (myVersionDebloqueeFlag) {
 
 
-      let myTitle = game.i18n.localize("DEVASTRA.Jet de dés");
+      let myTitle = game.i18n.localize("DEVASTRA.JetDeDes(Parametrez)");
       myResultDialog = await _skillDiceRollDialogDeblocked (
         myActor, template, myTitle, myDialogOptions, domainLibel, pureDomOrSpeLibel, myInitThrow
       );
@@ -3163,7 +3229,9 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
       var myND = myResultDialog.nd;
       var myMalusBlessureCheck = false;
       var myMalusStatutCheck = false;
-      var myMalusStatutVal = "OD";
+      var myMalusStatutVal = "0D";
+      var d8check = myResultDialog.d8check;
+      var ci108 = 0;
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -3197,6 +3265,8 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
       var myMalusBlessureCheck = myResultDialog.malusblessurecheck;
       var myMalusStatutCheck = myResultDialog.malusstatutcheck;
       var myMalusStatutVal = myResultDialog.malusstatutval;
+      var d8check = myResultDialog.d8check;
+      var ci108 = 0;
       var myNbrDeDomaine = myResultDialog.nbrdedomaine;
       var myBonusDomaineFlag = myResultDialog.bonusdomainecheck;
       var myNbrDeBonusDomaine = myResultDialog.nbrdebonusdomaine;
@@ -3206,7 +3276,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
       var myPlusDeuxDesDAttaque = myResultDialog.plusdeuxdesdattaque;
       var myMalusApplique = myResultDialog.malususapplique;
       var myIgnoreMalus = myResultDialog.ignoremalus;
-      var myMalusAIgnorer = myResultDialog.malususaignorer;
+      var myMalusAIgnorer = myResultDialog.malusaignorer;
       var mySuccesAuto = myResultDialog.succesauto;
       var myPlusUnSuccesAuto = myResultDialog.plusunsuccesauto;
       var myDesNonExplo = myResultDialog.desnonexplo;
@@ -3224,8 +3294,8 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
     
     }
 
-    console.log("myMalusStatutVal", myMalusStatutVal);
-    console.log("myMalusStatutVal.charAt(0)", myMalusStatutVal.charAt(0));
+    // console.log("myMalusStatutVal", myMalusStatutVal);
+    // console.log("myMalusStatutVal.charAt(0)", myMalusStatutVal.charAt(0));
 
     let jetLibel;
     if (myJetAutreFlag) {
@@ -3386,7 +3456,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
     * 
     ************************************************************************************/
 
-
+    var d8_val = 0;
     let d6_1 = 0;
     let d6_2 = 0;
     let d6_3 = 0;
@@ -3468,7 +3538,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
-      if (myMalusStatutVal.charAt(0) != "0") {
+      if (myMalusStatutVal.charAt(0) == "-") {
         myNombreDeMalusStatut++;
       }
     };
@@ -3484,7 +3554,9 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
       };
     //////////////////////////////////////////////////////////////////
 
-
+    if (d8check && mySpecialiteFlag) {
+      total--; // Si on tire un D8 à la place du D6 de Spécialité, on tire un D6 en moins
+    }
 
     // Soustraction des jetons si en nombre suffisant, sinon "return"
     let myErrorTokenNbr = 0;
@@ -3534,6 +3606,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
       mySixExplo: mySixExploFlag,
       myCinqExplo: myCinqExploFlag,
       nbrRelance: total,
+      d8_val: 0,
       d6_1: 0,
       d6_2: 0,
       d6_3: 0,
@@ -3545,7 +3618,24 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
     var msg;
 
-    let myRoll = "";
+    const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
+    // console.log("myTypeOfThrow", myTypeOfThrow);
+
+
+    if (d8check && mySpecialiteFlag) {
+      let myRoll8 = "1d8>="+n.myND;
+      var r8 = new Roll(myRoll8, this.actor.getRollData());
+      await r8.evaluate();
+
+      msg = await r8.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        rollMode: myTypeOfThrow
+      });
+
+      d8_val = r8._total;
+    }
+
 
     do {
       let myRoll = "";
@@ -3593,7 +3683,6 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
         }
       };
 
-
       n.d6_1 += d6_1;
       n.d6_2 += d6_2;
       n.d6_3 += d6_3;
@@ -3603,7 +3692,6 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
 
       n.myReussite = parseInt(n.myReussite) + parseInt(r._total);
-
       // r._total = "0";
 
       const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
@@ -3619,12 +3707,13 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
     } while (n.nbrRelance);
 
+    if (d8check && mySpecialiteFlag) {
+      if (r8._total >= myND) { n.myReussite++ };
+    }
+
     const rModif = new Roll("0[Total Réussites]", this.actor.getRollData());
     await rModif.evaluate();
     rModif._total  = parseInt(n.myReussite) + parseInt(mySuccesAuto); // On ajoute les succès automatiques
-
-    const myTypeOfThrow = game.settings.get("core", "rollMode"); // Type de Lancer
-    // console.log("myTypeOfThrow", myTypeOfThrow);
 
     msg = await rModif.toMessage({
       user: game.user.id,
@@ -3633,7 +3722,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
     });
 
       
-    const d_successes = parseInt(n.myReussite) + parseInt(mySuccesAutoSupplem); // On ajoute les succès automatiques
+    const d_successes = parseInt(n.myReussite) + parseInt(mySuccesAutoSupplem); // On ajoute les succès automatiques supplémentaires
 
     // Smart Message
     let opponentActorId = "0";
@@ -3662,9 +3751,21 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
     // console.log("myActor = ", myActor);
     // console.log("myActor._id = ", myActor._id);
 
+    // console.log("d8_val = ", d8_val);
+
+
+    if (n.d6_1 > 0 && d8_val == 8) {
+      ci108 = 108;
+    }
+
+    // console.log("ci108 = ", ci108);
+
+
     const smartData = {
       nd: myND,
       total: rModif._total,
+      succes: d_successes,
+
       attaquantficheId: myActor._id,
       opposantficheId: opponentActorId,
       opposanttokenId: opponentTokenId,
@@ -3691,7 +3792,8 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
 
       domaine: domainLibel,
       jet: jetLibel,
-      succes: d_successes,
+      d8: parseInt(d8_val),
+      ci108: ci108,
       d1: n.d6_1,
       d2: n.d6_2,
       d3: n.d6_3,
@@ -3961,6 +4063,7 @@ async function _skillDiceRollDialog(
   let myNbrDeBonusDomaine = 0;
   const myNbrDeBonusSpecialite = 1;
   const myBonusDomaineCheck = true;
+  const d8check = false;
   const myDomainLibel = domainLibel;
 
   const mySpecialiteCheck = (pureDomOrSpeLibel === "special");
@@ -4065,6 +4168,7 @@ async function _skillDiceRollDialog(
     nbrdedomaine: myNbrDeDomaine,
     nbrdebonusdomaine: myNbrDeBonusDomaine,
     bonusdomainecheck: myBonusDomaineCheck,
+    d8check: d8check,
     nbrdebonusspecialite: myNbrDeBonusSpecialite,
     specialitecheck: mySpecialiteCheck,
     nd: 4,
@@ -4116,10 +4220,10 @@ async function _skillDiceRollDialog(
 
   //////////////////////////////////////////////////////////////
   async function _computeResult(myActor, myDialogData, myHtml) {
-        const editedData = {
-      jetautreflag: myHtml.find("input[name='autre']").is(':checked'),
-      jetattaqueflag: myHtml.find("input[name='jetattaque']").is(':checked'),
-      jetdefenseflag: myHtml.find("input[name='jetdefense']").is(':checked'),
+    const editedData = {
+      jetautreflag: myHtml.find("input[value='autre']").is(':checked'),
+      jetattaqueflag: myHtml.find("input[value='jetattaque']").is(':checked'),
+      jetdefenseflag: myHtml.find("input[value='jetdefense']").is(':checked'),
       nd: myHtml.find("select[name='nd']").val(),
       malusblessurecheck: myHtml.find("input[name='malusblessurecheck']").is(':checked'),
       malusstatutcheck: myHtml.find("input[name='malusstatutcheck']").is(':checked'),
@@ -4127,13 +4231,14 @@ async function _skillDiceRollDialog(
       nbrdedomaine: myDialogData.nbrdedomaine,
       nbrdebonusdomaine: myDialogData.nbrdebonusdomaine,
       bonusdomainecheck: myHtml.find("input[name='bonusdomainecheck']").is(':checked'),
+      d8check: myHtml.find("input[name='d8check']").is(':checked'),
       nbrdebonusspecialite: myDialogData.nbrdebonusspecialite,
       specialitecheck: myHtml.find("input[name='specialitecheck']").is(':checked'),
       bonusapplique: myHtml.find("select[name='bonusapplique']").val(),
       plusdeuxdesdattaque: myHtml.find("select[name='plusdeuxdesdattaque']").val(),
       malususapplique: myHtml.find("select[name='malususapplique']").val(),
       ignoremalus: myHtml.find("select[name='ignoremalus']").val(),
-      malususaignorer: myHtml.find("select[name='malususaignorer']").val(),
+      malusaignorer: myHtml.find("select[name='malusaignorer']").val(),
       succesauto: myHtml.find("select[name='succesauto']").val(),
       plusunsuccesauto: myHtml.find("select[name='plusunsuccesauto']").val(),
       sixexplo: myHtml.find("input[name='sixexplo']").is(':checked'),
@@ -4141,7 +4246,7 @@ async function _skillDiceRollDialog(
       desnonexplo: myHtml.find("select[name='desnonexplo']").val(),
       versiondebloquee: myHtml.find("input[name='versiondebloquee']").is(':checked')
     };
-    console.log("editedData.malusstatutval", editedData.malusstatutval);
+    // console.log("editedData.malusstatutval", editedData.malusstatutval);
     return editedData;
   }
   
@@ -4164,6 +4269,7 @@ async function _skillDiceRollDialogDeblocked (
   let myNbrDeBonusDomaine = 0;
   const myNbrDeBonusSpecialite = 1;
   const myBonusDomaineCheck = true;
+  const d8check = false;
   const myDomainLibel = domainLibel;
 
   const mySpecialiteCheck = (pureDomOrSpeLibel === "special");
@@ -4247,20 +4353,21 @@ async function _skillDiceRollDialogDeblocked (
   //////////////////////////////////////////////////////////////
   async function _computeResult(myActor, myDialogData, myHtml) {
     const editedData = {
-      jetautreflag: myHtml.find("input[name='autre']").is(':checked'),
-      jetattaqueflag: myHtml.find("input[name='jetattaque']").is(':checked'),
-      jetdefenseflag: myHtml.find("input[name='jetdefense']").is(':checked'),
+      jetautreflag: myHtml.find("input[value='autre']").is(':checked'),
+      jetattaqueflag: myHtml.find("input[value='jetattaque']").is(':checked'),
+      jetdefenseflag: myHtml.find("input[value='jetdefense']").is(':checked'),
       nd: myHtml.find("select[name='nd']").val(),
       nbrdedomaine: myDialogData.nbrdedomaine,
       nbrdebonusdomaine: myDialogData.nbrdebonusdomaine,
       bonusdomainecheck: myHtml.find("input[name='bonusdomainecheck']").is(':checked'),
+      d8check: myHtml.find("input[name='d8check']").is(':checked'),
       nbrdebonusspecialite: myDialogData.nbrdebonusspecialite,
       specialitecheck: myHtml.find("input[name='specialitecheck']").is(':checked'),
       bonusapplique: myHtml.find("select[name='bonusapplique']").val(),
       plusdeuxdesdattaque: myHtml.find("select[name='plusdeuxdesdattaque']").val(),
       malususapplique: myHtml.find("select[name='malususapplique']").val(),
       ignoremalus: myHtml.find("select[name='ignoremalus']").val(),
-      malususaignorer: myHtml.find("select[name='malususaignorer']").val(),
+      malusaignorer: myHtml.find("select[name='malusaignorer']").val(),
       succesauto: myHtml.find("select[name='succesauto']").val(),
       plusunsuccesauto: myHtml.find("select[name='plusunsuccesauto']").val(),
       sixexplo: myHtml.find("input[name='sixexplo']").is(':checked'),

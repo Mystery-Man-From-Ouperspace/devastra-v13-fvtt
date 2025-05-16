@@ -8,7 +8,7 @@
             </h1>
             {{#if (or playersEditItems isGM)}}
                 <div class="resource">
-                    <label><b>{{localize "DEVASTRA.TypeOfMagic"}}</b></label>
+                    <label><b>{{localize "DEVASTRA.TypeOfMagic:"}}</b></label>
                     <select name="system.subtype">
                         {{selectOptions magiesubtypes selected=systemData.subtype labelAttr="label"}}
                     </select>
@@ -67,8 +67,8 @@
 				<input class="input" type="number" placeholder="{{ localize 'DEVASTRA.Niveau' }}" name="system.level" value="{{systemData.level}}" />
 			</div>
 			<div class="costatman">
-				<label><b>{{localize "DEVASTRA.Cout en Atman"}}</b></label>
-				<input class="input" type="number" placeholder="{{ localize 'DEVASTRA.Cout en Atman' }}" name="system.costatman" value="{{systemData.costatman}}" />
+				<label><b>{{localize "DEVASTRA.CoutEnAtman"}}</b></label>
+				<input class="input" type="number" placeholder="{{ localize 'DEVASTRA.CoutEnAtman' }}" name="system.costatman" value="{{systemData.costatman}}" />
 			</div>
 			<div class="activation">
 				<label><b>{{localize "DEVASTRA.Activation"}}</b></label>
@@ -126,8 +126,8 @@
                     <input class="input" type="number" placeholder="{{ localize 'DEVASTRA.Niveau' }}" name="system.level" value="{{systemData.level}}" />
                 </div>
                 <div class="costatman">
-                    <label><b>{{localize "DEVASTRA.Cout en Atman"}}</b></label>
-                    <input class="input" type="number" placeholder="{{ localize 'DEVASTRA.Cout en Atman' }}" name="system.costatman" value="{{systemData.costatman}}" />
+                    <label><b>{{localize "DEVASTRA.CoutEnAtman"}}</b></label>
+                    <input class="input" type="number" placeholder="{{ localize 'DEVASTRA.CoutEnAtman' }}" name="system.costatman" value="{{systemData.costatman}}" />
                 </div>
                 <div class="activation">
                     <label><b>{{localize "DEVASTRA.Activation"}}</b></label>

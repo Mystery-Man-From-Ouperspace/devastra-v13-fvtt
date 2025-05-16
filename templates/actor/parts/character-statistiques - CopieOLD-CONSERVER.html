@@ -26,11 +26,11 @@
     </td>
 
     <td class="blessavatar">
-      <input type="radio" name="system.domains.{{@key}}.bless" value="blessed" {{ checked (eq domain.bless 'blessed') }}/>{{ localize "DEVASTRA.béni" }}
+      <input type="radio" name="system.domains.{{@key}}.bless" value="blessed" {{ checked (eq domain.bless 'blessed') }}/>{{ localize "DEVASTRA.Beni" }}
       <br>
-      <input type="radio" name="system.domains.{{@key}}.bless" value="neutral" {{ checked (eq domain.bless 'neutral') }}/>{{ localize "DEVASTRA.neutre" }}
+      <input type="radio" name="system.domains.{{@key}}.bless" value="neutral" {{ checked (eq domain.bless 'neutral') }}/>{{ localize "DEVASTRA.Neutre" }}
       <br>
-      <input type="radio" name="system.domains.{{@key}}.bless" value="cursed" {{ checked (eq domain.bless 'cursed') }}/>{{ localize "DEVASTRA.maudit" }}
+      <input type="radio" name="system.domains.{{@key}}.bless" value="cursed" {{ checked (eq domain.bless 'cursed') }}/>{{ localize "DEVASTRA.Maudit" }}
     </td>
     <td class="valuedice imageb">
     <!--  <img src="systems/devastra/images/ui/cercle.png" />
@@ -40,7 +40,7 @@
     <td class="bonusdice image">
     <!--  <img src="systems/devastra/images/ui/cercle.png" />
       <div class="stick">&nbsp;</div> -->
-      <input class="input nbre" type="number" placeholder="0" min="0" step="1" name="system.domains.{{@key}}.bonusdice" value="{{domain.bonusdice}}" title="{{ localize 'DEVASTRA.Dé bonus' }}" />
+      <input class="input nbre" type="number" placeholder="0" min="0" step="1" name="system.domains.{{@key}}.bonusdice" value="{{domain.bonusdice}}" title="{{ localize 'DEVASTRA.DeBonus' }}" />
     </td>
     <td class="specialities">
       <input class="input" type="text" placeholder="{{ localize 'DEVASTRA.Specialities' }}…" name="system.domains.{{@key}}.specialities" value="{{domain.specialities}}" />
@@ -55,7 +55,7 @@
 <br>
 <div style="display: flex; width: 100%;">
   <div class="blessuresoustatuts" style="display: table; width: 50%;">
-    <h1>{{ localize "DEVASTRA.Blessures ou Statuts" }}</h1>
+    <h1>{{ localize "DEVASTRA.BlessuresOuStatuts" }}</h1>
     <ol class="item-list">
       {{#each blessuresoustatuts as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
