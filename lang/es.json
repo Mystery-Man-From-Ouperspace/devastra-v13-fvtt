@@ -1,11 +1,15 @@
 {
-  "DEVASTRA.LiensUtiles": "Liens Utiles",
-  "DEVASTRA.AntreMondeSpeech": "Antre Monde Éditions et Mystery Man From Outerspace (le programmeur) autorisent l'utilisation de ce système Devâstra pour Foundry VTT à destination de parties privées mais aussi lors d'actual play, en live ou redifféré gratuit, sur les plateformes de streaming et sites web d'hébergement vidéo à la condition que soient mentionnés Devâstra, Antre Monde Éditions et Mystery Man From Outerspace.",
-  "DEVASTRA.AntreMondeSpeechSuite": "Cette utilisation ne peut être considérée comme une cession de droit, mais une tolérance d'usage.",
-  "DEVASTRA.AntreMonde": "À savoir en cas d'utilisation publique",
-  "DEVASTRA.AcheterCompendium": "Acheter compendiums pour Devâstra",
-  "DEVASTRA.SiteWebEditeur": "Site web de l'éditeur",
-  "DEVASTRA.SiteWebDevastra": "Site web de Devâstra",
+  "DEVASTRA.LiensUtiles": "Useful Links",
+  "DEVASTRA.AntreMondeSpeech": "Antre Monde Éditions and Mystery Man From Outerspace (the programmer) authorize the use of this Devâstra system for Foundry VTT for private game parties but also for live or replayed free of charge actual play – on streaming platforms and video hosting websites – on condition that Devâstra, Antre Monde Éditions and Mystery Man From Outerspace are mentioned.",
+  "DEVASTRA.AntreMondeSpeechSuite": "This use cannot be considered as a transfer of rights, but as a tolerance of use.",
+  "DEVASTRA.AntreMonde": "Need to Be Known in Case of Public Use",
+
+  "DEVASTRA.Links.AcheterCompendium": "Buy Devâstra Fr Compendium Packs",
+  "DEVASTRA.Links.AcheterCompendiumURL": "https://antre-monde.com",
+  "DEVASTRA.Links.SiteWebEditeur": "Go to Publisher's Fr Website",
+  "DEVASTRA.Links.SiteWebEditeurURL": "https://antre-monde.com",
+  "DEVASTRA.Links.SiteWebDevastra": "Go to Devâstra Fr Website",
+  "DEVASTRA.Links.SiteWebDevastraURL": "https://antre-monde.com",
 
   "DEVASTRA.AutoriserJoueusesModifItems": "Les Joueuses modifent les items",
   "DEVASTRA.CocherOptionAutoriseraJoueuses": 

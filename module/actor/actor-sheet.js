@@ -1,7 +1,7 @@
 /**
- * @extends {ActorSheet}
+ * @extends {foundry.appv1.sheets.ActorSheet}
  */
-export class DEVASTRAActorSheet extends ActorSheet {
+export class DEVASTRAActorSheet extends foundry.appv1.sheets.ActorSheet {
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -18,12 +18,12 @@ export class DEVASTRAActorSheet extends ActorSheet {
     context.systemData = this.actor.system;
     context.locked = await this.actor.system.locked;
 
-    context.descriptionHTML = await TextEditor.enrichHTML(this.actor.system.description, {
+    context.descriptionHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.description, {
       secrets: this.document.isOwner,
       async: true,
     });
     /*
-    context.effetHTML = await TextEditor.enrichHTML(this.actor.system.enseignement.effet, {
+    context.effetHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.enseignement.effet, {
       secrets: this.document.isOwner,
       async: true,
     });

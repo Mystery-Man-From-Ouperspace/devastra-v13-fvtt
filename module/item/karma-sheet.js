@@ -2,7 +2,7 @@
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class DEVASTRAKarmaSheet extends ItemSheet {
+export class DEVASTRAKarmaSheet extends foundry.appv1.sheets.ItemSheet {
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -22,15 +22,15 @@ export class DEVASTRAKarmaSheet extends ItemSheet {
   async getData(options) {
     const context = await super.getData(options);
     context.systemData = this.item.system;
-    context.techniqueHTML = await TextEditor.enrichHTML(this.item.system.technique, {
+    context.techniqueHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.item.system.technique, {
       secrets: this.document.isOwner,
       async: true,
     });
-    context.narratifHTML = await TextEditor.enrichHTML(this.item.system.narratif, {
+    context.narratifHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.item.system.narratif, {
       secrets: this.document.isOwner,
       async: true,
     });
-    context.notesHTML = await TextEditor.enrichHTML(this.item.system.notes, {
+    context.notesHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.item.system.notes, {
       secrets: this.document.isOwner,
       async: true,
     });

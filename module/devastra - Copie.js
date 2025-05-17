@@ -113,7 +113,7 @@ Hooks.on("renderSettings", (app, html) => {
   // Insère la section avant le premier header
   gameSettingsHeader.parentNode.insertBefore(section, gameSettingsHeader);
 
-});
+})
 
 
 /**
@@ -293,22 +293,24 @@ Hooks.once("init", async function () {
   // Define custom Document classes
   CONFIG.Actor.documentClass = DEVASTRAActor;
   CONFIG.Item.documentClass = DEVASTRAItem;
+
   // Register sheet application classes
-  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
-  foundry.documents.collections.Actors.registerSheet("devastra", DEVASTRACharacterSheet, { types: ["character"], makeDefault: true }); // ligne modifiée selon directives de LeRatierBretonnien
-  foundry.documents.collections.Actors.registerSheet("devastra", DEVASTRAPNJSheet, { types: ["npc"], makeDefault: true });
-  foundry.documents.collections.Actors.registerSheet("devastra", DEVASTRAMonsterSheet, { types: ["monster"], makeDefault: true });
-  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
-  foundry.documents.collections.Items.registerSheet("devastra", DEVASTRAItemSheet, { types: ["item"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("devastra", DEVASTRAEnseignementSheet, { types: ["enseignement"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("devastra", DEVASTRADevastraSheet, { types: ["devastra"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("devastra", DEVASTRAPouvoirSheet, { types: ["pouvoir"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("devastra", DEVASTRAMagieSheet, { types: ["magie"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("devastra", DEVASTRADharmaSheet, { types: ["dharma"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("devastra", DEVASTRAKarmaSheet, { types: ["karma"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("note", DEVASTRANoteSheet, { types: ["note"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("blessureoustatut", DEVASTRABlessureOuStatutSheet, { types: ["blessureoustatut"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("benedictionoumalediction", DEVASTRABenedictionOuMaledictionSheet, { types: ["benedictionoumalediction"], makeDefault: true });
+  Actors.unregisterSheet("core", ActorSheet);
+  Actors.registerSheet("devastra", DEVASTRACharacterSheet, { types: ["character"], makeDefault: true }); // ligne modifiée selon directives de LeRatierBretonnien
+  Actors.registerSheet("devastra", DEVASTRAPNJSheet, { types: ["npc"], makeDefault: true });
+  Actors.registerSheet("devastra", DEVASTRAMonsterSheet, { types: ["monster"], makeDefault: true });
+
+  Items.unregisterSheet("core", ItemSheet);
+  Items.registerSheet("devastra", DEVASTRAItemSheet, { types: ["item"], makeDefault: true });
+  Items.registerSheet("devastra", DEVASTRAEnseignementSheet, { types: ["enseignement"], makeDefault: true });
+  Items.registerSheet("devastra", DEVASTRADevastraSheet, { types: ["devastra"], makeDefault: true });
+  Items.registerSheet("devastra", DEVASTRAPouvoirSheet, { types: ["pouvoir"], makeDefault: true });
+  Items.registerSheet("devastra", DEVASTRAMagieSheet, { types: ["magie"], makeDefault: true });
+  Items.registerSheet("devastra", DEVASTRADharmaSheet, { types: ["dharma"], makeDefault: true });
+  Items.registerSheet("devastra", DEVASTRAKarmaSheet, { types: ["karma"], makeDefault: true });
+  Items.registerSheet("note", DEVASTRANoteSheet, { types: ["note"], makeDefault: true });
+  Items.registerSheet("blessureoustatut", DEVASTRABlessureOuStatutSheet, { types: ["blessureoustatut"], makeDefault: true });
+  Items.registerSheet("benedictionoumalediction", DEVASTRABenedictionOuMaledictionSheet, { types: ["benedictionoumalediction"], makeDefault: true });
 
 
   // Init new buttons for the system
@@ -2468,9 +2470,10 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
     default: // console.log("C'est bizarre !");
   };
 
-  // SmartR Message  const smartRTemplate = mySmartRTemplate;
+  // SmartR Message
+  const smartRTemplate = mySmartRTemplate;
   const smartRData = mySmartRData;
-  const smartRHtml = await foundry.applications.handlebars.renderTemplate(smartRTemplate, smartRData);
+  const smartRHtml = await renderTemplate(smartRTemplate, smartRData);
  
   switch ( typeOfThrow ) {
     case 0:
@@ -2673,7 +2676,7 @@ async function _shaktiDialog(
 
   }
 
-  const html = await foundry.applications.handlebars.renderTemplate(template, dialogData);
+  const html = await renderTemplate(template, dialogData);
   // Create the Dialog window
   let prompt = await new Promise((resolve) => {
     new Dialog(
@@ -3456,7 +3459,7 @@ async function _skillEnterShaktiDefence(
   
   }
 
-  const html = await foundry.applications.handlebars.renderTemplate(template, dialogData);
+  const html = await renderTemplate(template, dialogData);
   // Create the Dialog window
   let prompt = await new Promise((resolve) => {
     new Dialog(

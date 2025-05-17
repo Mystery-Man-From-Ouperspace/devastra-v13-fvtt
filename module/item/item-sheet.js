@@ -1,9 +1,9 @@
 import { DEVASTRA } from "../config.js";
 /**
  * Extend the basic ItemSheet with some very simple modifications
- * @extends {ItemSheet}
+ * @extends {foundry.appv1.sheets.ItemSheet}
  */
-export class DEVASTRAItemSheet extends ItemSheet {
+export class DEVASTRAItemSheet extends foundry.appv1.sheets.ItemSheet {
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -29,15 +29,15 @@ export class DEVASTRAItemSheet extends ItemSheet {
     context.isArmor = this.item.isArmor;
     context.isVehicle = this.item.isVehicle;
     context.isOther = this.item.isOther;
-    context.techniqueHTML = await TextEditor.enrichHTML(this.item.system.technique, {
+    context.techniqueHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.item.system.technique, {
       secrets: this.document.isOwner,
       async: true,
     });
-    context.narratifHTML = await TextEditor.enrichHTML(this.item.system.narratif, {
+    context.narratifHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.item.system.narratif, {
       secrets: this.document.isOwner,
       async: true,
     });
-    context.notesHTML = await TextEditor.enrichHTML(this.item.system.notes, {
+    context.notesHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.item.system.notes, {
       secrets: this.document.isOwner,
       async: true,
     });

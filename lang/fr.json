@@ -3,9 +3,13 @@
   "DEVASTRA.AntreMondeSpeech": "Antre Monde Éditions et Mystery Man From Outerspace (le programmeur) autorisent l'utilisation de ce système Devâstra pour Foundry VTT à destination de parties privées mais aussi lors d'actual play, en live ou redifféré gratuit, sur les plateformes de streaming et sites web d'hébergement vidéo à la condition que soient mentionnés Devâstra, Antre Monde Éditions et Mystery Man From Outerspace.",
   "DEVASTRA.AntreMondeSpeechSuite": "Cette utilisation ne peut être considérée comme une cession de droit, mais une tolérance d'usage.",
   "DEVASTRA.AntreMonde": "À savoir en cas d'utilisation publique",
-  "DEVASTRA.AcheterCompendium": "Acheter compendiums pour Devâstra",
-  "DEVASTRA.SiteWebEditeur": "Site web de l'éditeur",
-  "DEVASTRA.SiteWebDevastra": "Site web de Devâstra",
+  
+  "DEVASTRA.Links.AcheterCompendium": "Acheter compendiums Devâstra",
+  "DEVASTRA.Links.AcheterCompendiumURL": "https://antre-monde.com",
+  "DEVASTRA.Links.SiteWebEditeur": "Site web de l'éditeur",
+  "DEVASTRA.Links.SiteWebDevastra": "Site web de Devâstra",
+  "DEVASTRA.Links.SiteWebEditeurURL": "https://antre-monde.com",
+  "DEVASTRA.Links.SiteWebDevastraURL": "https://antre-monde.com",
 
   "DEVASTRA.AutoriserJoueusesModifItems": "Les Joueuses modifent les items",
   "DEVASTRA.CocherOptionAutoriseraJoueuses": 
