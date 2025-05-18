@@ -509,10 +509,10 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
       if (myMalusStatutVal.charAt(0) == "-") {
-        myNombreDeMalusStatut++;
+        myNombreDeMalusStatut = parseInt(myMalusStatutVal);
       }
     };
-    total -= myNombreDeMalusStatut;
+    total += myNombreDeMalusStatut; // déjà négatif !
 
 
     console.log("total = ", total);
@@ -1260,10 +1260,10 @@ export class DEVASTRAPNJSheet extends DEVASTRAActorSheet {
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
       if (myMalusStatutVal.charAt(0) == "-")  {
-        myNombreDeMalusStatut++;
+        myNombreDeMalusStatut = parseInt(myMalusStatutVal);
       }
     };
-    total -= myNombreDeMalusStatut;
+    total += myNombreDeMalusStatut; // déjà négatif !
 
 
     console.log("total = ", total);
@@ -1623,7 +1623,6 @@ async function _whichTypeOfDamage (myActor, template, myTitle, myDialogOptions, 
       damagetype: await myHtml.find("select[name='damagetype']").val(),
     };
     // myActor.update({ "system.prefs.lastweaponusedid": editedData.selectedinventory, "system.prefs.improviseddamage": editedData.damage.toString() });
-    console.log("myinventory = ", myinventory);
     return editedData;
   }
 }

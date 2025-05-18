@@ -15,6 +15,7 @@ export class ModifiedDialog extends Dialog {
     html.find('input[value="ouijet"]').click(this._onThrowDefenceClick.bind(this));
     html.find('input[value="ouishaktidefense"]').click(this._onShaktiDefenceClick.bind(this));
 
+    html.find('input[name="samenamestatutecheck"]').click(this._onChangeStatuteMenu.bind(this));
     html.find('select[name="statute"]').click(this._onChangeStatuteMenu.bind(this));
     // html.find('input[value="isinventoryopponent"]').click(this._onInventoryOpponentClick.bind(this));
     // html.find('input[value="isimprovisedopponent"]').click(this._onDamageOpponentClick.bind(this));
@@ -53,15 +54,18 @@ export class ModifiedDialog extends Dialog {
    */
 
   _onChangeStatuteMenu(event) {
+    const samenamestatutecheck = this.element.find('input[name="samenamestatutecheck"]').is(':checked');
     const actorID =  this.element.find('div[class="actor"]').text();
     const myDomain = this.element.find('div[class="domaine"]').text();
     const menuValue = this.element.find('select[name="statute"]').val();
     const bonusStatute = this.element.find('td[class="valeur2 malusstatute"]').text();
-
     const myActor = game.actors.get(actorID);
-    let flagDomain = false;
 
+    let flagDomain = false;
     let numDomain = 0;
+    let statutename = "";
+    let statuteval = 0;
+
     switch (myDomain) {
       case "dph": numDomain = 1;
       break;
@@ -76,7 +80,8 @@ export class ModifiedDialog extends Dialog {
     }
 
     for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
-      if (item.id == menuValue) { // 1 = statut ; 0 = blessure
+      if (item.id == menuValue) {
+        statutename = item.name;
         if (item.system.domain == numDomain) {flagDomain = true};
         if (item.system.domain2 == numDomain) {flagDomain = true};
         if (item.system.domain3 == numDomain) {flagDomain = true};
@@ -88,6 +93,16 @@ export class ModifiedDialog extends Dialog {
     } else {
       this.element.find('td[class="valeur2 malusstatute"]').text("0"  + game.i18n.localize("DEVASTRA.D"));
     };
+
+    if (flagDomain && samenamestatutecheck) {
+      for (let item of myActor.items.filter(item => item.type === 'blessureoustatut')) {
+        if (item.system.subtype == "1" && item.name == statutename) { // 1 = statut ; 0 = blessure
+          statuteval++;
+        }
+      }
+      statuteval *= -1;
+      this.element.find('td[class="valeur2 malusstatute"]').text(statuteval.toString() + game.i18n.localize("DEVASTRA.D"));
+    }
 
   }
 

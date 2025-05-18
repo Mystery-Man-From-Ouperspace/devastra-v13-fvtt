@@ -34,36 +34,49 @@
             </div>
             <table style="border: 0px; background-color: transparent;">
                 <tr style="background-color: transparent;">
-                    <td hidden>
+                    <td hidden style="width: 25px;">
                         <span class="text" style="font-size: 1px;" type="text" name="{{ domaine }}" value="{{ domaine }}"></span>
                     </td>
+                    <td hidden>
+
+                    </td>
                     {{#if (eq domaine "dph")}}
+                    <td style="width: 25px;">
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/devastra/images/ui/icons/DPh.png" />
+                    </td>
                     <td>
-                        <img class="plate" style="width: 12%; border: 0px;" src="systems/devastra/images/ui/icons/DPh.png" />
                         <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Domain" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Physical" }}</b>
                     </td>
                     {{/if}}
                     {{#if (eq domaine "dma")}}
+                    <td style="width: 25px;">
+                        <img class="plate" style="width: 100%; border: 0px;;" src="systems/devastra/images/ui/icons/DMa.png" />
+                    </td>
                     <td>
-                        <img class="plate" style="width: 12%; border: 0px;;" src="systems/devastra/images/ui/icons/DMa.png" />
                         <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Domain" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Martial" }}</b>
                     </td>
                     {{/if}}
                     {{#if (eq domaine "din")}}
+                    <td style="width: 25px;">
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/devastra/images/ui/icons/DIn.png" />
+                    </td>
                     <td>
-                        <img class="plate" style="width: 12%; border: 0px;" src="systems/devastra/images/ui/icons/DIn.png" />
                         <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Domain" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Intellect" }}</b>
                     </td>
                     {{/if}}
                     {{#if (eq domaine "dso")}}
+                    <td style="width: 25px;">
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/devastra/images/ui/icons/DSo.png" />
+                    </td>
                     <td>
-                        <img class="plate" style="width: 12%; border: 0px;" src="systems/devastra/images/ui/icons/DSo.png" />
                         <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Domain" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Social" }}</b>
                     </td>
                     {{/if}}
                     {{#if (eq domaine "dmy")}}
+                    <td style="width: 25px;">
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/devastra/images/ui/icons/DMy.png" />
+                    </td>
                     <td>
-                        <img class="plate" style="width: 12%; border: 0px;" src="systems/devastra/images/ui/icons/DMy.png" />
                         <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Domain" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Mystical" }}</b>
                     </td>
                     {{/if}}
@@ -71,24 +84,30 @@
             </table>
             <table style="border: 0px; background-color: transparent;">
                 <tr style="background-color: transparent;">
-                    <td hidden>
+                    <td hidden style="width: 25px;">
                         <span class="text" style="font-size: 1px;" type="text" name="{{ jet }}" value="{{ jet }}"></span>
                     </td>
                     {{#if (eq jet "other")}}
+                    <td style="width: 25px;">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 5px;" src="systems/devastra/images/ui/icons/De03.png" />
+                    </td>
                     <td>
-                        <img class="plate" style="width: 12%; border: 0px; padding: 5px;" src="systems/devastra/images/ui/icons/De03.png" />
                         <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Jet" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Standard" }}</b>
                     </td>
                     {{/if}}
                     {{#if (eq jet "attck")}}
+                    <td style="width: 25px;">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 5px;" src="systems/devastra/images/ui/icons/Contact.png" />
+                    </td>
                     <td>
-                        <img class="plate" style="width: 12%; border: 0px; padding: 5px;" src="systems/devastra/images/ui/icons/Contact.png" />
                         <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Jet" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Offensif" }}</b>
                     </td>
                     {{/if}}
                     {{#if (eq jet "defnc")}}
+                    <td style="width: 25px;">
+                        <img class="plate" style="width: 100%; border: 0px; padding: 5px;" src="systems/devastra/images/ui/icons/Defense.png" />
+                    </td>
                     <td>
-                        <img class="plate" style="width: 12%; border: 0px; padding: 5px;" src="systems/devastra/images/ui/icons/Defense.png" />
                         <b style="color: rgb(0, 103, 146);">{{ localize "DEVASTRA.Jet" }}&nbsp;:&nbsp;{{ localize "DEVASTRA.Defensif" }}</b>
                     </td>
                     {{/if}}
@@ -98,8 +117,8 @@
                 <tr style="background-color: transparent;">
                     <td style="width: 33.33%; text-align: center;">
                     </td>
-                    <td style="width: 33.33%; text-align: center;"">
-                        <span style="display: flex; justify-content: center; align-items: center; font-size: 18px; text-align: center;" class="value"><b>{{ dA }}</b></span>
+                    <td style="width: 33.33%; text-align: center;">
+                        <span style="text-align: center; font-size: 18px; text-align: center;" class="value"><b>{{ dA }}</b></span>
                     </td>
                     <td style="width: 33.33%; text-align: center;">
                     </td>
@@ -117,13 +136,13 @@
             <table style="border: 0px; background-color: transparent;">
                 <tr style="background-color: transparent;">
                     <td style="width: 33.33%; text-align: center;">
-                        <span style="display: flex; justify-content: center; align-items: center; font-size: 18px; text-align: center;" class="value"><b>{{ d6 }}</b></span>
+                        <span style="text-align: center; font-size: 18px; text-align: center;" class="value"><b>{{ d6 }}</b></span>
                     </td>
                     <td style="width: 33.33%; text-align: center;">
-                        <span style="display: flex; justify-content: center; align-items: center; font-size: 18px; text-align: center;" class="value"><b>{{ d5 }}</b></span>
+                        <span style="text-align: center; font-size: 18px; text-align: center;" class="value"><b>{{ d5 }}</b></span>
                     </td>
                     <td style="width: 33.33%; text-align: center;">
-                        <span style="display: flex; justify-content: center; align-items: center; font-size: 18px; text-align: center;" class="value"><b>{{ d4 }}</b></span>
+                        <span style="text-align: center; font-size: 18px; text-align: center;" class="value"><b>{{ d4 }}</b></span>
                     </td>
                 </tr>
                 <tr style="background-color: transparent;">
@@ -140,14 +159,14 @@
             </table>
             <table style="border: 0px; background-color: transparent;">
                 <tr style="background-color: transparent;">
-                    <td style="width: 33.33%; text-align: center;">
-                        <span style="display: flex; justify-content: center; align-items: center; font-size: 18px; text-align: center;" class="value"><b>{{ d3 }}</b></span>
+                    <td style="text-align: center; width: 33.33%; text-align: center;">
+                        <span style="font-size: 18px; text-align: center;" class="value"><b>{{ d3 }}</b></span>
                     </td>
                     <td style="width: 33.33%; text-align: center;">
-                        <span style="display: flex; justify-content: center; align-items: center; font-size: 18px; text-align: center;" class="value"><b>{{ d2 }}</b></span>
+                        <span style="text-align: center; font-size: 18px; text-align: center;" class="value"><b>{{ d2 }}</b></span>
                     </td>
                     <td style="width: 33.33%; text-align: center;">
-                        <span style="display: flex; justify-content: center; align-items: center; font-size: 18px; text-align: center;" class="value"><b>{{ d1 }}</b></span>
+                        <span style="text-align: center; font-size: 18px; text-align: center;" class="value"><b>{{ d1 }}</b></span>
                     </td>
                 </tr>
                 <tr style="background-color: transparent;">

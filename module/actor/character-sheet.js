@@ -493,10 +493,10 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
       if (myMalusStatutVal.charAt(0) == "-")  {
-        myNombreDeMalusStatut++;
+        myNombreDeMalusStatut = parseInt(myMalusStatutVal);
       }
     };
-    total -= myNombreDeMalusStatut;
+    total += myNombreDeMalusStatut; // déjà négatif !
 
 
     // console.log("total = ", total);
@@ -980,10 +980,10 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
       if (myMalusStatutVal.charAt(0) == "-") {
-        myNombreDeMalusStatut++;
+        myNombreDeMalusStatut = parseInt(myMalusStatutVal);
       }
     };
-    total -= myNombreDeMalusStatut;
+    total += myNombreDeMalusStatut; // déjà négatif !
     
 
     // console.log("total = ", total);
@@ -3539,10 +3539,10 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
       if (myMalusStatutVal.charAt(0) == "-") {
-        myNombreDeMalusStatut++;
+        myNombreDeMalusStatut = parseInt(myMalusStatutVal);
       }
     };
-    total -= myNombreDeMalusStatut;
+    total += myNombreDeMalusStatut; // déjà négatif !
     
 
     // console.log("total = ", total);

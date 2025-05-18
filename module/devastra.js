@@ -3089,11 +3089,11 @@ async function _treatSkillDiceRollDefenceDialog(
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
       if (myMalusStatutVal.charAt(0) == "-")  {
-        myNombreDeMalusStatut++;
+        myNombreDeMalusStatut = parseInt(myMalusStatutVal);
       }
     };
 
-    defence -= myNombreDeMalusStatut;
+    defence = myNombreDeMalusStatut; // déjà négatif !
     
 
 
@@ -4381,7 +4381,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
     let myNombreDeMalusStatut = 0;
     if (myMalusStatutCheck) {
       if (myMalusStatutVal.charAt(0) == "-")  {
-        myNombreDeMalusStatut++;
+        myNombreDeMalusStatut = parseInt(myMalusStatutVal);
       }
     };
     // console.log("myMalusStatutCheck = ", myMalusStatutCheck);
@@ -4390,7 +4390,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
 
     // console.log("myNombreDeMalusStatut = ", myNombreDeMalusStatut);
 
-    defence -= myNombreDeMalusStatut;
+    defence = myNombreDeMalusStatut; // déjà négatif !
     
 
 
