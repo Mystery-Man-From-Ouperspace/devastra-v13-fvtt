@@ -3093,7 +3093,7 @@ async function _treatSkillDiceRollDefenceDialog(
       }
     };
 
-    defence = myNombreDeMalusStatut; // déjà négatif !
+    defence += myNombreDeMalusStatut; // déjà négatif !
     
 
 
@@ -4390,7 +4390,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
 
     // console.log("myNombreDeMalusStatut = ", myNombreDeMalusStatut);
 
-    defence = myNombreDeMalusStatut; // déjà négatif !
+    defence += myNombreDeMalusStatut; // déjà négatif !
     
 
 
