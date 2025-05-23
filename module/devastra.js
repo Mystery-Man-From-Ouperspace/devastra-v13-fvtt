@@ -471,6 +471,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
 
       var myActorId = "";
       var theActiveActor = null;
+      var opponentFlag = false;
       var tokenFlag = false;
       var myToken = null;
       var thatToken = null;
@@ -481,6 +482,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
+        opponentFlag = true;
         theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
@@ -845,6 +847,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       
       var myActorId = "";
       var theActiveActor = null;
+      var opponentFlag = false;
       var tokenFlag = false;
       var myToken = null;
       var thatToken = null;
@@ -855,6 +858,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
+        opponentFlag = true;
         theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
@@ -956,6 +960,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
 
       var myActorId = "";
       var theActiveActor = null;
+      var opponentFlag = false;
       var tokenFlag = false;
       var myToken = null;
       var thatToken = null;
@@ -966,6 +971,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
+        opponentFlag = true;
         theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
@@ -1059,6 +1065,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
 
       var myActorId = "";
       var theActiveActor = null;
+      var opponentFlag = false;
       var tokenFlag = false;
       var myToken = null;
       var thatToken = null;
@@ -1069,6 +1076,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
+        opponentFlag = true;
         theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
@@ -1150,6 +1158,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
 
       var myActorId = "";
       var theActiveActor = null;
+      var opponentFlag = false;
       var tokenFlag = false;
       var myToken = null;
       var thatToken = null;
@@ -1160,6 +1169,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       theActiveActor = game.actors.get(myActorId);
       } else {
         myActorId = opposantficheId;
+        opponentFlag = true;
         theActiveActor = game.actors.get(myActorId);
         thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
         for (let theToken in thisTokens) {
@@ -1194,7 +1204,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       let theShakti = "0";
       if (shakti != "") theShakti = shakti;
 
-      if (tokenFlag) {
+      if (opponentFlag) {
 
         _showCalculateShaktiInChat(
           theActiveActor, nd, total, attaquantficheId, opposantficheId, opposanttokenId,
@@ -1240,6 +1250,7 @@ async function _showCalculateDamageInChat (
 
   var myActorId = "";
   var theActiveActor = null;
+  var opponentFlag = false;
   var tokenFlag = false;
   var myToken = null;
   var thatToken = null;
@@ -1250,6 +1261,7 @@ async function _showCalculateDamageInChat (
   theActiveActor = game.actors.get(myActorId);
   } else {
     myActorId = opposantficheId;
+    opponentFlag = true;
     theActiveActor = game.actors.get(myActorId);
     thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
     for (let theToken in thisTokens) {
@@ -1522,7 +1534,7 @@ async function _showCalculateDamageInChat (
   // Ici on calcul le total d'armure du défenseur
   let totalArmor = 0;
 
-  if (tokenFlag) {
+  if (opponentFlag) {
 
     // console.log("consideropponentprotection = ", consideropponentprotection);
     // console.log("opposantficheId = ", opposantficheId);
@@ -1631,6 +1643,7 @@ async function _showCalculateShaktiInChat (
 
   var myActorId = "";
   var theActiveActor = null;
+  var opponentFlag = false;
   var tokenFlag = false;
   var myToken = null;
   var thatToken = null;
@@ -1641,6 +1654,7 @@ async function _showCalculateShaktiInChat (
   theActiveActor = game.actors.get(myActorId);
   } else {
     myActorId = opposantficheId;
+    opponentFlag = true;
     theActiveActor = game.actors.get(myActorId);
     thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
     for (let theToken in thisTokens) {
@@ -1902,7 +1916,7 @@ async function _showCalculateShaktiInChat (
   };
 
   // console.log("pdc = ", pdc);
-  if (tokenFlag) {
+  if (opponentFlag) {
     if (youwin) {
       sentence1 = game.i18n.localize("DEVASTRA.YouWin");
       sentence2 = game.i18n.localize("DEVASTRA.YouArentHit").replace("^0", game.actors.get(attaquantficheId).name);
@@ -2039,6 +2053,7 @@ async function _showCalculateAttacksInChat (
 
   var myActorId = "";
   var theActiveActor = null;
+  var opponentFlag = false;
   var tokenFlag = false;
   var myToken = null;
   var thatToken = null;
@@ -2049,6 +2064,7 @@ async function _showCalculateAttacksInChat (
   theActiveActor = game.actors.get(myActorId);
   } else {
     myActorId = opposantficheId;
+    opponentFlag = true;
     theActiveActor = game.actors.get(myActorId);
     thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
     for (let theToken in thisTokens) {
@@ -2307,7 +2323,7 @@ async function _showCalculateAttacksInChat (
 
   pdcMinusArmor = pdc - 0;
 
-  if (tokenFlag) {
+  if (opponentFlag) {
     if (youwin) {
       sentence1 = game.i18n.localize("DEVASTRA.YouWin");
       sentence2 = game.i18n.localize("DEVASTRA.YouArentHit").replace("^0", game.actors.get(attaquantficheId).name);
@@ -2763,7 +2779,7 @@ async function _treatSkillDiceRollDefenceDialog(
     //////////////////////////////////////////////////////////////////
 
 
-    var nd = myND;
+    var nd = myResultDialog.nd;
     var total = myTotal;
     var attaquantficheId = myAttaquantficheId;
     var opposantficheId = myOpposantficheId;
@@ -2841,7 +2857,7 @@ async function _treatSkillDiceRollDefenceDialog(
 
   } else {
 
-    var nd = myND;
+    var nd = myResultDialog.nd;
     var total = myTotal;
     var attaquantficheId = myAttaquantficheId;
     var opposantficheId = myOpposantficheId;
@@ -3147,7 +3163,7 @@ async function _treatSkillDiceRollDefenceDialog(
 
     var n = {
       myReussite: 0,
-      myND: myND,
+      myND: nd,
       mySixExplo: mySixExploFlag,
       myCinqExplo: myCinqExploFlag,
       nbrRelance: defence,
@@ -3262,7 +3278,7 @@ async function _treatSkillDiceRollDefenceDialog(
     } while (n.nbrRelance);
 
     if (d8check && mySpecialiteFlag) {
-      if (r8._total >= myND) { n.myReussite++ };
+      if (r8._total >= n.myND) { n.myReussite++ };
     }
 
     const rModif = new Roll("0[Défense Réussites]", myActor.getRollData());
@@ -3309,7 +3325,7 @@ async function _treatSkillDiceRollDefenceDialog(
       d8: parseInt(d8_val),
       ci108: ci108,
 
-      nd: myND,
+      nd: nd,
       total: total,
       attaquantficheId: attaquantficheId,
       opposantficheId: opposantficheId,
@@ -3708,7 +3724,7 @@ async function _skillDiceRollDefenceDialog(
   //////////////////////////////////////////////////////////////
   async function _computeResult(myActor, myDialogData, myHtml) {
     const editedData = {
-      nd: myDialogData.nd,
+      nd: await myHtml.find("select[name='nd']").val(),
       
       domains: await myHtml.find("select[name='domains']").val(),
       throw: "defnc",
@@ -3968,7 +3984,7 @@ async function _skillDiceRollDefenceDialogDeblocked(
   //////////////////////////////////////////////////////////////
   async function _computeResult(myActor, myDialogData, myHtml) {
     const editedData = {
-      nd: myDialogData.nd,
+      nd: await myHtml.find("select[name='nd']").val(),
       
       domains: await myHtml.find("select[name='domains']").val(),
       throw: "defnc",
@@ -4070,7 +4086,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
     //////////////////////////////////////////////////////////////////
 
 
-    var nd = myND;
+    var nd = myResultDialog.nd;
     var total = myTotal;
     var attaquantficheId = myAttaquantficheId;
     var opposantficheId = myOpposantficheId;
@@ -4142,7 +4158,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
 
   } else {
 
-    var nd = myND;
+    var nd = myResultDialog.nd;
     var total = myTotal;
     var attaquantficheId = myAttaquantficheId;
     var opposantficheId = myOpposantficheId;
@@ -4429,7 +4445,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
     };
 
 
-      if (suite.length >= 2) {
+    if (suite.length >= 2) {
       suite += "%";
       suite = suite.replace(', %', ']');
     } else {
@@ -4438,7 +4454,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
 
     var n = {
       myReussite: 0,
-      myND: myND,
+      myND: nd,
       mySixExplo: mySixExploFlag,
       myCinqExplo: myCinqExploFlag,
       nbrRelance: defence,
@@ -4568,7 +4584,7 @@ async function _treatSkillDiceRollDefenceNPCDialog(
     const myDefence = theDefence; // calculé (lancer de dés)
 
     const smartData = {
-      nd: myND,
+      nd: nd,
       total: total,
       attaquantficheId: attaquantficheId,
       opposantficheId: opposantficheId,
@@ -4854,7 +4870,7 @@ async function _skillDiceRollDefenceNPCDialog(
   //////////////////////////////////////////////////////////////
   async function _computeResult(myActor, myDialogData, myHtml) {
     const editedData = {
-      nd: myDialogData.nd,
+      nd: await myHtml.find("select[name='nd']").val(),
       
       domains: await myHtml.find("select[name='domains']").val(),
       throw: "defnc",
@@ -5081,7 +5097,7 @@ async function _skillDiceRollDefenceNPCDialogDeblocked(
   //////////////////////////////////////////////////////////////
   async function _computeResult(myActor, myDialogData, myHtml) {
     const editedData = {
-      nd: myDialogData.nd,
+      nd: await myHtml.find("select[name='nd']").val(),
       
       domains: await myHtml.find("select[name='domains']").val(),
       throw: "defnc",
@@ -5154,6 +5170,7 @@ async function _showAppliedDamageInChat(
 
   var myActorId = "";
   var theActiveActor = null;
+  var opponentFlag = false;
   var tokenFlag = false;
   var myToken = null;
   var thatToken = null;
@@ -5164,6 +5181,7 @@ async function _showAppliedDamageInChat(
   theActiveActor = game.actors.get(myActorId);
   } else {
     myActorId = opposantficheId;
+    opponentFlag = true;
     theActiveActor = game.actors.get(myActorId);
     thisTokens = game.actors.get(myActorId).getActiveTokens(false, false);
     for (let theToken in thisTokens) {

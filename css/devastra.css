@@ -1501,6 +1501,57 @@ cursor: pointer;
 
 
 /* concerne le tchat */
+.devastra-result-window b.text-blue{
+  color: rgb(0, 103, 146);
+}
+
+
+.devastra-result-window img.plate-d8 {
+  text-align: center;
+  width: 100%; /* 70% ? */
+  border: 0px;
+  padding: 10px;
+}
+
+.devastra-result-window img.plate {
+  text-align: center;
+  width: 100%; /* 70% ? */
+  border: 0px;
+  padding: 10px;
+}
+
+.devastra-result-window img.plate-domain {
+  text-align: center;
+  width: 100%;
+  border: 0px;
+  padding: 0px;
+}
+
+.devastra-result-window img.plate-defence {
+  text-align: center;
+  width: 90%;
+  border: 0px;
+  padding: 2px;
+}
+
+
+.devastra-result-window td.tiers-centre {
+  width: 33.33%;
+  text-align: center;
+}
+
+.devastra-result-window td.width38pc {
+  width: 32%;
+}
+
+.devastra-result-window td.width25px {
+  width: 65px;
+}
+
+.devastra-result-window span.font-18 {
+  font-size: 18px;
+  text-align: center;
+}
 
 .devastra-result-window table.devastra-no-rich {
   border: 0px;
@@ -1511,6 +1562,7 @@ cursor: pointer;
 background-color: transparent;
 }
 
+/*
 .devastra-result-window div.devastra-moon {
   border-width: 0px;
   display: flex;
@@ -1536,6 +1588,7 @@ background-color: transparent;
   border-width: 0px;
   filter: drop-shadow(0px 0px 15px rgb(0, 103, 146));
 }
+*/
 
 /*  */
 

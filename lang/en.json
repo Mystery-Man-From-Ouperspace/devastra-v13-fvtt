@@ -3,16 +3,19 @@
   "DEVASTRA.AntreMondeSpeech": "Antre Monde Éditions and Mystery Man From Outerspace (the programmer) authorize the use of this Devâstra system for Foundry VTT for private game parties but also for live or replayed free of charge actual play – on streaming platforms and video hosting websites – on condition that Devâstra, Antre Monde Éditions and Mystery Man From Outerspace are mentioned.",
   "DEVASTRA.AntreMondeSpeechSuite": "This use cannot be considered as a transfer of rights, but as a tolerance of use.",
   "DEVASTRA.AntreMonde": "Need to Be Known in Case of Public Use",
-  "DEVASTRA.AcheterCompendium": "Buy Devâstra Fr Compendium Packs",
-  "DEVASTRA.SiteWebEditeur": "Go to Publisher's Fr Website",
-  "DEVASTRA.SiteWebDevastra": "Go to Devâstra Fr Website",
+  "DEVASTRA.Links.AcheterCompendium": "Buy Devâstra Fr Compendium Packs",
+  "DEVASTRA.Links.SiteWebEditeur": "Go to Publisher’s Fr Website",
+  "DEVASTRA.Links.SiteWebDevastra": "Go to Devâstra Fr Website",
+  "DEVASTRA.Links.AcheterCompendiumURL": "https://antre-monde.com/",
+  "DEVASTRA.Links.SiteWebEditeurURL": "https://antre-monde.com/",
+  "DEVASTRA.Links.SiteWebDevastraURL": "https://antre-monde.com/",
 
   "DEVASTRA.AutoriserJoueusesModifItems": "Les Joueuses modifent les items",
   "DEVASTRA.CocherOptionAutoriseraJoueuses": 
   "Cocher cette option autorisera les Joueuses à modifier les données (zones de descriptifs et paramètres) de leurs items tels que : Devâstras, pouvoirs, magies, dharmas, karmas, enseignements, statuts et équipements.",
 
-  "DEVASTRA.SonoriserInterfaceMandala": "Sonoriser l′interface du Mandala",
-  "DEVASTRA.DecocherOptionRendraInterfaceSilencieuse": "Décocher cette option rendra l′interface du Mandala  silencieuse (aucun effet sonore)",
+  "DEVASTRA.SonoriserInterfaceMandala": "Sonoriser l’interface du Mandala",
+  "DEVASTRA.DecocherOptionRendraInterfaceSilencieuse": "Décocher cette option rendra l’interface du Mandala silencieuse (aucun effet sonore)",
 
   "DEVASTRA.ChakraWheel": "Activer plutôt la roue de pause Chakras",
   "DEVASTRA.CheckingOptionEnablesChakraWheelInsteadOfDevasFaceWheel":
@@ -384,7 +387,7 @@
   "DEVASTRA.MalusDeBlessure": "Tenir compte des malus de Blessures :",
   "DEVASTRA.MalusDeStatut": "Tenir compte du malus de Statuts concernant le Domaine :",
   "DEVASTRA.StatutAAppliquer": "Statut à appliquer pour ce jet",
-    "DEVASTRA.AppliquerStatutMemeNom": "Appliquer tous les Statuts de même nom",
+  "DEVASTRA.AppliquerStatutMemeNom": "Appliquer tous les Statuts de même nom",
   "DEVASTRA.BonusAAppliquer": "Dés bonus supplémentaires à appliquer :",
   "DEVASTRA.DEBRIDE_MalusAAppliquer": "Total des dés malus à appliquer :",
   "DEVASTRA.MalusAAppliquer": "Dés malus supplémentaires à appliquer :",

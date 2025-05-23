@@ -1,18 +1,21 @@
 {
   "DEVASTRA.LiensUtiles": "Liens Utiles",
-  "DEVASTRA.AntreMondeSpeech": "Antre Monde Éditions et Mystery Man From Outerspace (le programmeur) autorisent l'utilisation de ce système Devâstra pour Foundry VTT à destination de parties privées mais aussi lors d'actual play, en live ou redifféré gratuit, sur les plateformes de streaming et sites web d'hébergement vidéo à la condition que soient mentionnés Devâstra, Antre Monde Éditions et Mystery Man From Outerspace.",
-  "DEVASTRA.AntreMondeSpeechSuite": "Cette utilisation ne peut être considérée comme une cession de droit, mais une tolérance d'usage.",
-  "DEVASTRA.AntreMonde": "À savoir en cas d'utilisation publique",
-  "DEVASTRA.AcheterCompendium": "Acheter compendiums pour Devâstra",
-  "DEVASTRA.SiteWebEditeur": "Site web de l'éditeur",
-  "DEVASTRA.SiteWebDevastra": "Site web de Devâstra",
+  "DEVASTRA.AntreMondeSpeech": "Antre Monde Éditions et Mystery Man From Outerspace (le programmeur) autorisent l’utilisation de ce système Devâstra pour Foundry VTT à destination de parties privées mais aussi lors d’actual play, en live ou redifféré gratuit, sur les plateformes de streaming et sites web d’hébergement vidéo à la condition que soient mentionnés Devâstra, Antre Monde Éditions et Mystery Man From Outerspace.",
+  "DEVASTRA.AntreMondeSpeechSuite": "Cette utilisation ne peut être considérée comme une cession de droit, mais une tolérance d’usage.",
+  "DEVASTRA.AntreMonde": "À savoir en cas d’utilisation publique",
+  "DEVASTRA.Links.AcheterCompendium": "Acheter compendiums Devâstra",
+  "DEVASTRA.Links.SiteWebEditeur": "Site web de l’éditeur",
+  "DEVASTRA.Links.SiteWebDevastra": "Site web de Devâstra",
+  "DEVASTRA.Links.AcheterCompendiumURL": "https://antre-monde.com/",
+  "DEVASTRA.Links.SiteWebEditeurURL": "https://antre-monde.com/",
+  "DEVASTRA.Links.SiteWebDevastraURL": "https://antre-monde.com/",
 
   "DEVASTRA.AutoriserJoueusesModifItems": "Les Joueuses modifent les items",
   "DEVASTRA.CocherOptionAutoriseraJoueuses": 
   "Cocher cette option autorisera les Joueuses à modifier les données (zones de descriptifs et paramètres) de leurs items tels que : Devâstras, pouvoirs, magies, dharmas, karmas, enseignements, statuts et équipements.",
 
-  "DEVASTRA.SonoriserInterfaceMandala": "Sonoriser l′interface du Mandala",
-  "DEVASTRA.DecocherOptionRendraInterfaceSilencieuse": "Décocher cette option rendra l′interface du Mandala silencieuse (aucun effet sonore)",
+  "DEVASTRA.SonoriserInterfaceMandala": "Sonoriser l’interface du Mandala",
+  "DEVASTRA.DecocherOptionRendraInterfaceSilencieuse": "Décocher cette option rendra l’interface du Mandala silencieuse (aucun effet sonore)",
 
   "DEVASTRA.ChakraWheel": "Activer plutôt la roue de pause Chakras",
   "DEVASTRA.CheckingOptionEnablesChakraWheelInsteadOfDevasFaceWheel":
@@ -92,7 +95,7 @@
   "DEVASTRA.ConvictionScore": "Score – Chakra × 2",
   "DEVASTRA.PranaScore": "Score – Chakra × 10 + somme des 5 Domaines",
   "DEVASTRA.AtmanScore": "Score – Chakra × 5 + DMy + bonus de Devâstra",
-  "DEVASTRA.BonusReserveAtmanDevastra": "Bonus à la réserve d′Âtman octroyé par la Devâstra",
+  "DEVASTRA.BonusReserveAtmanDevastra": "Bonus à la réserve d’Âtman octroyé par la Devâstra",
   "DEVASTRA.BonusDevastra": "Bonus Devâstra",
   "DEVASTRA.InitiativeScore": "Score – Chakra",
   "DEVASTRA.TranscendantScore": "Transcendant (> 100%)",
@@ -117,7 +120,7 @@
   "DEVASTRA.ClicObtenirJetonAction": "Cliquez ici (en début de tour) pour obtenir 1 Jeton d’Action",
 
   "DEVASTRA.TokenPile": "Pile de Jetons",
-  "DEVASTRA.TokenBonusInitiativePile": "Pile de Jetons de bonus d′initiative",
+  "DEVASTRA.TokenBonusInitiativePile": "Pile de Jetons de bonus d’initiative",
   "DEVASTRA.TokenConvictionPile": "Pile de Jetons de conviction",
 
   "DEVASTRA.TokenPileShakti": "Shakti initiale – DMa + jet de concentration DIn (Initiative) vs/ 3",
@@ -150,18 +153,18 @@
   "DEVASTRA.Items": "Équipements",
 
   "DEVASTRA.ItemCreate": "Créer un Équipement",
-  "DEVASTRA.ItemRead": "Consulter l′Équipement",
-  "DEVASTRA.ItemEdit": "Modifier l′Équipement",
-  "DEVASTRA.ItemDelete": "Supprimer l′Équipement",
+  "DEVASTRA.ItemRead": "Consulter l’Équipement",
+  "DEVASTRA.ItemEdit": "Modifier l’Équipement",
+  "DEVASTRA.ItemDelete": "Supprimer l’Équipement",
   "DEVASTRA.ItemNew": "Nouvel Équipement",
 
   "DEVASTRA.Enseignements": "Enseignements",
   "DEVASTRA.EnseignementsAbbr": "Enseignem.",
 
   "DEVASTRA.EnseignementCreate": "Créer un Enseignement",
-  "DEVASTRA.EnseignementRead": "Consulter l′Enseignement",
-  "DEVASTRA.EnseignementEdit": "Modifier l′Enseignement",
-  "DEVASTRA.EnseignementDelete": "Supprimer l′Enseignement",
+  "DEVASTRA.EnseignementRead": "Consulter l’Enseignement",
+  "DEVASTRA.EnseignementEdit": "Modifier l’Enseignement",
+  "DEVASTRA.EnseignementDelete": "Supprimer l’Enseignement",
   "DEVASTRA.EnseignementNew": "Nouvel Enseignement",
 
   "DEVASTRA.DevastraOuAsurastra": "Devâstra ou Asurâstra",
@@ -235,7 +238,7 @@
 
   "DEVASTRA.Chakra": "Chakra",
 
-  "DEVASTRA.TypeOfItem": "Type d′Équipement :",
+  "DEVASTRA.TypeOfItem": "Type d’Équipement :",
   "DEVASTRA.Weapon": "Arme standard",
   "DEVASTRA.Asurastra": "Asurâstra",
   "DEVASTRA.Aryastra": "Âryâstra",
@@ -287,8 +290,8 @@
 
 
   "DEVASTRA.Initiative": "Initiative",
-  "DEVASTRA.Initiative_totale": "Total d′Initiative",
-  "DEVASTRA.Armure_total": "Total d′Armure",
+  "DEVASTRA.Initiative_totale": "Total d’Initiative",
+  "DEVASTRA.Armure_total": "Total d’Armure",
 
 
   "DEVASTRA.Validate": "Valider",
@@ -330,7 +333,7 @@
   "DEVASTRA.YouReHit": "^0 vous a touché·e/atteint·e.",
   "DEVASTRA.YouArentHit": "Vous parez les coups assénés par ^0.",
 
-  "DEVASTRA.YouReWounded": "Il·elle vous porte ^0 points de dégât (votre total d’armure n′a pas encore été pris en compte).",
+  "DEVASTRA.YouReWounded": "Il·elle vous porte ^0 points de dégât (votre total d’armure n’a pas encore été pris en compte).",
   "DEVASTRA.YouArentWounded":  "Vous n’encaissez aucun point de dégât.",
 
   "DEVASTRA.OnlyCanDM": "Applicable uniquement par le MJ",
@@ -357,9 +360,9 @@
   "DEVASTRA.ApplyDamage": "Appliquer Dégâts",
 
   "DEVASTRA.ApplyDefence": "Appliquer Défense",
-  "DEVASTRA.AskYourGMApplyDefences": "Demandez à votre MJ d′appliquer manuellement votre Défense à l’Attaque de votre opposant·e.",
-  "DEVASTRA.AskYourGMApplyAttacks": "Demandez à votre MJ d′appliquer manuellement votre Attaque à l’ensemble de vos opposant·e·s.",
-  "DEVASTRA.AskYourGMApplyDamage": "Demandez à votre MJ d′appliquer manuellement vos Dégâts à l’ensemble de vos opposant·e·s.",
+  "DEVASTRA.AskYourGMApplyDefences": "Demandez à votre MJ d’appliquer manuellement votre Défense à l’Attaque de votre opposant·e.",
+  "DEVASTRA.AskYourGMApplyAttacks": "Demandez à votre MJ d’appliquer manuellement votre Attaque à l’ensemble de vos opposant·e·s.",
+  "DEVASTRA.AskYourGMApplyDamage": "Demandez à votre MJ d’appliquer manuellement vos Dégâts à l’ensemble de vos opposant·e·s.",
 
   "DEVASTRA.DefenderName": "Opposant : ",
 
@@ -384,7 +387,7 @@
   "DEVASTRA.MalusDeBlessure": "Tenir compte des malus de Blessures :",
   "DEVASTRA.MalusDeStatut": "Tenir compte du malus de Statuts concernant le Domaine :",
   "DEVASTRA.StatutAAppliquer": "Statut à appliquer pour ce jet", 
-  "DEVASTRA.AppliquerStatutMemeNom": "Appliquer tous les Statuts de même nom"
+  "DEVASTRA.AppliquerStatutMemeNom": "Appliquer tous les Statuts de même nom",
   "DEVASTRA.BonusAAppliquer": "Dés bonus supplémentaires à appliquer :",
   "DEVASTRA.DEBRIDE_MalusAAppliquer": "Total des dés malus à appliquer :",
   "DEVASTRA.MalusAAppliquer": "Dés malus supplémentaires à appliquer :",
@@ -394,9 +397,9 @@
   "DEVASTRA.+1SuccesAutomatique": "+1 Succès automatique depuis pile Conviction (sera màj) :",
   "DEVASTRA.+1SuccesAutomatiqueNPC": "+1 Succès automatique depuis Conviction (sera màj) :",
   "DEVASTRA.DEBRIDE_+2DeDAattaque": "Jetons à retirer à la pile Shakti (sera màj selon contenu) :",
-  "DEVASTRA.+2DeDAttaque": "+2D d′attaque depuis pile Shakti (sera màj si attaque) :",
+  "DEVASTRA.+2DeDAttaque": "+2D d’attaque depuis pile Shakti (sera màj si attaque) :",
   "DEVASTRA.DEBRIDE_+2DeDAattaqueNPC": "Points à retirer à la Shakti (sera màj selon contenu) :",
-  "DEVASTRA.+2DeDAttaqueNPC": "+2D d′attaque depuis Shakti (sera màj si attaque) :",
+  "DEVASTRA.+2DeDAttaqueNPC": "+2D d’attaque depuis Shakti (sera màj si attaque) :",
   "DEVASTRA.IgnorerUnMalus(PileMaj)": "Ignorer un malus depuis pile Conviction (dur. : 1 tour, sera màj) :",
   "DEVASTRA.IgnorerUnMalus(PileMaj)NPC": "Ignorer un malus depuis Conviction (durée : 1 tour, sera màj) :",
   "DEVASTRA.DeMalusSupplAIgnorer": "⌞ Dés malus supplémentaires à ignorer pour ce jet",
@@ -411,7 +414,7 @@
   "DEVASTRA.6Explosifs": "Les 6 sont explosifs :",
   "DEVASTRA.DEBRIDE_5Explosifs": "⌞ Les 5 sont explosifs (ne cocher que si les 6 le sont déjà) :",
   "DEVASTRA.5Explosifs": "⌞ Les 5 sont explosifs :",
-  "DEVASTRA.DEBRIDE_DesNonExplosifs": "(À vous de décocher les dés non-explosifs, s′il y a lieu)",
+  "DEVASTRA.DEBRIDE_DesNonExplosifs": "(À vous de décocher les dés non-explosifs, s’il y a lieu)",
   "DEVASTRA.DesnonExplosifs": "Niveaux de dés non-explosifs :",
 
   "DEVASTRA.Exceller": "Exceller [activation Libre]",
@@ -434,23 +437,23 @@
 
   "DEVASTRA.JetDeDes(Parametrez)": "Jet de dés (paramétrez les options)",
 
-  "DEVASTRA.FonctDeverrouillée": "La fonction vient d′être déverrouillée",
-  "DEVASTRA.FonctVerrouillée": "La fonction vient d′être verrouillée",
-  "DEVASTRA.VerrouillerEntreeManuelle": "Verrouiller l′entrée manuelle des jetons des piles Conviction et Shakti",
+  "DEVASTRA.FonctDeverrouillée": "La fonction vient d’être déverrouillée",
+  "DEVASTRA.FonctVerrouillée": "La fonction vient d’être verrouillée",
+  "DEVASTRA.VerrouillerEntreeManuelle": "Verrouiller l’entrée manuelle des jetons des piles Conviction et Shakti",
   "DEVASTRA.DeverrouillerEntreeManuelle": "Entrer manuellement le nombre de jetons des piles Conviction et Shakti",
-  "DEVASTRA.VerifierCoherenceMandala": "Vérifier la cohérence du Mandala des 7 rangs d′action (fonction en cours de développement)",
+  "DEVASTRA.VerifierCoherenceMandala": "Vérifier la cohérence du Mandala des 7 rangs d’action (fonction en cours de développement)",
 
   "DEVASTRA.DepotTrash": "Déposez un jeton ici pour le défausser",
-  "DEVASTRA.DepotAllTrash": "Cliquez ici pour défausser tous les jetons présents sur le Mandala des 7 rangs d′action et sur la pile bonus d′initiative",
+  "DEVASTRA.DepotAllTrash": "Cliquez ici pour défausser tous les jetons présents sur le Mandala des 7 rangs d’action et sur la pile bonus d’initiative",
 
-  "DEVASTRA.PlutotJeton": "Cette opération s′effectue plutôt en procédant à un glisser-déposer de Jeton",
-  "DEVASTRA.PlutotPrompt": "Cette opération s′effectue plutôt en renseignant un prompt de Jet de dés",
+  "DEVASTRA.PlutotJeton": "Cette opération s’effectue plutôt en procédant à un glisser-déposer de Jeton",
+  "DEVASTRA.PlutotPrompt": "Cette opération s’effectue plutôt en renseignant un prompt de Jet de dés",
   "DEVASTRA.PlutotAttaque": "Cette opération vous sera proposée plutôt lorsque vous subirez une Attaque ou ferez un Jet de Défense",
 
   "DEVASTRA.VersionDebridee": "Tout recommencer mais en utilisant plutôt la version non-bridée du prompt",
   "DEVASTRA.AttentionVersionDebridee": "ATTENTION ! VERSION DÉBRIDÉE : PROCÉDEZ AVEC PRUDENCE",
 
-  "DEVASTRA.TotalDEvolution": "Total d′évolution",
+  "DEVASTRA.TotalDEvolution": "Total d’évolution",
   "DEVASTRA.PERestants": "P. E. restants",
 
   "DEVASTRA.PremierChakra": "Premier niveau de Chakra",
@@ -475,11 +478,11 @@
   "DEVASTRA.Duree": "Durée",
   "DEVASTRA.Deva": "Deva",
   "DEVASTRA.Nature": "Nature",
-  "DEVASTRA.BonusReserveAtman": "Bonus à la Réserve d′Âtman",
+  "DEVASTRA.BonusReserveAtman": "Bonus à la Réserve d’Âtman",
   "DEVASTRA.CoutEnAtman": "Coût en Âtman",
 
 
-  "DEVASTRA.Error2": "Jet ou opération annulé par l′utilisateur",
+  "DEVASTRA.Error2": "Jet ou opération annulé par l’utilisateur",
   "DEVASTRA.Error1": "Jet annulé : aucun dé à lancer",
   "DEVASTRA.Info4": "Jetons soustraits à la pile Shakti",
   "DEVASTRA.Error4": "Jet ou opération avorté : pas assez de Jetons dans la pile Shakti",
@@ -487,7 +490,7 @@
   "DEVASTRA.Error5": "Jet ou opération avorté : pas assez de Jetons dans la pile Conviction",
 
   "DEVASTRA.Error9": "Jet ou opération avorté : plus de Jetons de Conviction",
-  "DEVASTRA.Error10": "Jet ou opération avorté : vous n′êtes pas en état ′vulnérable′ ou alors plus de Jetons de Conviction",
+  "DEVASTRA.Error10": "Jet ou opération avorté : vous n’êtes pas en état ′vulnérable′ ou alors plus de Jetons de Conviction",
 
   "DEVASTRA.Info4-npc": "Points soustraits au total de Shakti",
   "DEVASTRA.Error4-npc": "Jet ou opération avorté : pas assez de Points de Shakti",
@@ -501,11 +504,11 @@
   "DEVASTRA.Info8": "Total d’Armure mis à jour",
 
 
-  "DEVASTRA.GMMANAGER.Title": "Rangs d′action Mandala",
+  "DEVASTRA.GMMANAGER.Title": "Rangs d’action Mandala",
   "DEVASTRA.PLAYERSMANAGER.Title": "Mandalas de vos joueuses connectées",
-  "DEVASTRA.GMManager.Title": "Afficher Mandala rangs d′action",
+  "DEVASTRA.GMManager.Title": "Afficher Mandala rangs d’action",
   "DEVASTRA.PlayersManager.Title": "Afficher Mandalas de vos joueuses",
-  "DEVASTRA.SpeechMandala": "Sélectionnez, durant le déroulé du tour en cours, le prochain rang d′action du Mandala (dans l′ordre, de 7 à 1).<br>Ce rang d′action sera matérialisé par un viseur sur le Mandala de tous les Acteurs dont la fenêtre est ouverte.<br>De plus, tous les Acteurs susceptibles d′agir à ce rang d′action apparaîtront en tête de liste du Combat Manager.<br>Cliquez après cela sur le symbole <i class='fas fa-pause'></i> (pause) lorsque que le tour s′achève. Le viseur disparaîtra alors de toutes les fiches.<br><br>Cette fenêtre conservera ses réglages entre deux parties.<br><br>Si cette fenêtre vient à être fermée en cours de partie, vous pourrez la rouvrir en cliquant successivement sur les deux boutons arborant les symboles <i class='fas fa-trillium'></i> et <i class='fa fa-crosshairs-simple'></i>.<br><br>Cliquez plutôt en second sur le symbole <i class='fa-solid fa-users'></i> pour rouvrir la fenêtre des Mandalas de vos joueuses.",
+  "DEVASTRA.SpeechMandala": "Sélectionnez, durant le déroulé du tour en cours, le prochain rang d’action du Mandala (dans l’ordre, de 7 à 1).<br>Ce rang d’action sera matérialisé par un viseur sur le Mandala de tous les Acteurs dont la fenêtre est ouverte.<br>De plus, tous les Acteurs susceptibles d’agir à ce rang d’action apparaîtront en tête de liste du Combat Manager.<br>Cliquez après cela sur le symbole <i class='fas fa-pause'></i> (pause) lorsque que le tour s’achève. Le viseur disparaîtra alors de toutes les fiches.<br><br>Cette fenêtre conservera ses réglages entre deux parties.<br><br>Si cette fenêtre vient à être fermée en cours de partie, vous pourrez la rouvrir en cliquant successivement sur les deux boutons arborant les symboles <i class='fas fa-trillium'></i> et <i class='fa fa-crosshairs-simple'></i>.<br><br>Cliquez plutôt en second sur le symbole <i class='fa-solid fa-users'></i> pour rouvrir la fenêtre des Mandalas de vos joueuses.",
 
 
   "DEVASTRA.typeclassique01": "Type : classique 1",
@@ -535,7 +538,7 @@
   "DEVASTRA.improvisedweapon": "Arme improvisée ou trouvée",
   "DEVASTRA.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger",
   "DEVASTRA.choosefrominventory": "Une arme dans votre inventaire",
-  "DEVASTRA.choosefrominventorydevastra": "Votre Âstra en tant qu′arme (le cas échéant)",
+  "DEVASTRA.choosefrominventorydevastra": "Votre Âstra en tant qu’arme (le cas échéant)",
   "DEVASTRA.choosefrominventorypower": "Un pouvoir de votre Âstra pour occasionner des dégâts",
   "DEVASTRA.choosefrominventorymagic": "Une magie pour occasionner des dégâts",
   "DEVASTRA.choosedamage": "Demandez à votre MJ les dégâts infligeables par cette arme",
@@ -550,35 +553,35 @@
   "DEVASTRA.Statut": "Statut",
   "DEVASTRA.Subtype": "Type",
 
-  "DEVASTRA.MettreAJourTotalArmure": "Mettre à jour le total d′armure",
-  "DEVASTRA.CalculProtection": "Calcul du total d′armure",
-  "DEVASTRA.WhichWeapon": "Choix de l′arme",
+  "DEVASTRA.MettreAJourTotalArmure": "Mettre à jour le total d’armure",
+  "DEVASTRA.CalculProtection": "Calcul du total d’armure",
+  "DEVASTRA.WhichWeapon": "Choix de l’arme",
 
 
-  "DEVASTRA.Alerte": "J′ai besoin de votre confirmation !",
+  "DEVASTRA.Alerte": "J’ai besoin de votre confirmation !",
 
-  "DEVASTRA.OnMetALaPoubelle": "Désirez-vous vraiment vous défausser de tous vos Jetons présents sur le Mandala des 7 rangs d′action ainsi que de ceux sur la pile bonus d′initiative&nbsp;?<br>Ces Jetons iront directement à la corbeille…<br><br><i class='fas fa-triangle-exclamation'></i> Cette action est irréversible (la corbeille est un puits sans fond).",
+  "DEVASTRA.OnMetALaPoubelle": "Désirez-vous vraiment vous défausser de tous vos Jetons présents sur le Mandala des 7 rangs d’action ainsi que de ceux sur la pile bonus d’initiative&nbsp;?<br>Ces Jetons iront directement à la corbeille…<br><br><i class='fas fa-triangle-exclamation'></i> Cette action est irréversible (la corbeille est un puits sans fond).",
 
   "DEVASTRA.InitSpecial": "Vous possédez bien la spécialité Initiative…?",
 
   "DEVASTRA.OnTireLaConcentration": "Désirez-vous vraiment déterminer votre concentration (DIn (Initiative) vs/ 3) et regagner des Jetons de Shakti&nbsp;?<br><br><i class='fas fa-square-info'></i> Si vous êtes au niveau de Prana vaillant, vous gagnez DMa Jetons de Shakti supplémentaires.",
   "DEVASTRA.OnTireLaConcentrationNPC": "Désirez-vous vraiment déterminer votre concentration (DIn (Initiative) vs/ 3) et regagner des Points de Shakti&nbsp;?<br><br><i class='fas fa-square-info'></i> Si vous êtes au niveau de Prana vaillant, vous gagnez DMa Points de Shakti supplémentaires.",
-  "DEVASTRA.OnTireLaShakti": "Désirez-vous vraiment déterminer votre réserve de Shakti initiale&nbsp;?<br>Shakti initiale – DMa + jet de concentration DIn (Initiative) vs/ 3.<br>Tous vos anciens Jetons seront défaussés…<br><br><i class='fas fa-triangle-exclamation'></i> Cette action s′effectue uniquement en début de conflit et est irréversible.",
-  "DEVASTRA.OnTireUnJetonAction": "Désirez-vous vraiment tirer un Jeton Action&nbsp;?<br><br><i class='fas fa-triangle-exclamation'></i> Cette action s′effectue uniquement en début de tour.",
+  "DEVASTRA.OnTireLaShakti": "Désirez-vous vraiment déterminer votre réserve de Shakti initiale&nbsp;?<br>Shakti initiale – DMa + jet de concentration DIn (Initiative) vs/ 3.<br>Tous vos anciens Jetons seront défaussés…<br><br><i class='fas fa-triangle-exclamation'></i> Cette action s’effectue uniquement en début de conflit et est irréversible.",
+  "DEVASTRA.OnTireUnJetonAction": "Désirez-vous vraiment tirer un Jeton Action&nbsp;?<br><br><i class='fas fa-triangle-exclamation'></i> Cette action s’effectue uniquement en début de tour.",
 
   "DEVASTRA.TirageDeJetonsPourLaShakti": "Tirage de jetons pour la Shakti",
-  "DEVASTRA.TirageDeJetonsPourAction": "Tirage d′un jeton Action",
+  "DEVASTRA.TirageDeJetonsPourAction": "Tirage d’un jeton Action",
 
-  "DEVASTRA.SentenceIsNoInventory": "Dégâts de l′arme improvisée de l′attaquant·e (^0 + ^1)",
-  "DEVASTRA.SentenceIsInventory": "Dégâts d′une arme de l′inventaire de l′attaquant·e (^0 + ^1)",
-  "DEVASTRA.SentenceIsDevastra": "Dégâts de l′Âstra de l′attaquant·e (^0 + ^1)",
-  "DEVASTRA.SentenceIsPower": "Dégâts d′un pouvoir de l′attaquant·e (^0 + ^1)",
-  "DEVASTRA.SentenceIsMagic": "Dégâts d′une magie de l′attaquant·e (^0 + ^1)",
+  "DEVASTRA.SentenceIsNoInventory": "Dégâts de l’arme improvisée de l’attaquant·e (^0 + ^1)",
+  "DEVASTRA.SentenceIsInventory": "Dégâts d’une arme de l’inventaire de l’attaquant·e (^0 + ^1)",
+  "DEVASTRA.SentenceIsDevastra": "Dégâts de l’Âstra de l’attaquant·e (^0 + ^1)",
+  "DEVASTRA.SentenceIsPower": "Dégâts d’un pouvoir de l’attaquant·e (^0 + ^1)",
+  "DEVASTRA.SentenceIsMagic": "Dégâts d’une magie de l’attaquant·e (^0 + ^1)",
 
-  "DEVASTRA.ArmorOff": "Votre total d′armure n′est pas pris en compte",
-  "DEVASTRA.ArmorIn": "Votre total d′armure sera pris en compte lors de l′application des dégâts",
-  "DEVASTRA.TotalDamageArmorOff": "Dégâts, total d′armure non-décompté",
-  "DEVASTRA.TotalDamageArmorIn": "Dégâts, total d′armure décompté",
+  "DEVASTRA.ArmorOff": "Votre total d’armure n’est pas pris en compte",
+  "DEVASTRA.ArmorIn": "Votre total d’armure sera pris en compte lors de l’application des dégâts",
+  "DEVASTRA.TotalDamageArmorOff": "Dégâts, total d’armure non-décompté",
+  "DEVASTRA.TotalDamageArmorIn": "Dégâts, total d’armure décompté",
 
   "DEVASTRA.TotalDamage": "Dégâts totaux :",
 
@@ -615,7 +618,7 @@
 
   "DEVASTRA.Blessing": "Bénédiction",
   "DEVASTRA.Blessings": "Bénédictions",
-  "DEVASTRA.BlessingsNotDisplayed": "Les items de Bénédictions et de Malédictions sont appliqués directement aux domaines de la feuille d′acteur mais ne sont pas stockés ici (seulement le dernier et de façon temporaire).",
+  "DEVASTRA.BlessingsNotDisplayed": "Les items de Bénédictions et de Malédictions sont appliqués directement aux domaines de la feuille d’acteur mais ne sont pas stockés ici (seulement le dernier et de façon temporaire).",
   "DEVASTRA.Curse": "Malédiction",
 
   "DEVASTRA.CleInitiatique108": "Lorsqu’un Avatar lance les dés et obtient un 1 (sur un D6) et un 8 (sur son D8 de Spécialité), il peut immédiatement décider de dépenser 1 Shakti (cf p. XX) s’il lui en reste pour former la clé initiatique 108.",

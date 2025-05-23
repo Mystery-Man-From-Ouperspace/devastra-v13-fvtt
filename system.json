@@ -73,7 +73,7 @@
     }
   ],
   "compatibility": {
-    "minimum": "11",
+    "minimum": "13",
     "verified": "13"
   },
   "initiative": 0,
