@@ -1,6 +1,7 @@
 export function initControlButtons() {
   Hooks.on("getSceneControlButtons", (controls) => {
     controls.devastra = {
+      activeTool: "gm_manager",
       name: "devastra",
       title: "Devâstra",
       icon: "fas fa-trillium",
