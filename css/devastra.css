@@ -4,7 +4,7 @@
 
  @font-face {
   font-family: "ModestoPoster";
-  src: url(/systems/devastra/fonts/Modesto%20Poster%20W05%20Regular.ttf);
+  src: url(/systems/devastra/fonts/Modesto-Poster-W05-Regular.ttf);
 }
 
 .devastra .window-content {
@@ -1808,7 +1808,8 @@ h1, h2, h3, h4, h5, h6 {
 .encounter-title,
 .token-name h4,
 .document-name a,
-.compendium-name,
+a.compendium-name,
+a.entry-name,
 .playlist-header h4,
 .sound h4,
 .toolclip h4,
@@ -1817,6 +1818,13 @@ h1, h2, h3, h4, h5, h6 {
 #menu #menu-items li h4 {
   color: #7ed0f6;
 }
+
+a.compendium-name,
+a.entry-name,
+strong.ellipsis {
+  font-family: "ModestoPoster";
+}
+
 
 /*
 .encounter-controls h3 {
