@@ -31,7 +31,7 @@ export class GMManager extends Application {
       classes: ["devastra", "gm-manager"],
       title: game.i18n.localize("DEVASTRA.GMMANAGER.Title"),
       top: 5,
-      left: 315,
+      left: 355,
       width: 315,
       height: "auto",
       resizable: false,
