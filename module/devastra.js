@@ -55,7 +55,7 @@ Hooks.on("renderSettings", (app, html) => {
 <section class="links flexcol">
 <h4 class="divider">`+game.i18n.localize("DEVASTRA.LiensUtiles")+`</h4>
 `
-
+if (game.user.isGM) {
   // Définition troisième bouton
   const linkSection3 = document.createElement("section");
   linkSection3.classList.add("settings", "flexcol");
@@ -83,14 +83,7 @@ Hooks.on("renderSettings", (app, html) => {
   });
   linkSection2.appendChild(button2);
   section.appendChild(linkSection2);
-
-  /*
-  section = section +
-    `
-    <section class="links flexcol">
-    <h4 class="divider">`+game.i18n.localize("DEVASTRA.LiensUtiles")+`&nbsp;<i class="fa-light fa-up-right-from-square"></i>&nbsp;</h4>
-    `
-  */
+}
 
   // Définition premier bouton
   const linkSection = document.createElement("section");
