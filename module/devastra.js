@@ -61,7 +61,7 @@ if (game.user.isGM) {
   linkSection3.classList.add("settings", "flexcol");
   const button3 = document.createElement("button");
   button3.type = "button";
-  button3.innerHTML = `<sup><i class="fa fa-crosshairs-simple"></i></sup>
+  button3.innerHTML = `<sup><i class="fa-solid fa-crosshairs-simple"></i></sup>
 `+game.i18n.localize("DEVASTRA.GMManager.Title");
   button3.addEventListener("click", ev => {
     ev.preventDefault();
@@ -75,7 +75,7 @@ if (game.user.isGM) {
   linkSection2.classList.add("settings", "flexcol");
   const button2 = document.createElement("button");
   button2.type = "button";
-  button2.innerHTML = `<sup><i class="fa fa-users"></i></sup>
+  button2.innerHTML = `<sup><i class="fa-solid fa-users"></i></sup>
 `+game.i18n.localize("DEVASTRA.PlayersManager.Title");
   button2.addEventListener("click", ev => {
     ev.preventDefault();
@@ -84,20 +84,6 @@ if (game.user.isGM) {
   linkSection2.appendChild(button2);
   section.appendChild(linkSection2);
 }
-
-  // Définition premier bouton
-  const linkSection = document.createElement("section");
-  linkSection.classList.add("settings", "flexcol");
-  const button = document.createElement("button");
-  button.type = "button";
-  button.innerHTML = `<img style="border:none; height:1.3rem ;width:auto; top:0rem ; position:relative" src="https://antre-monde.com/wp-content/uploads/2023/02/332223005_752862759877702_5641801807816806966_n.png">
-`+game.i18n.localize("DEVASTRA.Links.SiteWebEditeur")+`<sup><i class="fa-light fa-up-right-from-square"></i></sup>`;
-  button.addEventListener("click", ev => {
-    ev.preventDefault();
-    window.open(game.i18n.localize("DEVASTRA.Links.SiteWebEditeurURL"), "_blank");
-  });
-  linkSection.appendChild(button);
-  section.appendChild(linkSection);
 
   // Définition Speech
   const textSection = document.createElement("section");
@@ -115,6 +101,21 @@ if (game.user.isGM) {
 `
   textSection.appendChild(details);
   section.appendChild(textSection);
+
+  // Définition premier bouton
+  const linkSection = document.createElement("section");
+  linkSection.classList.add("settings", "flexcol");
+  const button = document.createElement("button");
+  button.type = "button";
+  button.innerHTML = `<img style="border:none; height:1.3rem ;width:auto; top:0rem ; position:relative" src="https://antre-monde.com/wp-content/uploads/2023/02/332223005_752862759877702_5641801807816806966_n.png">
+`+game.i18n.localize("DEVASTRA.Links.SiteWebEditeur")+`<sup><i class="fa-light fa-up-right-from-square"></i></sup>`;
+  button.addEventListener("click", ev => {
+    ev.preventDefault();
+    window.open(game.i18n.localize("DEVASTRA.Links.SiteWebEditeurURL"), "_blank");
+  });
+  linkSection.appendChild(button);
+  section.appendChild(linkSection);
+
 
   // Définition des liens
   const linkKeys = [
