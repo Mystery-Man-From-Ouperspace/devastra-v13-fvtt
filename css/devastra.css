@@ -1832,6 +1832,13 @@ strong.ellipsis {
 }
 */
 
+section.sidebar-tab h1.title {
+  letter-spacing: -2.5px;
+}
+section.sidebar-tab h4.divider {
+  font-size: 20px;
+  letter-spacing: -1px;
+}
 
 
 #logo {
