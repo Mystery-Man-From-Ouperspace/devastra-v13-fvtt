@@ -136,7 +136,7 @@
   /* height: 100%; */
   min-height: 1500px;
   height: 100%;
-  width: 710px;
+  width: 700px;
   padding: 2px;
   background-color: white;
   background-position: bottom left; 
@@ -183,7 +183,7 @@
   border: 0;
 }
 
-/* concer les onglets */
+/* concerne les onglets */
 .devastra .sheet-body .tab.devastras,
 .devastra .sheet-body .tab.magies,
 .devastra .sheet-body .tab.dharmas,
@@ -747,7 +747,8 @@ background-color: transparent;
 
 .devastra .sheet-body .chakras .child2 {
   position: absolute;
-  margin-left: -31px;
+  margin-top: -32px;
+  margin-left: -14px;
   color: rgb(0, 103, 146);
   font-size: 32px;
 }

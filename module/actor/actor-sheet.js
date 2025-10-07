@@ -7,7 +7,7 @@ export class DEVASTRAActorSheet extends foundry.appv1.sheets.ActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["devastra", "sheet", "actor"],
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
-      width: 920,
+      width: 930,
       height: 750
     });
   }

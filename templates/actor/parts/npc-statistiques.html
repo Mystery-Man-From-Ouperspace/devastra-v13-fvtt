@@ -7,10 +7,10 @@
       <table class="domain-table-npc" style="display: table; width: 35%;">
         <tr>
           <td class="click clickondie" data-libel-id="{{key}}-puredomain">
-            <img class="d1click" src="systems/devastra/images/ui/d6_fond_transp.png" title="{{ localize 'DEVASTRA.Die' }}{{ localize domain.label }}" alt="Die" />
+            <img class="d1click" src="systems/devastra/images/ui/d6_fond_transp.png" data-tooltip="{{ localize 'DEVASTRA.Die' }}{{ localize domain.label }}" alt="Die" />
           </td>
           <td class="domain-icon">
-            <img src="{{domain.icon}}" title="{{ localize 'DEVASTRA.Icon' }}{{ localize domain.label }}" alt="Icon" />
+            <img src="{{domain.icon}}" data-tooltip="{{ localize 'DEVASTRA.Icon' }}{{ localize domain.label }}" alt="Icon" />
           </td>
         </tr>
       </table>
@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td class="valuedice imageb">
-            <input class="input" type="number" placeholder="0" min="1" max="6" step="1" name="system.domains.{{@key}}.value" value="{{domain.value}}" title="{{ localize 'DEVASTRA.Valeur' }}" />
+            <input class="input" type="number" placeholder="0" min="1" max="6" step="1" name="system.domains.{{@key}}.value" value="{{domain.value}}" data-tooltip="{{ localize 'DEVASTRA.Valeur' }}" />
           </td>
         </tr>
         <tr>
@@ -45,7 +45,7 @@
     <div class="npc-parent">
 
       <div class="npc-child2">
-        <img src="systems/devastra/images/ui/mandala-mute.png" style="padding: 3px;" title="{{ localize 'DEVASTRA.Mandala' }}" alt="Mandala" />
+        <img src="systems/devastra/images/ui/mandala-mute.png" style="padding: 3px;" data-tooltip="{{ localize 'DEVASTRA.Mandala' }}" alt="Mandala" />
       </div>
 
       <div class="npc-child1">
@@ -142,7 +142,7 @@
         </div>
         <div style="float: left; width: 80%;">
           <div class="pranaCol logopranavalue center">
-            <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.value" value="{{systemData.prana.value}}" title="{{ localize 'DEVASTRA.Actuel' }}" />
+            <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.value" value="{{systemData.prana.value}}" data-tooltip="{{ localize 'DEVASTRA.Actuel' }}" />
           </div>
 
           <div class="pranaCol tableauprana">
@@ -158,7 +158,7 @@
                   &gt;&nbsp;100%
                 </td>
                 <td class="logopranaetats2">
-                  <img class="logoPUConviction" title="{{ localize 'DEVASTRA.ConvictionPourSucces' }}" src="systems/devastra/images/ui/icons/Bouclier01.png" alt="Conviction" />
+                  <img class="logoPUConviction" data-tooltip="{{ localize 'DEVASTRA.ConvictionPourSucces' }}" src="systems/devastra/images/ui/icons/Bouclier01.png" alt="Conviction" />
                 </td>
                 <td class="logopranaetats2">
                   <img class="logoetoile" src="systems/devastra/images/ui/icons/Etoile01.png" alt="Etoile" />
@@ -173,10 +173,10 @@
                   {{ localize "DEVASTRA.Vaillant" }}
                 </td>
                 <td class="center">
-                  <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.vaillant" value="{{systemData.prana.vaillant}}" title="{{ localize 'DEVASTRA.Vaillant' }}" />
+                  <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.vaillant" value="{{systemData.prana.vaillant}}" data-tooltip="{{ localize 'DEVASTRA.Vaillant' }}" />
                 </td>
                 <td class="logopranaetats2">
-                  <img class="logoPUConviction" title="{{ localize 'DEVASTRA.ConvictionPourSucces' }}" src="systems/devastra/images/ui/icons/Bouclier01.png" alt="Conviction" />
+                  <img class="logoPUConviction" data-tooltip="{{ localize 'DEVASTRA.ConvictionPourSucces' }}" src="systems/devastra/images/ui/icons/Bouclier01.png" alt="Conviction" />
                 </td>
                 <td class="logopranaetats2">
 
@@ -191,10 +191,10 @@
                   {{ localize "DEVASTRA.Tenace" }}
                 </td>
                 <td class="center">
-                  <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.tenace" value="{{systemData.prana.tenace}}" title="{{ localize 'DEVASTRA.Tenace' }}" />
+                  <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.tenace" value="{{systemData.prana.tenace}}" data-tooltip="{{ localize 'DEVASTRA.Tenace' }}" />
                 </td>
                 <td class="logopranaetats2">
-                  <img class="logobonusexplosif" title="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
+                  <img class="logobonusexplosif" data-tooltip="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
                 </td>
                 <td class="logopranaetats2">
 
@@ -209,10 +209,10 @@
                   {{ localize "DEVASTRA.Affaibli" }}
                 </td>
                 <td class="center">
-                  <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.affaibli" value="{{systemData.prana.affaibli}}" title="{{ localize 'DEVASTRA.Affaibli' }}" />
+                  <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.affaibli" value="{{systemData.prana.affaibli}}" data-tooltip="{{ localize 'DEVASTRA.Affaibli' }}" />
                 </td>
                 <td class="logopranaetats2">
-                  <img class="logobonusexplosif" title="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
+                  <img class="logobonusexplosif" data-tooltip="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
                 </td>
                 <td class="logopranaetats2">
 
@@ -227,13 +227,13 @@
                   {{ localize "DEVASTRA.Vulnérable" }}
                 </td>
                 <td class="center">
-                  <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.vulnerable" value="{{systemData.prana.vulnerable}}" title="{{ localize 'DEVASTRA.Vulnérable' }}" />
+                  <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.vulnerable" value="{{systemData.prana.vulnerable}}" data-tooltip="{{ localize 'DEVASTRA.Vulnérable' }}" />
                 </td>
                 <td class="logopranaetats2">
-                  <img class="logobonusexplosif" title="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
+                  <img class="logobonusexplosif" data-tooltip="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
                 </td>
                 <td class="logopranaetats2">
-                  <img class="logobonusrecoitblessure" title="{{ localize 'DEVASTRA.RecoitBlessure' }}" src="systems/devastra/images/ui/icons/Coeur02.png" alt="Recoit Blessure" />
+                  <img class="logobonusrecoitblessure" data-tooltip="{{ localize 'DEVASTRA.RecoitBlessure' }}" src="systems/devastra/images/ui/icons/Coeur02.png" alt="Recoit Blessure" />
                 </td>
               </tr>
 
@@ -254,7 +254,7 @@
         </div>
         <div style="float: left; width: 80%;">
           <div class="pranaCol logopranavalue center">
-            <input class="input" type="number" placeholder="0" min="0" step="1" name="system.chakra.value" value="{{systemData.chakra.value}}" title="{{ localize 'DEVASTRA.Actuel' }}" />
+            <input class="input" type="number" placeholder="0" min="0" step="1" name="system.chakra.value" value="{{systemData.chakra.value}}" data-tooltip="{{ localize 'DEVASTRA.Actuel' }}" />
           </div>
         </div>
       </div>
@@ -270,7 +270,7 @@
         </div>
         <div style="float: left; width: 80%;">
           <div class="pranaCol logopranavalue center">
-            <input class="input" type="number" placeholder="0" min="0" step="1" name="system.initiative.value" value="{{systemData.initiative.value}}" title="{{ localize 'DEVASTRA.Actuel' }}" />
+            <input class="input" type="number" placeholder="0" min="0" step="1" name="system.initiative.value" value="{{systemData.initiative.value}}" data-tooltip="{{ localize 'DEVASTRA.Actuel' }}" />
           </div>
         </div>
       </div>
@@ -286,7 +286,7 @@
         </div>
         <div style="float: left; width: 80%;">
           <div class="pranaCol logopranavalue center">
-            <input class="input" type="number" placeholder="0" min="0" step="1" name="system.atman.value" value="{{systemData.atman.value}}" title="{{ localize 'DEVASTRA.Actuel' }}" />
+            <input class="input" type="number" placeholder="0" min="0" step="1" name="system.atman.value" value="{{systemData.atman.value}}" data-tooltip="{{ localize 'DEVASTRA.Actuel' }}" />
           </div>
         </div>
       </div>
@@ -304,22 +304,22 @@
           <div style="width: 30%; float: left;">
             <div class="concentrationDiv" style="width: 100%; display: flex;">
               <div  style="width: 35%; display: table;" class="click clickondieconcentration concentrationDie" data-libel-id="concentration-die">
-                <img class="d1click concentrationCol" src="systems/devastra/images/ui/d6_fond_transp.png" title="{{ localize 'DEVASTRA.DeterminerJetConcentrationNPC' }}" alt="Die" />
+                <img class="d1click concentrationCol" src="systems/devastra/images/ui/d6_fond_transp.png" data-tooltip="{{ localize 'DEVASTRA.DeterminerJetConcentrationNPC' }}" alt="Die" />
               </div>
               <div style="width: 65%; float: left;" class="center">
-                <span title="{{ localize 'DEVASTRA.ConcentrationActuelle' }}">{{systemData.initiative.concentration}}</span>
+                <span data-tooltip="{{ localize 'DEVASTRA.ConcentrationActuelle' }}">{{systemData.initiative.concentration}}</span>
               </div>
             </div>
           </div>
           <div style="float: left; width: 50%;">
             <div class="pranaCol logopranavalue center">
-              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.shakti_initiale.value" value="{{systemData.shakti_initiale.value}}" title="{{ localize 'DEVASTRA.Actuel' }}" />
+              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.shakti_initiale.value" value="{{systemData.shakti_initiale.value}}" data-tooltip="{{ localize 'DEVASTRA.Actuel' }}" />
             </div>
           </div>
         </div>
       </div>
       <div style="width: 100%;" class="minitext">
-        <input class="input" type="text" name="system.shakti_initiale.notes" value="{{systemData.shakti_initiale.notes}}" title="{{ localize 'DEVASTRA.Note' }}" />
+        <input class="input" type="text" name="system.shakti_initiale.notes" value="{{systemData.shakti_initiale.notes}}" data-tooltip="{{ localize 'DEVASTRA.Note' }}" />
       </div>
     </div>
   </div>
@@ -333,11 +333,11 @@
       <span class="right"><img style="width: 45px;" class="logoprana padding3px" src="systems/devastra/images/ui/icons/Contact.png" alt="Arme" /></span>
       {{#each devastras as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
-        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+        <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
-          <a class="item-control" title="{{ localize 'DEVASTRA.DevastraEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
-          <a class="item-control" title="{{ localize 'DEVASTRA.DevastraDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.DevastraEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.DevastraDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
         </div>
       </li>
       <div>
@@ -346,7 +346,7 @@
       {{/each}}
     </ol>
     <span>
-      <a class="item-control" title="{{ localize 'DEVASTRA.DevastraCreate' }}" data-action="create" data-type="devastra"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.DevastraCreate" }}</a>
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.DevastraCreate' }}" data-action="create" data-type="devastra"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.DevastraCreate" }}</a>
     </span>
     <br>
     <br>
@@ -354,11 +354,11 @@
       <p class="right"><b>{{ localize "DEVASTRA.Pouvoirs" }}</b></p>
       {{#each pouvoirs as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
-        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+        <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
-          <a class="item-control" title="{{ localize 'DEVASTRA.PouvoirEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
-          <a class="item-control" title="{{ localize 'DEVASTRA.PouvoirDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.PouvoirEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.PouvoirDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
         </div>
       </li>
       <div>
@@ -367,7 +367,7 @@
       {{/each}}
     </ol>
     <span>
-      <a class="item-control" title="{{ localize 'DEVASTRA.PouvoirCreate' }}" data-action="create" data-type="pouvoir"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.PouvoirCreate" }}</a>
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.PouvoirCreate' }}" data-action="create" data-type="pouvoir"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.PouvoirCreate" }}</a>
     </span>
   </div>
 
@@ -381,11 +381,11 @@
         <img style="width: 45px;" class="logoprana padding3px" src="systems/devastra/images/ui/icons/Defense.png" alt="Défense" /></span>
       {{#each equipments as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
-        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+        <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
-          <a class="item-control" title="{{ localize 'DEVASTRA.ItemEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
-          <a class="item-control" title="{{ localize 'DEVASTRA.ItemDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
         </div>
       </li>
       <div>
@@ -394,7 +394,7 @@
       {{/each}}
     </ol>
     <span>
-      <a class="item-control" title="{{ localize 'DEVASTRA.ItemCreate' }}" data-action="create" data-type="item"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.ItemCreate" }}</a>
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemCreate' }}" data-action="create" data-type="item"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.ItemCreate" }}</a>
     </span>
   </div>
 </div>

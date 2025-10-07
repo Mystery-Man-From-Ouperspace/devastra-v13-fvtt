@@ -53,8 +53,45 @@ Hooks.on("renderSettings", (app, html) => {
 
   section.innerHTML = `
 <section class="links flexcol">
-<h4 class="divider">`+game.i18n.localize("DEVASTRA.LiensUtiles")+`&nbsp;<i class="fa-light fa-up-right-from-square"></i>&nbsp;</h4>
+<h4 class="divider">`+game.i18n.localize("DEVASTRA.LiensUtiles")+`</h4>
 `
+
+  // Définition troisième bouton
+  const linkSection3 = document.createElement("section");
+  linkSection3.classList.add("settings", "flexcol");
+  const button3 = document.createElement("button");
+  button3.type = "button";
+  button3.innerHTML = `<sup><i class="fa fa-crosshairs-simple"></i></sup>
+`+game.i18n.localize("DEVASTRA.GMManager.Title");
+  button3.addEventListener("click", ev => {
+    ev.preventDefault();
+    game.devastra.gmManager.render(true);
+  });
+  linkSection3.appendChild(button3);
+  section.appendChild(linkSection3);
+
+  // Définition second bouton
+  const linkSection2 = document.createElement("section");
+  linkSection2.classList.add("settings", "flexcol");
+  const button2 = document.createElement("button");
+  button2.type = "button";
+  button2.innerHTML = `<sup><i class="fa fa-users"></i></sup>
+`+game.i18n.localize("DEVASTRA.PlayersManager.Title");
+  button2.addEventListener("click", ev => {
+    ev.preventDefault();
+    game.devastra.playersManager.render(true);
+  });
+  linkSection2.appendChild(button2);
+  section.appendChild(linkSection2);
+
+  /*
+  section = section +
+    `
+    <section class="links flexcol">
+    <h4 class="divider">`+game.i18n.localize("DEVASTRA.LiensUtiles")+`&nbsp;<i class="fa-light fa-up-right-from-square"></i>&nbsp;</h4>
+    `
+  */
+
   // Définition premier bouton
   const linkSection = document.createElement("section");
   linkSection.classList.add("settings", "flexcol");
@@ -312,7 +349,7 @@ Hooks.once("init", async function () {
 
 
   // Init new buttons for the system
-  initControlButtons();
+  // initControlButtons();
   
 
   // Preload template partials

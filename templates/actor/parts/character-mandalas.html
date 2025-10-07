@@ -1,11 +1,11 @@
 <div>
   <h1 class="tab-sous-titre">{{ localize "DEVASTRA.Mandalas" }}&nbsp;
-    <span class="click clickoneyemandala" title="{{ localize 'DEVASTRA.VerifierCoherenceMandala' }}"><i class="fas fa-eye"></i></span>
-    <span class="click clickonlock" title="{{ localize 'DEVASTRA.Entrée manuelle' }}">
+    <span class="click clickoneyemandala" data-tooltip="{{ localize 'DEVASTRA.VerifierCoherenceMandala' }}"><i class="fas fa-eye"></i></span>
+    <span class="click clickonlock" data-tooltip="{{ localize 'DEVASTRA.Entrée manuelle' }}">
     {{#if locked}}
-    <i class="fas fa-pen" title="{{ localize 'DEVASTRA.DeverrouillerEntreeManuelle' }}"></i>
+    <i class="fas fa-pen" data-tooltip="{{ localize 'DEVASTRA.DeverrouillerEntreeManuelle' }}"></i>
     {{else}}
-    <i class="fas fa-pen-slash" title="{{ localize 'DEVASTRA.VerrouillerEntreeManuelle' }}"></i>
+    <i class="fas fa-pen-slash" data-tooltip="{{ localize 'DEVASTRA.VerrouillerEntreeManuelle' }}"></i>
     {{/if}}
   </span></h1>
 </div>
@@ -64,26 +64,26 @@
           <div class="initiativeCol logo">
             <img class="logoinitiative padding3px" src="systems/devastra/images/ui/icons/Initiative.png" alt="Initiative" />
           </div>
-          <div class="initiativeCol valeur center" title="{{ localize 'DEVASTRA.InitiativeScore' }}">
+          <div class="initiativeCol valeur center" data-tooltip="{{ localize 'DEVASTRA.InitiativeScore' }}">
             <span>{{systemData.initiative.value}}</span>
           </div>
           <div class="initiativeCol">
-            <div class="center" title="{{ localize 'DEVASTRA.ActionsMaxDIn' }}">
+            <div class="center" data-tooltip="{{ localize 'DEVASTRA.ActionsMaxDIn' }}">
               <p>{{systemData.initiative.actionsmax}}</p>
               <p class="textred">{{ localize "DEVASTRA.ActionsMax" }}</p>
             </div>
           </div>
           <div class="concentrationDiv">
             <div class="concentrationCol click clickondieconcentration concentrationDie" data-libel-id="concentration-die">
-              <img class="d1click concentrationCol" src="systems/devastra/images/ui/d6_fond_transp.png" title="{{ localize 'DEVASTRA.DeterminerJetConcentration' }}" alt="Die" />
+              <img class="d1click concentrationCol" src="systems/devastra/images/ui/d6_fond_transp.png" data-tooltip="{{ localize 'DEVASTRA.DeterminerJetConcentration' }}" alt="Die" />
             </div>
             <div class="concentrationCol center">
-              <span title="{{ localize 'DEVASTRA.ConcentrationActuelle' }}">{{systemData.initiative.concentration}}</span>
+              <span data-tooltip="{{ localize 'DEVASTRA.ConcentrationActuelle' }}">{{systemData.initiative.concentration}}</span>
             </div>
           </div>
         </div>
         <div class="jetonDepotInit">
-          <div class="depotInit grab" title="{{ localize 'DEVASTRA.TokenBonusInitiativePile' }}">
+          <div class="depotInit grab" data-tooltip="{{ localize 'DEVASTRA.TokenBonusInitiativePile' }}">
             {{#if bonusinit}}
             <img class="jeton dropshadow" src="systems/devastra/images/ui/JetonShakti.webp" alt="Jeton Shakti" />
             {{else}}
@@ -94,10 +94,10 @@
             +{{systemData.initiative.nbrjetonbonus}}
           </div>
           <div class="depotPoubelle">
-            <img class="jeton" src="systems/devastra/images/ui/Cercle2Poubelle.png" alt="Cercle" title="{{ localize 'DEVASTRA.DepotTrash' }}" />
+            <img class="jeton" src="systems/devastra/images/ui/Cercle2Poubelle.png" alt="Cercle" data-tooltip="{{ localize 'DEVASTRA.DepotTrash' }}" />
           </div>
           <div class="logoPoubelle">
-            <span class="click clickontrash right" title="{{ localize 'DEVASTRA.DepotAllTrash' }}"><i class="fas fa-trash"></i></span>
+            <span class="click clickontrash right" data-tooltip="{{ localize 'DEVASTRA.DepotAllTrash' }}"><i class="fas fa-trash"></i></span>
           </div>
         </div>
       </div>
@@ -195,8 +195,8 @@
               <img class="logoprana padding3px" src="systems/devastra/images/ui/icons/Prana05.png" alt="Prana bleue" />
             </div>
             <div class="pranaCol logopranavalue">
-              <p class="valeur center" title="{{ localize 'DEVASTRA.PranaScore' }}">{{systemData.prana.max}}</p>
-              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.value" value="{{systemData.prana.value}}" title="{{ localize 'DEVASTRA.Actuel' }}" />
+              <p class="valeur center" data-tooltip="{{ localize 'DEVASTRA.PranaScore' }}">{{systemData.prana.max}}</p>
+              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.prana.value" value="{{systemData.prana.value}}" data-tooltip="{{ localize 'DEVASTRA.Actuel' }}" />
             </div>
             <div class="pranaCol tableauprana">
               <table>
@@ -211,7 +211,7 @@
                     &gt;&nbsp;100%
                   </td>
                   <td class="logopranaetats2">
-                    <img class="logoPUConviction" title="{{ localize 'DEVASTRA.ConvictionPourSucces' }}" src="systems/devastra/images/ui/icons/Bouclier01.png" alt="Conviction" />
+                    <img class="logoPUConviction" data-tooltip="{{ localize 'DEVASTRA.ConvictionPourSucces' }}" src="systems/devastra/images/ui/icons/Bouclier01.png" alt="Conviction" />
                   </td>
                   <td class="logopranaetats2">
                     <img class="logoetoile" src="systems/devastra/images/ui/icons/Etoile01.png" alt="Etoile" />
@@ -229,7 +229,7 @@
                     {{systemData.prana.vaillant}}
                   </td>
                   <td class="logopranaetats2">
-                    <img class="logoPUConviction" title="{{ localize 'DEVASTRA.ConvictionPourSucces' }}" src="systems/devastra/images/ui/icons/Bouclier01.png" alt="Conviction" />
+                    <img class="logoPUConviction" data-tooltip="{{ localize 'DEVASTRA.ConvictionPourSucces' }}" src="systems/devastra/images/ui/icons/Bouclier01.png" alt="Conviction" />
                   </td>
                   <td class="logopranaetats2">
 
@@ -247,7 +247,7 @@
                     {{systemData.prana.tenace}}
                   </td>
                   <td class="logopranaetats2">
-                    <img class="logobonusexplosif" title="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
+                    <img class="logobonusexplosif" data-tooltip="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
                   </td>
                   <td class="logopranaetats2">
 
@@ -265,7 +265,7 @@
                     {{systemData.prana.affaibli}}
                   </td>
                   <td class="logopranaetats2">
-                    <img class="logobonusexplosif" title="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
+                    <img class="logobonusexplosif" data-tooltip="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
                   </td>
                   <td class="logopranaetats2">
 
@@ -283,10 +283,10 @@
                     {{systemData.prana.vulnerable}}
                   </td>
                   <td class="logopranaetats2">
-                    <img class="logobonusexplosif" title="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
+                    <img class="logobonusexplosif" data-tooltip="{{ localize 'DEVASTRA.DisposeBonusExplosif' }}" src="systems/devastra/images/ui/icons/De02.png" alt="Bonus explosif" />
                   </td>
                   <td class="logopranaetats2">
-                    <img class="logobonusrecoitblessure" title="{{ localize 'DEVASTRA.RecoitBlessure' }}" src="systems/devastra/images/ui/icons/Coeur02.png" alt="Recoit Blessure" />
+                    <img class="logobonusrecoitblessure" data-tooltip="{{ localize 'DEVASTRA.RecoitBlessure' }}" src="systems/devastra/images/ui/icons/Coeur02.png" alt="Recoit Blessure" />
                   </td>
                 </tr>
 
@@ -303,7 +303,7 @@
               <img class="logoconviction padding3px" src="systems/devastra/images/ui/icons/Bouclier01.png" alt="Conviction" />
             </div>
             <div class="convictionCol valeur center">
-              <p title="{{ localize 'DEVASTRA.ConvictionScore' }}">{{systemData.conviction.value}}</p>
+              <p data-tooltip="{{ localize 'DEVASTRA.ConvictionScore' }}">{{systemData.conviction.value}}</p>
             </div>
             <div class="convictionCol smallText">
               <table>
@@ -313,27 +313,27 @@
                   </th>
                 </tr>
                 <tr>
-                  <td title="{{ localize 'DEVASTRA.Exceller' }}">
+                  <td data-tooltip="{{ localize 'DEVASTRA.Exceller' }}">
                     <b class="click clickplutotprompt">{{ localize "DEVASTRA.[L]" }}</b>&nbsp;{{ localize "DEVASTRA.+1SuccesAutomatique(SiVaillant)" }}
                   </td>
                 </tr>
                 <tr>
-                  <td title="{{ localize 'DEVASTRA.NePasAbandonner' }}">
+                  <td data-tooltip="{{ localize 'DEVASTRA.NePasAbandonner' }}">
                     <b class="click clickplutotprompt">{{ localize "DEVASTRA.[L]"}}</b>&nbsp;{{ localize "DEVASTRA.IgnorerUnMalus" }}
                   </td>
                 </tr>
                 <tr>
-                  <td title="{{ localize 'DEVASTRA.GarderLeRythme' }}">
+                  <td data-tooltip="{{ localize 'DEVASTRA.GarderLeRythme' }}">
                     <b class="click clickobtenirdmashakti">{{ localize "DEVASTRA.[G]"}}</b>&nbsp;{{ localize "DEVASTRA.ObtenirDMaShakti" }}
                   </td>
                 </tr>
                 <tr>
-                  <td title="{{ localize 'DEVASTRA.RecentrerSesChakras' }}">
+                  <td data-tooltip="{{ localize 'DEVASTRA.RecentrerSesChakras' }}">
                     <b class="click clickrecupererdmypluschakraatman">{{ localize "DEVASTRA.[A]" }}</b>&nbsp;{{ localize "DEVASTRA.Recuperer(DMy+Chakra)Atman" }}
                   </td>
                 </tr>
                 <tr>
-                  <td title="{{ localize 'DEVASTRA.ReprendreSonSouffle' }}">
+                  <td data-tooltip="{{ localize 'DEVASTRA.ReprendreSonSouffle' }}">
                     <b class="click clickrecupererdphpluschakraprana">{{ localize "DEVASTRA.[A]" }}</b>&nbsp;{{ localize "DEVASTRA.Recuperer(DPh+Chakra)Prana(SiVulnerable)" }}
                   </td>
                 </tr>
@@ -343,7 +343,7 @@
           </div>
 
           <div class="pileConviction">
-            <div class="columnPile" title="{{ localize 'DEVASTRA.TokenConvictionPile' }}">
+            <div class="columnPile" data-tooltip="{{ localize 'DEVASTRA.TokenConvictionPile' }}">
               {{#if conviction}}
                 <img class="jeton dropshadow" src="systems/devastra/images/ui/JetonConviction.webp" alt="Jeton Conviction" />
               {{else}}    
@@ -352,9 +352,9 @@
             </div>
             <div class="reduit center">
               {{#if locked}}
-              <p title="{{ localize 'DEVASTRA.Restants' }}">{{systemData.conviction.piledejetons}}</p>
+              <p data-tooltip="{{ localize 'DEVASTRA.Restants' }}">{{systemData.conviction.piledejetons}}</p>
               {{else}}
-              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.conviction.piledejetons" value="{{systemData.conviction.piledejetons}}" title="{{ localize 'DEVASTRA.Restants' }}" />
+              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.conviction.piledejetons" value="{{systemData.conviction.piledejetons}}" data-tooltip="{{ localize 'DEVASTRA.Restants' }}" />
               {{/if}}
               &nbsp;
               <p class="textred">{{ localize 'DEVASTRA.Restants' }}</p>
@@ -376,12 +376,12 @@
               <img class="logoatman padding3px" src="systems/devastra/images/ui/icons/Atman.png" alt="Atman" />
             </div>
             <div class="atmanCol2">
-              <p class="valeur center" title="{{ localize 'DEVASTRA.AtmanScore' }}">{{systemData.atman.max}}</p>
-              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.atman.value" value="{{systemData.atman.value}}" title="{{ localize 'DEVASTRA.Actuel' }}" />
+              <p class="valeur center" data-tooltip="{{ localize 'DEVASTRA.AtmanScore' }}">{{systemData.atman.max}}</p>
+              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.atman.value" value="{{systemData.atman.value}}" data-tooltip="{{ localize 'DEVASTRA.Actuel' }}" />
             </div>
             <div class="atmanCol2">
               <p class="valeur center">&nbsp;</p>
-              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.atman.bonus" value="{{systemData.atman.bonus}}" title="{{ localize 'DEVASTRA.BonusReserveAtmanDevastra' }}" />
+              <input class="input" type="number" placeholder="0" min="0" step="1" name="system.atman.bonus" value="{{systemData.atman.bonus}}" data-tooltip="{{ localize 'DEVASTRA.BonusReserveAtmanDevastra' }}" />
               <p class="textred">{{ localize 'DEVASTRA.BonusDevastra' }}</p>  
             </div>
 
@@ -394,11 +394,11 @@
             <div class="shaktiCol columnWrap">
               <img class="logoshakti padding3px" src="systems/devastra/images/ui/icons/Shakti.png" alt="Shakti" />
               <div class="click clickondieshakti shaktiDie" data-libel-id="shakti-die">
-                  <img class="d1click" src="systems/devastra/images/ui/d6_fond_transp.png" title="{{ localize 'DEVASTRA.DeterminerJetShakti' }}" alt="Die" />
+                  <img class="d1click" src="systems/devastra/images/ui/d6_fond_transp.png" data-tooltip="{{ localize 'DEVASTRA.DeterminerJetShakti' }}" alt="Die" />
               </div>
             </div>
             <div class="shaktiCol columnPile">
-              <div class="myPile shaktiJeton grab"  title="{{ localize 'DEVASTRA.TokenPileShakti' }}">
+              <div class="myPile shaktiJeton grab"  data-tooltip="{{ localize 'DEVASTRA.TokenPileShakti' }}">
                 {{#if shakti}}
                   <img class="jeton dropshadow" src="systems/devastra/images/ui/JetonShakti.webp" alt="Jeton Shakti" />
                 {{else}}
@@ -407,16 +407,16 @@
               </div>
               <div class="myPile center">
                 {{#if locked}}
-                <p title="{{ localize 'DEVASTRA.Restants' }}">{{systemData.shakti.piledejetons}}</p>
+                <p data-tooltip="{{ localize 'DEVASTRA.Restants' }}">{{systemData.shakti.piledejetons}}</p>
                 {{else}}
-                <input class="input" type="number" placeholder="0" min="0" step="1" name="system.shakti.piledejetons" value="{{systemData.shakti.piledejetons}}" title="{{ localize 'DEVASTRA.Restants' }}" />
+                <input class="input" type="number" placeholder="0" min="0" step="1" name="system.shakti.piledejetons" value="{{systemData.shakti.piledejetons}}" data-tooltip="{{ localize 'DEVASTRA.Restants' }}" />
                 {{/if}}
                 <p class="textred">{{ localize 'DEVASTRA.Restants' }}</p>
 
               </div>
             </div>
             <div class="shaktiCol reduit">
-              <p class="center" title="{{ localize 'DEVASTRA.ShaktiMax' }}">{{systemData.shakti.max}}</p>
+              <p class="center" data-tooltip="{{ localize 'DEVASTRA.ShaktiMax' }}">{{systemData.shakti.max}}</p>
               <p class="textred">{{ localize 'DEVASTRA.Max' }}</p>
             </div>
             <div class="shaktiCol smallText">
@@ -454,7 +454,7 @@
         <div>
           <h3 class="tab-sous-titre">{{ localize "DEVASTRA.Action" }}</h3>
           <div class="actionDiv">
-            <div class="actionCol actionColJeton columnPile grab" title="{{ localize 'DEVASTRA.TokenPileAction' }}">
+            <div class="actionCol actionColJeton columnPile grab" data-tooltip="{{ localize 'DEVASTRA.TokenPileAction' }}">
               {{#if action}}
                 <img class="jeton dropshadow" src="systems/devastra/images/ui/JetonAction.webp" alt="Jeton Action" />
               {{else}}    
@@ -462,7 +462,7 @@
               {{/if}}
             </div>
             <div class="actionCol click clickdownaction center">
-              <img class="padding10px" title="{{ localize 'DEVASTRA.ClicObtenirJetonAction' }}" src="systems/devastra/images/ui/download.png" alt="Action" />
+              <img class="padding10px" data-tooltip="{{ localize 'DEVASTRA.ClicObtenirJetonAction' }}" src="systems/devastra/images/ui/download.png" alt="Action" />
               <p class="textred">{{ localize 'DEVASTRA.ObtenirJetonAction' }}</p>
             </div>
           </div>

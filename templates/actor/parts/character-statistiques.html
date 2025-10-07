@@ -3,24 +3,24 @@
 <table class="domain-table">
   <tr>
     <td class="click clickondie" data-libel-id="{{key}}-puredomain">
-      <img class="d1click" src="systems/devastra/images/ui/d6_fond_transp.png" title="{{ localize 'DEVASTRA.Die' }}{{ localize domain.label }}" alt="Die" />
+      <img class="d1click" src="systems/devastra/images/ui/d6_fond_transp.png" data-tooltip="{{ localize 'DEVASTRA.Die' }}{{ localize domain.label }}" alt="Die" />
     </td>
     <td class="domain-icon">
-      <img src="{{domain.icon}}" title="{{ localize 'DEVASTRA.Icon' }}{{ localize domain.label }}" alt="Icon" />
+      <img src="{{domain.icon}}" data-tooltip="{{ localize 'DEVASTRA.Icon' }}{{ localize domain.label }}" alt="Icon" />
     </td>
     <td class="label"><b>&nbsp;{{ localize domain.label }}</b></td>
 
     <td style="width: 20px;">
       {{#if (eq domain.bless 'blessed')}}
-      <img src="systems/devastra/images/ui/beni.png" alt="Béni" title="{{ localize 'DEVASTRA.GlisserDeposerBenedictions' }}" />
+      <img src="systems/devastra/images/ui/beni.png" alt="Béni" data-tooltip="{{ localize 'DEVASTRA.GlisserDeposerBenedictions' }}" />
       {{else}}
       {{/if}}
       {{#if (eq domain.bless 'neutral')}}
-      <img src="systems/devastra/images/ui/neutre.png" alt="Neutre" title="{{ localize 'DEVASTRA.GlisserDeposerBenedictions' }}" />
+      <img src="systems/devastra/images/ui/neutre.png" alt="Neutre" data-tooltip="{{ localize 'DEVASTRA.GlisserDeposerBenedictions' }}" />
       {{else}}
       {{/if}}
       {{#if (eq domain.bless 'cursed')}}
-      <img src="systems/devastra/images/ui/maudit.png" alt="Maudit" title="{{ localize 'DEVASTRA.GlisserDeposerBenedictions' }}" />
+      <img src="systems/devastra/images/ui/maudit.png" alt="Maudit" data-tooltip="{{ localize 'DEVASTRA.GlisserDeposerBenedictions' }}" />
       {{else}}
       {{/if}}
     </td>
@@ -34,19 +34,19 @@
     <td class="valuedice imageb">
     <!--  <img src="systems/devastra/images/ui/cercle.png" />
       <div class="stick">&nbsp;</div> -->
-      <input class="input nbre" type="number" placeholder="0" min="1" max="6" step="1" name="system.domains.{{@key}}.value" value="{{domain.value}}" title="{{ localize 'DEVASTRA.Valeur' }}" />
+      <input class="input nbre" type="number" placeholder="0" min="1" max="6" step="1" name="system.domains.{{@key}}.value" value="{{domain.value}}" data-tooltip="{{ localize 'DEVASTRA.Valeur' }}" />
     </td>
     <td class="bonusdice image">
     <!--  <img src="systems/devastra/images/ui/cercle.png" />
       <div class="stick">&nbsp;</div> -->
-      <input class="input nbre" type="number" placeholder="0" min="0" step="1" name="system.domains.{{@key}}.bonusdice" value="{{domain.bonusdice}}" title="{{ localize 'DEVASTRA.DeBonus' }}" />
+      <input class="input nbre" type="number" placeholder="0" min="0" step="1" name="system.domains.{{@key}}.bonusdice" value="{{domain.bonusdice}}" data-tooltip="{{ localize 'DEVASTRA.DeBonus' }}" />
     </td>
     <td class="specialities">
       <input class="input" type="text" placeholder="{{ localize 'DEVASTRA.Specialities' }}…" name="system.domains.{{@key}}.specialities" value="{{domain.specialities}}" />
     </td>
     <td class="bonus"><b>+1 D</b></td>
     <td class="click clickondie" data-libel-id="{{key}}-special">
-      <img class="d2click" src="systems/devastra/images/ui/d6_fond_transp.png" title="{{ localize 'DEVASTRA.DieSP' }}" alt="Die" />
+      <img class="d2click" src="systems/devastra/images/ui/d6_fond_transp.png" data-tooltip="{{ localize 'DEVASTRA.DieSP' }}" alt="Die" />
     </td>
   </tr>
 </table>
@@ -58,11 +58,11 @@
     <ol class="item-list">
       {{#each blessuresoustatuts as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
-        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+        <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
-          <a class="item-control" title="{{ localize 'DEVASTRA.BlessureEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
-          <a class="item-control" title="{{ localize 'DEVASTRA.BlessureDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.BlessureEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.BlessureDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
         </div>
       </li>
       <div>
@@ -72,7 +72,7 @@
       {{/each}}
     </ol>
     <span>
-      <a class="item-control" title="{{ localize 'DEVASTRA.BlessureCreate' }}" data-action="create" data-type="blessureoustatut"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.BlessureCreate" }}</a>
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.BlessureCreate' }}" data-action="create" data-type="blessureoustatut"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.BlessureCreate" }}</a>
     </span> 
   </div>
     <div class="benedictionoumalediction" style="float: left; width: 50%;">
@@ -81,7 +81,7 @@
       {{ localize "DEVASTRA.BlessingsNotDisplayed" }}
       {{#each benedictionsoumaledictions as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
-        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+        <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
       </li>
       <div>
@@ -96,11 +96,11 @@
     <ol class="item-list">
       {{#each enseignements as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
-        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+        <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
-          <a class="item-control" title="{{ localize 'DEVASTRA.EnseignementEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
-          <a class="item-control" title="{{ localize 'DEVASTRA.EnseignementDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.EnseignementEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+          <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.EnseignementDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
         </div>
       </li>
       <div>
@@ -109,7 +109,7 @@
       {{/each}}
     </ol>
     <span>
-      <a class="item-control" title="{{ localize 'DEVASTRA.EnseignementCreate' }}" data-action="create" data-type="enseignement"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.EnseignementCreate" }}</a>
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.EnseignementCreate' }}" data-action="create" data-type="enseignement"><i class="fas fa-plus"></i> {{ localize "DEVASTRA.EnseignementCreate" }}</a>
     </span>
   </div>
 
