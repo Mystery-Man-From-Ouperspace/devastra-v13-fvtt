@@ -210,6 +210,14 @@
   margin-left: -3px;
 }
 
+.devastra .sheet-body .statistiques div.domain-div .input-short {
+  width: 50px;
+}
+
+.devastra .sheet-body .statistiques div.domain-div .left {
+  text-align: left;
+}
+
 .devastra .sheet-body .statistiques table.domain-table .blessavatar {
   width: 65px;
   font-size: 11px;
