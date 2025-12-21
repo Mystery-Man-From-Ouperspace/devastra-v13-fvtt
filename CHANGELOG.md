@@ -1,7 +1,7 @@
 1.0.0
 - Première release "officielle", compatible uniquement à partir de Foundry VTT v13
-- Les boutons pour rouvrir le popup d'intiative et de mandala des joueurs sont de nouveau visibles
-- souci sur la largeur des fiches de PJ corrigé, les dés bleus à droite ne sont "mangés"
+- Les boutons pour rouvrir le popup d'intiative et de mandala des joueuses sont de nouveau visibles
+- souci sur la largeur des fiches de PJ corrigé, les dés bleus à droite ne sont plus "mangés" par le bord
 
 0.1.10bêta
 - Dernière version bêta
