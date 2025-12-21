@@ -3,7 +3,7 @@
 - Les boutons pour rouvrir le popup d'intiative et de mandala des joueuses sont de nouveau visibles
 - Souci sur la largeur des fiches de PJ corrigé, les dés bleus à droite ne sont plus "mangés" par le bord
 
-0.1.10bêta
+0.4.7bêta
 - Dernière version bêta
 
 ---
