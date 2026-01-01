@@ -53,6 +53,7 @@ Hooks.on("renderSettings", (app, html) => {
 
   section.innerHTML = `
 <section class="links flexcol">
+<img class="logo-info" src="systems/devastra/images/ui/logo_jeu.png"></img>
 <h4 class="divider">`+game.i18n.localize("DEVASTRA.LiensUtiles")+`</h4>
 `
 if (game.user.isGM) {
