@@ -2054,3 +2054,7 @@ body.deva-face #pause > img {
   /* max-height: 50px; */
   margin-right: 4px;
 }
+
+#interface .chat-message .message-header .message-sender {
+  width: 100px;
+}
