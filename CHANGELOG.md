@@ -1,3 +1,6 @@
+1.0.2
+- Thème de dés par défaut dans Dice-so-Nice!
+
 1.0.1
 - Ajout avatar dans Tchat
 
