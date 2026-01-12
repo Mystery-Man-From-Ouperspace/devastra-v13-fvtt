@@ -2042,3 +2042,15 @@ body.deva-face #pause > img {
   height: 100%;
   padding: 5px;
 }
+
+
+/* concerne le Tchat */
+
+#interface .chat-message .message-header img {
+  max-width: 80px;
+  border-radius: 5px;
+  border: 0.5px solid rgb(0, 103, 146);;
+  /* max-width: 50px; */
+  /* max-height: 50px; */
+  margin-right: 4px;
+}

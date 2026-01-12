@@ -1,6 +1,8 @@
 import { DEVASTRAActor } from "./actor/actor.js";
 import { DEVASTRAItem } from "./item/item.js";
 
+import { DEVASTRAMessage } from "./chat-message.js";
+
 import { DEVASTRACharacterSheet } from "./actor/character-sheet.js";
 import { DEVASTRAPNJSheet } from "./actor/npc-sheet.js";
 import { DEVASTRAMonsterSheet } from "./actor/monster-sheet.js";
@@ -160,6 +162,9 @@ Hooks.once("init", async function () {
     config: DEVASTRA,
     macros: Macros,
   };
+
+  CONFIG.ChatMessage.documentClass = DEVASTRAMessage;
+
 
   // Define socket
   /*

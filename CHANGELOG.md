@@ -1,3 +1,6 @@
+1.0.1
+- Ajout avatar dans Tchat
+
 1.0.0
 - Première release "officielle", compatible uniquement à partir de Foundry VTT v13
 - Les boutons pour rouvrir le popup d'intiative et de mandala des joueuses sont de nouveau visibles
