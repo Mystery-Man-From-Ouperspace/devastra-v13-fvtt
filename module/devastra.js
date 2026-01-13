@@ -390,8 +390,8 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
    */
   dice3d.addColorset(
     {
-      name: "celestopol1922",
-      description: "Célestopol",
+      name: "devastra",
+      description: "Devâstra",
       foreground: "#f7ef08",
       background: "#284fcc",
       edge: "#284fcc",
