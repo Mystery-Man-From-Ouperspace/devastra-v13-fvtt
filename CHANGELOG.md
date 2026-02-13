@@ -1,3 +1,6 @@
+1.0.3
+- Icône Conviction
+
 1.0.2
 - Thème de dés par défaut dans Dice-so-Nice!
 
