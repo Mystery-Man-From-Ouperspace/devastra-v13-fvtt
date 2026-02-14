@@ -62,7 +62,7 @@
         <h3 class="tab-sous-titre">{{ localize "DEVASTRA.Initiative" }}</h3>
         <div class="initiativeDiv">
           <div class="initiativeCol logo">
-            <img class="logoinitiative padding3px" src="systems/devastra/images/ui/icons/Initiative.png" alt="Initiative" />
+            <img class="logoinitiative padding3px" src="systems/devastra/images/ui/icons/Initiative.png" alt="Initiative" data-tooltip="{{ localize 'DEVASTRA.InitiativeDef' }}" />
           </div>
           <div class="initiativeCol valeur center" data-tooltip="{{ localize 'DEVASTRA.InitiativeScore' }}">
             <span>{{systemData.initiative.value}}</span>
@@ -192,7 +192,7 @@
           <h3 class="tab-sous-titre">{{ localize "DEVASTRA.Prana" }}</h3>
           <div class="pranaDiv">
             <div class="pranaCol logopranableu">
-              <img class="logoprana padding3px" src="systems/devastra/images/ui/icons/Prana05.png" alt="Prana bleue" />
+              <img class="logoprana padding3px" src="systems/devastra/images/ui/icons/Prana05.png" alt="Prana bleue" data-tooltip="{{ localize 'DEVASTRA.PranaDef' }}" />
             </div>
             <div class="pranaCol logopranavalue">
               <p class="valeur center" data-tooltip="{{ localize 'DEVASTRA.PranaScore' }}">{{systemData.prana.max}}</p>
@@ -300,7 +300,7 @@
           <h3 class="tab-sous-titre">{{ localize "DEVASTRA.Conviction" }}</h3>
           <div class="convictionDiv">
             <div class="convictionCol">
-              <img class="logoconviction padding3px" src="systems/devastra/images/ui/icons/Conviction.png" alt="Conviction" />
+              <img class="logoconviction padding3px" src="systems/devastra/images/ui/icons/Conviction.png" alt="Conviction" data-tooltip="{{ localize 'DEVASTRA.ConvictionDef' }}" />
             </div>
             <div class="convictionCol valeur center">
               <p data-tooltip="{{ localize 'DEVASTRA.ConvictionScore' }}">{{systemData.conviction.value}}</p>
@@ -373,7 +373,7 @@
           <h3 class="tab-sous-titre">{{ localize "DEVASTRA.Atman" }}</h3>
           <div class="atmanDiv">
             <div class="atmanCol1">
-              <img class="logoatman padding3px" src="systems/devastra/images/ui/icons/Atman.png" alt="Atman" />
+              <img class="logoatman padding3px" src="systems/devastra/images/ui/icons/Atman.png" alt="Atman" data-tooltip="{{ localize 'DEVASTRA.AtmanDef' }}" />
             </div>
             <div class="atmanCol2">
               <p class="valeur center" data-tooltip="{{ localize 'DEVASTRA.AtmanScore' }}">{{systemData.atman.max}}</p>

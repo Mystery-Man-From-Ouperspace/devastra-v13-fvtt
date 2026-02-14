@@ -824,7 +824,7 @@ background-color: transparent;
   display: flex;
   font-weight: bold;
   margin-top: 45px;
-  margin-left: 185px;
+  margin-left: 185.2px;
 }
 /* Chrome version 29 and above */
 @media screen and (-webkit-min-device-pixel-ratio:0)
@@ -1355,18 +1355,18 @@ flex-wrap: wrap;
 .devastra.sheet.actor.character .body-sheet img.viseur {
   float: left;
   height: 68px;
-  width: 69.75px;
+  width: 69.17px;
 }
 /* Chrome version 29 and above */
 @media screen and (-webkit-min-device-pixel-ratio:0)
 and (min-resolution:.001dpcm) {
   .devastra.sheet.actor.character .body-sheet img.viseur {
-    width: 70.35px;
+    width: 69.2px;
   }
 }
 @supports (-moz-appearance:none) {
   .devastra.sheet.actor.character .body-sheet img.viseur {
-    width: 69.9px;
+    width: 69.2px;
   }
 }
 
@@ -1381,18 +1381,18 @@ and (min-resolution:.001dpcm) {
   font-size: 35px;
   filter: opacity(50%);
   height: 68px;
-  width: 70px;
+  width: 69.43px;
 }
 /* Chrome version 29 and above */
 @media screen and (-webkit-min-device-pixel-ratio:0)
 and (min-resolution:.001dpcm) {
   .devastra.sheet.actor.character .body-sheet span.mandala-decale {
-    width: 70.35px;
+    width: 69.45px;
   }
 }
 @supports (-moz-appearance:none) {
   .devastra.sheet.actor.character .body-sheet span.mandala-decale {
-    width: 70.0px;
+    width: 69.5px;
   }
 }
 
@@ -1771,6 +1771,7 @@ and (min-resolution:.001dpcm) {
   width: 84px;
   filter: opacity(50%);
 }
+/* Chrome version 29 and above */
 @media screen and (-webkit-min-device-pixel-ratio:0)
 and (min-resolution:.001dpcm) {
   .devastra.players-manager .valeur {

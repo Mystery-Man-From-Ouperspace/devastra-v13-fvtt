@@ -1,3 +1,7 @@
+1.0.4
+- Ajout data-tooltip des caractéristiques dérivées sur la fiche d'avatar
+- Correction décalage inesthétique dans l'affichage des actions dans le Mandala pour les PJ (dépend du type de navigateur)
+
 1.0.3
 - Icône Conviction
 
@@ -17,4 +21,4 @@
 
 ---
 Bugs connus et non encore traités
-- Décalage inesthétique dans l'affichage des actions dans le Mandala pour les PJ (dépend du type de navigateur)
+- Trier les pouvoirs de devâstra par niveau sur les fiches d'acteur (ce qui n'est pas encore le cas)
