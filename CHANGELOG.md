@@ -1,9 +1,10 @@
 1.0.5
 - Ajout data-tooltip pour la Shakti sur la fiche d'avatar
+- Ajout Conviction dans la fiche de PNJ (optionnelle)
 - Les items sont maintenant triés par ordre alphabétique dans les listes d'items de la fiche d'avatar
 - Par contre, les items de pouvoir de devâstra sont maintenant triés par niveau dans la liste de pouvoirs de la fiche d'avatar
 - Gestion des items équipés :
-- - Zones différenciée des items équipés et items non-équipés dans la liste d'équipements de la fiche d'avatar
+- - Zones différenciées des items équipés et items non-équipés dans la liste d'équipements de la fiche d'avatar
 - - Case à cocher devans les items (équipés / non-équipés) dans les listes d'items de la fiche d'avatar, de PNJ et de monstre
 - - Les armes et mains nues non-équipées ne sont plus prises en compte pour les attaques de la part des avatars (uniquement)
 - - Les armures et protections non-équipées ne sont plus prises en compte dans le calcul du total d'armure des avatars (uniquement)
