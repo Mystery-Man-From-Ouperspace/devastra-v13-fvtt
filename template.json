@@ -244,6 +244,9 @@
       "chakra": {
         "value": 0
       },
+      "conviction": {
+        "value": 0
+      },
       "armure_total": 0,
       "initiative_totale": 0,
       "type": "human"
@@ -348,6 +351,9 @@
         "notes": ""
       },
       "chakra": {
+        "value": 0
+      },
+      "conviction": {
         "value": 0
       },
       "armure_total": 0,

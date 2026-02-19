@@ -5386,7 +5386,6 @@ async function _showAppliedDamageInChat(
       // console.log("myDevastraDamageBase = ", myDevastraDamageBase);
       // console.log("myDevastraDamage = ", myDevastraDamage);
       sentence2 = game.i18n.localize("DEVASTRA.SentenceIsDevastra").replace("^0", myDevastraDamageBase).replace("^1", myDevastraDamage);
-
     }
 
   }

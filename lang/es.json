@@ -29,11 +29,15 @@
   "DEVASTRA.TakeCareIfAutoPromptUnchecked":
   "Attention ! Si vous décochez cette option, seuil, modificateur, arme, Anomalie, Aspects et Attributs ainsi que bonus et malus supplémentaires, armure et jauges ne pourront plus être pris en compte automatiquement. Seuls les malus de blessures seront décomptés.",
 
+  "DEVASTRA.ConvictionBlablaPNJ": "Quelques rares profils de PNJ disposent d’un score de Conviction. Il s’agit d’une règle optionnelle que le MJ peut choisir d’utiliser ou d’ignorer au début de sa campagne. L’utilisation de la Conviction est réservée aux PNJ majeurs et suit les mêmes règles que pour les PJ.",
+  "DEVASTRA.RangDactionOuInitiative": "Rang d’action ou Initiative",
+
   "DEVASTRA.ChakrasDef": "Les Chakras sont des centres d’énergie vitale alignés le long du corps humain. L’Âtman, qui est à la fois l’âme et la force de vie qui coule en chacun, y est contenue. Ainsi, plus les Chakras sont ouverts et plus la personne a conscience de l’étincelle de Dharma qui est en elle. Le niveau de Chakra mesure la puissance des PJ et PNJ.",
   "DEVASTRA.PranaDef": "Le Prana du PJ n’est autre que sa combativité, la représentation technique de sa capacité à continuer de se dresser contre les divers obstacles que le destin met sur son chemin. Il ne s’agit pas que de combats physiques, car le Prana mesure tout à la fois le souffle, la vitalité et le moral d’un PJ. Le rouge est la couleur symbolisant le Prana.",
   "DEVASTRA.AtmanDef": "L’Âtman est l’étincelle du Dharma qui brille en chaque être, plus ou moins puissamment en fonction de l’ouverture de ses Chakras. Il s’agit de l’énergie intérieure, un flux qui coule dans le corps du PJ et en irradie parfois. Lorsqu’il se manifeste, il prend la forme d’une aura de couleur bleue. L’Âtman permet aux Brahmanes d’utiliser la magie et les Avatars puisent à cette source afin d’alimenter leurs Pouvoirs divins.",
   "DEVASTRA.ConvictionDef": "La Conviction symbolise la croyance du PJ en ses idéaux, sa volonté de se battre pour les siens, sa capacité à se transcender pour la cause à laquelle il se dévoue, en agissant conformément à son éthique de vie. Il s’agit en quelque sorte de ses dernières forces, où il puise la faculté de se dépasser. La Conviction est associée à la couleur verte.",
   "DEVASTRA.InitiativeDef": "L’Initiative. Cette Caractéristique dérivée symbolise la rapidité d’action et de réaction du PJ lors d’un affrontement, qu’il soit physique, magique ou social. Bien que d’autres paramètres entrent en jeu lorsqu’un affrontement débute (cf livret 1 p. 130), c’est le niveau d’éveil – et donc de Chakra – du PJ qui joue un rôle essentiel dans toute interaction avec autrui.",
+  "DEVASTRA.ShaktiDef": "Les jetons de Shakti représentent une forme de supériorité intangible et momentanée : la force, le pouvoir, l’ascendant, le momentum, la capacité à renverser le cours de la bataille en saisissant une opportunité au bon moment.",
 
   "DEVASTRA.(Enfantin)": "- Enfantin",
   "DEVASTRA.(Facile)": "- Facile",
@@ -157,6 +161,10 @@
   
 
   "DEVASTRA.Items": "Équipements",
+  "DEVASTRA.equipedItems": "Équipements équipés",
+  "DEVASTRA.equipedItemsMisc": "Divers",
+  "DEVASTRA.equipedItemsArmors": "Armures & Protections",
+  "DEVASTRA.equipedItemsWeapons": "Armes & Mains nues",
 
   "DEVASTRA.ItemCreate": "Créer un Équipement",
   "DEVASTRA.ItemRead": "Consulter l’Équipement",
@@ -175,6 +183,7 @@
 
   "DEVASTRA.DevastraOuAsurastra": "Devâstra ou Asurâstra",
   "DEVASTRA.ArmesOuProtections": "Armes ou Protections",
+  "DEVASTRA.equipedArmesOuProtections": "Armes ou Protections équipées",
 
   "DEVASTRA.Devastra": "Devâstra",
 
@@ -498,6 +507,8 @@
   "DEVASTRA.Error9": "Jet ou opération avorté : plus de Jetons de Conviction",
   "DEVASTRA.Error10": "Jet ou opération avorté : vous n’êtes pas en état ′vulnérable′ ou alors plus de Jetons de Conviction",
 
+  "DEVASTRA.Error12": "Pensez à recalculer votre total d'armure si l'objet vous sert de protection.",
+
   "DEVASTRA.Info4-npc": "Points soustraits au total de Shakti",
   "DEVASTRA.Error4-npc": "Jet ou opération avorté : pas assez de Points de Shakti",
   "DEVASTRA.Info5-npc": "Points soustraits au total de Conviction",
@@ -510,7 +521,7 @@
   "DEVASTRA.Info8": "Total d’Armure mis à jour",
 
 
-  "DEVASTRA.GMMANAGER.Title": "Rangs d’action Mandala",
+  "DEVASTRA.GMMANAGER.Title": "Rangs d’action",
   "DEVASTRA.PLAYERSMANAGER.Title": "Mandalas de vos joueuses connectées",
   "DEVASTRA.GMManager.Title": "Ouvrir Mandala rangs d’action",
   "DEVASTRA.PlayersManager.Title": "Ouvrir Mandalas de vos joueuses",

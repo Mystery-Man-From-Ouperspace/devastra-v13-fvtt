@@ -1,7 +1,9 @@
 <ol class="item-list">
-  <h1 class="tab-sous-titre">{{ localize "DEVASTRA.Items" }}</h1>
-  {{#each equipments as |item id|}}
+  <h1 class="tab-sous-titre">{{ localize "DEVASTRA.equipedItems" }}</h1>
+  <h3 class="tab-sous-titre">{{ localize "DEVASTRA.equipedItemsWeapons" }}</h1>
+  {{#each equipedequipmentsweapons as |item id|}}
   <li class="item flexrow" data-item-id="{{item._id}}">
+    <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
     <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
     <span class="item-name">{{item.name}}</span>
     <div class="item-controls">
@@ -9,9 +11,75 @@
       <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
     </div>
   </li>
-  <div>
-    {{{ item.system.technique }}}
-  </div>
+  <details>
+    <summary></summary>
+    <div>
+      {{{ item.system.technique }}}
+    </div>
+  </details>
+  {{/each}}
+</ol>
+
+<ol class="item-list">
+  <h3 class="tab-sous-titre">{{ localize "DEVASTRA.equipedItemsArmors" }}</h1>
+  {{#each equipedequipmentsarmors as |item id|}}
+  <li class="item flexrow" data-item-id="{{item._id}}">
+    <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
+    <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
+    <span class="item-name">{{item.name}}</span>
+    <div class="item-controls">
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+    </div>
+  </li>
+  <details>
+    <summary></summary>
+    <div>
+      {{{ item.system.technique }}}
+    </div>
+  </details>
+  {{/each}}
+</ol>
+
+<ol class="item-list">
+  <h3 class="tab-sous-titre">{{ localize "DEVASTRA.equipedItemsMisc" }}</h1>
+  {{#each equipedequipmentsmisc as |item id|}}
+  <li class="item flexrow" data-item-id="{{item._id}}">
+    <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
+    <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
+    <span class="item-name">{{item.name}}</span>
+    <div class="item-controls">
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+    </div>
+  </li>
+  <details>
+    <summary></summary>
+    <div>
+      {{{ item.system.technique }}}
+    </div>
+  </details>
+  {{/each}}
+</ol>
+<br>
+<ol class="item-list">
+  <h1 class="tab-sous-titre">{{ localize "DEVASTRA.Items" }}</h1>
+  {{#each equipments as |item id|}}
+  <li class="item flexrow" data-item-id="{{item._id}}">
+    <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
+    <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
+    <span class="item-name">{{item.name}}</span>
+    <div class="item-controls">
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'DEVASTRA.ItemDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+    </div>
+  </li>
+  <details>
+    <summary></summary>
+    <div>
+      {{{ item.system.technique }}}
+    </div>
+  </details>
   {{/each}}
 </ol>
 <span>

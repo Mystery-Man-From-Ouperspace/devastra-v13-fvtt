@@ -4,6 +4,7 @@
       <h1>{{ localize "DEVASTRA.BlessuresOuStatuts" }}</h1>
       {{#each blessuresoustatuts as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
+        <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
         <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
@@ -49,6 +50,7 @@
       <h1>{{ localize "DEVASTRA.Magies" }}</h1>
       {{#each magies as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
+        <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
         <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
@@ -74,6 +76,7 @@
       <h1>{{ localize "DEVASTRA.EnseignementsAbbr" }}</h1>
       {{#each enseignements as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
+        <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
         <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
@@ -95,11 +98,12 @@
   <div style="float: left; width: 1.5%;">
   </div>
 
-  <div class="domain-div" style="float: left; width: 19%;">
+  <div class="domain-div" style="float: left; width: 18.5%;">
     <ol class="item-list">
       <h1>{{ localize "DEVASTRA.Notes" }}</h1>
       {{#each notes as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
+        <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
         <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">

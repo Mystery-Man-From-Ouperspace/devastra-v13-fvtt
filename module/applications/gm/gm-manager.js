@@ -227,6 +227,7 @@ export class GMManager extends Application {
     let myCombatantActorId;
     let thisActor;
     let thisTokens;
+    let anError;
     let thisCombat;
 
     let myToken;
@@ -246,231 +247,237 @@ export class GMManager extends Application {
 
         thisCombat = await myCombatArray[theCombat];
         thisActor = await game.actors.get(myCombatantActorId);
-        thisTokens = thisActor.getActiveTokens(false, false);
+        anError = false;
+        try {
+          thisTokens = thisActor.getActiveTokens(false, false);
+        } catch (error) {
+          anError = true;
+        };
 
-        for (let theToken in thisTokens) {
-          myToken = thisTokens[theToken];
+        if (!anError) {
+          for (let theToken in thisTokens) {
+            myToken = thisTokens[theToken];
 
-          // console.log("thisActor = ", thisActor);
-          // console.log("thisActor.name = ", thisActor.name);
+            // console.log("thisActor = ", thisActor);
+            // console.log("thisActor.name = ", thisActor.name);
 
 
-          theActor = myToken.actor;
+            theActor = myToken.actor;
 
-          
-          if (theActor.type === "character") {
-            // console.log('Je passe bien ici !');
-            switch (mandalaNumber) {
-              case "0":
-                await theActor.rollInitiative({
-                  createCombatants: false,
-                  rerollInitiative: true,
-                  initiativeOptions: {formula: "0"}});
-            break;
-              case "1":
-                if (await theActor.system.mandala.un.nbrjetonbonus) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "1"}});
-                } else {
+            
+            if (theActor.type === "character") {
+              // console.log('Je passe bien ici !');
+              switch (mandalaNumber) {
+                case "0":
                   await theActor.rollInitiative({
                     createCombatants: false,
                     rerollInitiative: true,
                     initiativeOptions: {formula: "0"}});
-                  };
                 break;
-              case "2":
-                if (await theActor.system.mandala.deux.nbrjetonbonus) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "2"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
-              break;
-              case "3":
-                if (await theActor.system.mandala.trois.nbrjetonbonus) {
-                  // console.log("thisActor.system.mandala.trois.nbrjetonbonus = ", await thisActor.system.mandala.trois.nbrjetonbonus)
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "3"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
+                case "1":
+                  if (await theActor.system.mandala.un.nbrjetonbonus) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "1"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "2":
+                  if (await theActor.system.mandala.deux.nbrjetonbonus) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "2"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
                 break;
-              case "4":
-                if (await thisActor.system.mandala.quatre.nbrjetonbonus) {
-                  await thisActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "4"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
-                break;
-              case "5":
-                if (await theActor.system.mandala.cinq.nbrjetonbonus) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "5"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
-                break;
-              case "6":
-                if (await theActor.system.mandala.six.nbrjetonbonus) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "6"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
-                break;
-              case "7":
-                if (await theActor.system.mandala.sept.nbrjetonbonus) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "7"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
-                break;
-              default:
-                // console.log("C'est bizarre !");
+                case "3":
+                  if (await theActor.system.mandala.trois.nbrjetonbonus) {
+                    // console.log("thisActor.system.mandala.trois.nbrjetonbonus = ", await thisActor.system.mandala.trois.nbrjetonbonus)
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "3"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "4":
+                  if (await thisActor.system.mandala.quatre.nbrjetonbonus) {
+                    await thisActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "4"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "5":
+                  if (await theActor.system.mandala.cinq.nbrjetonbonus) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "5"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "6":
+                  if (await theActor.system.mandala.six.nbrjetonbonus) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "6"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "7":
+                  if (await theActor.system.mandala.sept.nbrjetonbonus) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "7"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                default:
+                  // console.log("C'est bizarre !");
+              }
+
             }
 
-          }
-
-          if (theActor.type === "npc" || theActor.type === "monster") {
-            // console.log('Et là aussi !');
-            switch (mandalaNumber) {
-              case "0":
-                await theActor.rollInitiative({
-                  createCombatants: false,
-                  rerollInitiative: true,
-                  initiativeOptions: {formula: "0"}});
-            break;
-              case "1":
-                if (await theActor.system.mandala.un.selected != false) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "1"}});
-                } else {
+            if (theActor.type === "npc" || theActor.type === "monster") {
+              // console.log('Et là aussi !');
+              switch (mandalaNumber) {
+                case "0":
                   await theActor.rollInitiative({
                     createCombatants: false,
                     rerollInitiative: true,
                     initiativeOptions: {formula: "0"}});
-                  };
-                break;
-              case "2":
-                if (await theActor.system.mandala.deux.selected != false) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "2"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
               break;
-              case "3":
-                if (await theActor.system.mandala.trois.selected != false) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "3"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
+                case "1":
+                  if (await theActor.system.mandala.un.selected != false) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "1"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "2":
+                  if (await theActor.system.mandala.deux.selected != false) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "2"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
                 break;
-              case "4":
-                if (await theActor.system.mandala.quatre.selected != false) {
-                  // console.log("thisActor.system.mandala.quatre.selected = ", thisActor.system.mandala.quatre.selected)
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "4"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
-                break;
-              case "5":
-                if (await theActor.system.mandala.cinq.selected != false) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "5"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
-                break;
-              case "6":
-                if (await theActor.system.mandala.six.selected != false) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "6"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
-                break;
-              case "7":
-                if (await theActor.system.mandala.sept.selected != false) {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "7"}});
-                } else {
-                  await theActor.rollInitiative({
-                    createCombatants: false,
-                    rerollInitiative: true,
-                    initiativeOptions: {formula: "0"}});
-                  };
-                break;
-              default:
-                // console.log("C'est bizarre !");
+                case "3":
+                  if (await theActor.system.mandala.trois.selected != false) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "3"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "4":
+                  if (await theActor.system.mandala.quatre.selected != false) {
+                    // console.log("thisActor.system.mandala.quatre.selected = ", thisActor.system.mandala.quatre.selected)
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "4"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "5":
+                  if (await theActor.system.mandala.cinq.selected != false) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "5"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "6":
+                  if (await theActor.system.mandala.six.selected != false) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "6"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                case "7":
+                  if (await theActor.system.mandala.sept.selected != false) {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "7"}});
+                  } else {
+                    await theActor.rollInitiative({
+                      createCombatants: false,
+                      rerollInitiative: true,
+                      initiativeOptions: {formula: "0"}});
+                    };
+                  break;
+                default:
+                  // console.log("C'est bizarre !");
+              }
             }
           }
-
         }
       }
     }

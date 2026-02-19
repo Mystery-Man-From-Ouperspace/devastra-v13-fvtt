@@ -37,6 +37,23 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
     context.blessuresoustatuts = context.items.filter(item => item.type === "blessureoustatut");
     context.benedictionsoumaledictions= context.items.filter(item => item.type === "benedictionoumalediction");
 
+
+    // By level sort pouvoirs
+    var itemCats = [
+      context.pouvoirs
+    ]
+    for (let category of itemCats) {
+      if (category.length > 1) {
+        category.sort((a,b) => {
+          let levelA = a.system.level
+          let levelB = b.system.level
+          if (levelA > levelB) {return 1}
+          else {return -1}
+        })
+      }
+    }
+
+
     context.mandala1 = await this.actor.system.mandala.un.selected;
     context.mandala2 = await this.actor.system.mandala.deux.selected;
     context.mandala3 = await this.actor.system.mandala.trois.selected;
@@ -107,7 +124,9 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
 
     Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
   
- 
+
+    html.find('.toggleEquipped').click(this._onToggleEquipped.bind(this));
+
     html.find(".clickondie").click(this._onClickDieRoll.bind(this));
     html.find(".clickonmandala").click(this._onClickMandalaCheck.bind(this));
     html.find(".clickonarmure").click(this._onClickArmor.bind(this));
@@ -273,6 +292,26 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
       myActor.render(false);
     // }
   }
+
+
+  async _onToggleEquipped(event) {
+    event.preventDefault()
+    let element = event.currentTarget
+    let equippedItem = this.actor.items.get(element.closest('.item').dataset.itemId)
+
+    switch (equippedItem.system.equipped) {
+        case true:
+            equippedItem.update({'system.equipped': false})
+            break
+        
+        case false:
+            equippedItem.update({'system.equipped': true})
+            break
+    }
+
+    ui.notifications.warn(game.i18n.localize("DEVASTRA.Error12"));
+  }
+
 
 
   /**
@@ -1112,6 +1151,7 @@ export class DEVASTRAMonsterSheet extends DEVASTRAActorSheet {
         };
       //////////////////////////////////////////////////////////////////
 
+      console.log("myDamageData :", myDamageData);
 
       isInventory = myDamageData.isinventory;
       weapon = myDamageData.weapon;
@@ -1596,11 +1636,11 @@ async function _whichTypeOfDamage (myActor, template, myTitle, myDialogOptions, 
   
   
   async function _computeResult(myActor, myHtml) {
-    console.log("I'm in _computeResult(myActor, myHtml)");
+    // console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
-      isinventory: await myHtml.find("input[name='isinventory']").is(':checked'),
-      weapon: await myHtml.find("input[name='weapon']").is(':checked'),
-      devastra: await myHtml.find("input[name='devastra']").is(':checked'),
+      isinventory: await myHtml.find("input[value='isinventory']").is(':checked'),
+      weapon: await myHtml.find("input[value='weapon']").is(':checked'),
+      devastra: await myHtml.find("input[value='devastra']").is(':checked'),
       power: await myHtml.find("input[name='power']").is(':checked'),
       magic: await myHtml.find("input[name='magic']").is(':checked'),
 
@@ -1611,7 +1651,6 @@ async function _whichTypeOfDamage (myActor, template, myTitle, myDialogOptions, 
       damage: parseInt(await myHtml.find("select[name='damage']").val()),
       damagetype: await myHtml.find("select[name='damagetype']").val(),
     };
-    // myActor.update({ "system.prefs.lastweaponusedid": editedData.selectedinventory, "system.prefs.improviseddamage": editedData.damage.toString() });
     return editedData;
   }
 }

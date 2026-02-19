@@ -38,7 +38,12 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
   /** @inheritdoc */
   async getData(options) {
     const context = await super.getData(options);
-    context.equipments = context.items.filter(item => item.type === "item");
+
+    context.equipments = context.items.filter(item => item.type === "item" && item.system.equipped === false);
+    context.equipedequipmentsmisc = context.items.filter(item => item.type === "item" && item.system.equipped === true && (item.system.subtype === DEVASTRA.ITEMSUBTYPES.other.id || item.system.subtype === DEVASTRA.ITEMSUBTYPES.vehicle.id));
+    context.equipedequipmentsarmors = context.items.filter(item => item.type === "item" && item.system.equipped === true && item.system.subtype === DEVASTRA.ITEMSUBTYPES.armor.id);
+    context.equipedequipmentsweapons = context.items.filter(item => item.type === "item" && item.system.equipped === true && item.system.subtype === DEVASTRA.ITEMSUBTYPES.weapon.id);
+
     context.enseignements = context.items.filter(item => item.type === "enseignement");
     context.devastras = context.items.filter(item => item.type === "devastra");
     context.pouvoirs = context.items.filter(item => item.type === "pouvoir");
@@ -48,6 +53,46 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     context.notes = context.items.filter(item => item.type === "note");
     context.blessuresoustatuts = context.items.filter(item => item.type === "blessureoustatut");
     context.benedictionsoumaledictions = context.items.filter(item => item.type === "benedictionoumalediction");
+
+    
+    // Alphabetically sort items
+    var itemCats = [
+      context.equipments,
+      context.equipedequipmentsmisc,
+      context.equipedequipmentsarmors,
+      context.equipedequipmentsweapons,
+      context.enseignements,
+      context.devastras,
+      context.magies,
+      context.dharmas,
+      context.blessuresoustatuts
+    ]
+    for (let category of itemCats) {
+      if (category.length > 1) {
+        category.sort((a,b) => {
+          let nameA = a.name.toLowerCase()
+          let nameB = b.name.toLowerCase()
+          if (nameA > nameB) {return 1}
+          else {return -1}
+        })
+      }
+    }
+
+    // By level sort pouvoirs
+    var itemCats = [
+      context.pouvoirs
+    ]
+    for (let category of itemCats) {
+      if (category.length > 1) {
+        category.sort((a,b) => {
+          let levelA = a.system.level
+          let levelB = b.system.level
+          if (levelA > levelB) {return 1}
+          else {return -1}
+        })
+      }
+    }
+
 
     context.playersEditItems = true;
     // context.playersEditItems = await game.settings.get("devastra", "playersEditItems");
@@ -131,6 +176,8 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
       }
     })
     */
+
+    html.find('.toggleEquipped').click(this._onToggleEquipped.bind(this));
 
     html.find(".clickondie").click(this._onClickDieRoll.bind(this));
     html.find(".clickonlock").click(this._onClickLock.bind(this));
@@ -262,6 +309,24 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     // }
   }
 
+
+  async _onToggleEquipped(event) {
+      event.preventDefault()
+      let element = event.currentTarget
+      let equippedItem = this.actor.items.get(element.closest('.item').dataset.itemId)
+
+      switch (equippedItem.system.equipped) {
+          case true:
+              equippedItem.update({'system.equipped': false})
+              break
+          
+          case false:
+              equippedItem.update({'system.equipped': true})
+              break
+      }
+
+    ui.notifications.warn(game.i18n.localize("DEVASTRA.Error12"));
+  }
 
 
   /**
@@ -1357,7 +1422,7 @@ export class DEVASTRACharacterSheet extends DEVASTRAActorSheet {
     if (armordevastrachoices == "0") {
       myArmorDevastraChoicesBonus = 0;
     } else {
-      for (item of myActor.items.filter(item => item.type === 'devastra')) {
+      for (item of myActor.items.filter(item => item.type === 'devastra' && item.system.equipped === true)) {
         if (item._id == armordevastrachoices) {
           myItem = item;
         }
@@ -3375,6 +3440,7 @@ if (!(myActor.system.mandala.six.nbrjetonbonus)) {
         };
       //////////////////////////////////////////////////////////////////
 
+      console.log("myDamageData :", myDamageData);
 
       isInventory = myDamageData.isinventory;
       weapon = myDamageData.weapon;
@@ -3846,14 +3912,14 @@ async function _whichTypeOfDamage (myActor, template, myTitle, myDialogOptions, 
   myItemWeapon["0"] = new myObject("0", game.i18n.localize("DEVASTRA.opt.none"));
   // myItemWeapon["-1"] = new myObject("-1", game.i18n.localize("DEVASTRA.barehands"));
   for (let item of myActorID.items.filter(item => item.type === 'item')) {
-    if (item.system.subtype == "weapon") {
+    if (item.system.subtype == "weapon" && item.system.equipped == true) {
     myItemWeapon[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.damage_base.toString()+"+"+item.system.damage.toString()+"]");
     };
   };
 
   myItemDevastra["0"] = new myObject("0", game.i18n.localize("DEVASTRA.opt.none"));
   for (let item of myActorID.items.filter(item => item.type === 'devastra')) {
-    if (item.system.attack != "") {
+    if (item.system.attack != "" && item.system.equipped === true) {
     myItemDevastra[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.damage_base.toString()+"+"+item.system.damage.toString()+"]");
     };
   };
@@ -4204,11 +4270,11 @@ async function _skillDiceRollDialog(
         },
         default: 'validateBtn',
         close: () => resolve( null )
-    },
-    dialogOptions
-    ).render(true, {
-      width: 1000,
-      height: "auto"
+      },
+      dialogOptions
+      ).render(true, {
+        width: 1000,
+        height: "auto"
     });
   });
 
@@ -4336,11 +4402,11 @@ async function _skillDiceRollDialogDeblocked (
         },
         default: 'validateBtn',
         close: () => resolve( null )
-    },
-    dialogOptions
-    ).render(true, {
-      width: 1000,
-      height: "auto"
+      },
+      dialogOptions
+      ).render(true, {
+        width: 1000,
+        height: "auto"
     });
   });
 
@@ -4404,14 +4470,14 @@ async function _whichTypeOfDefence (myActor, template, myTitle, myDialogOptions,
 
   myItemArmor["0"] = new myObject("0", game.i18n.localize("DEVASTRA.opt.none"));
   for (let item of myActor.items.filter(item => item.type === 'item')) {
-    if (item.system.subtype == "armor") {
+    if (item.system.subtype === "armor" && item.system.equipped === true) {
       myItemArmor[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.protection.toString()+"]");
     };
   };
 
   myItemArmorDevastra["0"] = new myObject("0", game.i18n.localize("DEVASTRA.opt.none"));
   for (let item of myActor.items.filter(item => item.type === 'devastra')) {
-    if (item.system.protection != 0) {
+    if (item.system.protection != 0 && item.system.equipped === true) {
       myItemArmorDevastra[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.protection.toString()+"]");
     };
   };

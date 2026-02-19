@@ -243,7 +243,7 @@
     </div>
 
     <div class="domain-div">
-      <p class="left"><b>{{ localize "DEVASTRA.Initiative" }}</b></p>
+      <p class="left"><b>{{ localize "DEVASTRA.RangDactionOuInitiative" }}</b></p>
       <div style="width: 100%; display: flex;">
         <div class="pranaDiv" style="display: table; width: 20%;">
           <div class="pranaCol logopranableu">
@@ -315,6 +315,7 @@
       <span class="right"><img style="width: 45px;" class="logoprana padding3px" src="systems/devastra/images/ui/icons/Contact.png" alt="Arme" /></span>
       {{#each devastras as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
+        <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
         <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
@@ -356,13 +357,14 @@
   <div style="float: left; width: 0.53%;">
   </div>
 
-  <div class="domain-div" style="float: left; width: 25%;">
+  <div class="domain-div" style="float: left; width: 23%;">
     <ol class="item-list">
       <p class="right"><b>{{ localize "DEVASTRA.ArmesOuProtections" }}</b></p>
       <span class="right"><img style="width: 45px;" class="logoprana padding3px" src="systems/devastra/images/ui/icons/Contact.png" alt="Arme" />
         <img style="width: 45px;" class="logoprana padding3px" src="systems/devastra/images/ui/icons/Defense.png" alt="Défense" /></span>
       {{#each equipments as |item id|}}
       <li class="item flexrow" data-item-id="{{item._id}}">
+        <input type="checkbox" class="toggleEquipped" {{checked item.system.equipped}}>
         <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
         <span class="item-name">{{item.name}}</span>
         <div class="item-controls">
