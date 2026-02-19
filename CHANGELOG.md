@@ -1,6 +1,7 @@
 1.0.5
 - Ajout data-tooltip pour la Shakti sur la fiche d'avatar
 - Ajout Conviction dans la fiche de PNJ (optionnelle)
+- Ajout affichage / masquage des détails des items (petit triangle bleu) dans la fiche d'avatar
 - Les items sont maintenant triés par ordre alphabétique dans les listes d'items de la fiche d'avatar
 - Par contre, les items de pouvoir de devâstra sont maintenant triés par niveau dans la liste de pouvoirs de la fiche d'avatar
 - Gestion des items équipés :
