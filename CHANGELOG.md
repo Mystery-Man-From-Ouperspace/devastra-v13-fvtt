@@ -1,3 +1,6 @@
+1.0.6
+- Correction d'un bug qui empêchait, sous Foundry v14, l'affichage d'un dialogue consécutif à un clic de lancer de dés
+
 1.0.5
 - Ajout data-tooltip pour la Shakti sur la fiche d'avatar
 - Ajout Conviction dans la fiche de PNJ (optionnelle)
