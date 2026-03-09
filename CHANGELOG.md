@@ -37,5 +37,4 @@
 
 ---
 Bugs connus et non encore traités
-- Trier les pouvoirs de devâstra par niveau sur les fiches d'acteur (ce qui n'est pas encore le cas)
 - Vérifier les dés bonus sur les attaques
