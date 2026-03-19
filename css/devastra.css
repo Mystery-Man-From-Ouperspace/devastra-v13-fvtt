@@ -1543,7 +1543,6 @@ cursor: pointer;
   padding: 2px;
 }
 
-
 .devastra-result-window td.tiers-centre {
   width: 33.33%;
   text-align: center;
@@ -1568,7 +1567,7 @@ cursor: pointer;
 }
 
 .devastra-result-window tr.devastra-no-rich {
-background-color: transparent;
+  background-color: transparent;
 }
 
 /*
